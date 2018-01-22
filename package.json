@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "build-css": "node-sass-chokidar public/css/ -o public/css/",
+    "watch-css": "npm run build-css && node-sass-chokidar public/css/ -o public/css/ --watch --recursive"
   },
   "keywords": [],
   "author": "",
