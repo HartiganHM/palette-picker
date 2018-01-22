@@ -1,6 +1,21 @@
+body {
+  font-size: 62.5%;
+}
+
 .app {
   display: flex;
   flex-direction: column;
+  font-family: 'Dosis', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 62.5%;
+  font-size: 1.4rem;
+}
+
+.header {
+  align-self: center;
+  padding: 10px;
+  font-size: 2.4rem;
+  font-weight: 700;
 }
 
 .color-selection-wrapper {
@@ -16,6 +31,7 @@
   justify-content: flex-end;
   height: 400px;
   padding: 10px;
+  font-size: 1.6rem;
 }
 
 .color-1 {
