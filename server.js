@@ -8,5 +8,5 @@ app.locals.title = 'Palette Picker';
 app
   .use(express.static(path.join(__dirname, 'public')))
   .listen(app.get('port'), () => {
-    console.log(`${app.localts.title} is running on ${app.get('port')}.`);
+    console.log(`${app.locals.title} is running on ${app.get('port')}.`);
   });
