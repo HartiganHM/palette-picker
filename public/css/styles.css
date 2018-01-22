@@ -1,58 +1,47 @@
 body {
   font-size: 62.5%; }
-
-.app {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Dosis', Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 62.5%;
-  font-size: 1.4rem; }
-
-.header {
-  align-self: center;
-  padding: 10px;
-  font-size: 2.4rem;
-  font-weight: 700; }
-
-.color-selection-wrapper {
-  display: flex;
-  justify-content: space-around; }
-
-.color-choice {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  height: 400px;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 1.6rem; }
-
-.color-1 {
-  background-color: #D3F6DB; }
-
-.color-2 {
-  background-color: #92D5E6; }
-
-.color-3 {
-  background-color: #772D8B; }
-
-.color-4 {
-  background-color: #5A0B4D; }
-
-.color-5 {
-  background-color: #A1EF8B; }
-
-.generate-palette-button {
-  align-self: center;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #b0c4de;
-  cursor: pointer; }
-
-.generate-palette-button:hover {
-  background-color: #d3ddeb; }
+  body .app {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Dosis', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 62.5%;
+    font-size: 1.4rem; }
+    body .app .header {
+      align-self: center;
+      padding: 10px;
+      font-size: 2.4rem;
+      font-weight: 700; }
+    body .app .color-selection-wrapper {
+      display: flex;
+      justify-content: space-around; }
+      body .app .color-selection-wrapper .color-choice {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        height: 400px;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 1.6rem; }
+      body .app .color-selection-wrapper .color-1 {
+        background-color: #d3f6db; }
+      body .app .color-selection-wrapper .color-2 {
+        background-color: #92d5e6; }
+      body .app .color-selection-wrapper .color-3 {
+        background-color: #772d8b; }
+      body .app .color-selection-wrapper .color-4 {
+        background-color: #5a0b4d; }
+      body .app .color-selection-wrapper .color-5 {
+        background-color: #a1ef8b; }
+    body .app .generate-palette-button {
+      align-self: center;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #b0c4de;
+      cursor: pointer; }
+    body .app .generate-palette-button:hover {
+      background-color: #d3ddeb; }
