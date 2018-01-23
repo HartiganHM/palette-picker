@@ -82,5 +82,11 @@ const toggleColorLock = (event, array, locked) => {
 }
 
 $(document).ready(generateColors(colorsArray));
+$(document).on('keyup', (event) => {
+  event.preventDefault()
+  if (event.keyCode === 32 && event.target === document.body) {
+    generateColors();
+  }
+});
 $('.generate-palette-button').click((colorsArray) => generateColors(colorsArray));
 $('.lock').on('click', event => toggleLockIcon(event));
