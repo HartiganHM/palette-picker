@@ -6,94 +6,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Palette Picker</title>
+  <link rel="stylesheet" type="text/css" href="./css/fix.css">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="./css/fontello/css/fontello.css"> "
 </head>
 
-<body>
+<body class="app">
   <span class="header">Palette Picker</span>
 
   <div class="color-selection-wrapper">
-    <div class="color-1"></div>
-    <div class="color-2"></div>
-    <div class="color-3"></div>
-    <div class="color-4"></div>
-    <div class="color-5"></div>
+    <div class="color-choice color-1">
+      <i class="icon-lock-open"></i>
+      <span class="color-hex-value">#D3F6DB</span>
+    </div>
+    <div class="color-choice color-2">
+      <i class="icon-lock-open"></i>
+      <span class="color-hex-value">#92D5E6</span>
+    </div>
+    <div class="color-choice color-3">
+      <i class="icon-lock-open"></i>
+      <span class="color-hex-value">#772D8B</span>
+    </div>
+    <div class="color-choice color-4">
+      <i class="icon-lock-open"></i>
+      <span class="color-hex-value">#5A0B4D</span>
+    </div>
+    <div class="color-choice color-5">
+      <i class="icon-lock-open"></i>
+      <span class="color-hex-value">#A1EF8B</span>
+    </div>
   </div>
 
-  <input type="button" value="Generate New Palette" />
+  <span class='generate-palette-button'>Generate New Palette</span>
 
   <span class="save-palette-section">
-    <select class="project-dropdown">
-      <option value="Project 1">Project 1</option>
-      <option value="Project 2">Project 2</option>
-      <option value="Project 3">Project 3</option>
-      <option value="Project 4">Project 4</option>
-      <option value="Project 5">Project 5</option>
-    </select>
+    <span class="project-dropdown">Select a Project
+      <i class="icon-right-dir"></i>
+    </span>
 
-    <input class="save-project-input" type="text" placeholder="Palette Name" />
+    <input class="save-palette-input" type="text" placeholder="Palette Name" />
 
-    <input class="save-project-submit" type="submit" value="Save Palette" />
+    <span class="save-project-submit">Save Palette</span>
   </span>
 
   <span class="create-project-section">
     <span>Create a new project:</span>
-    <input type="text" placeholder="New project name" />
-    <input type="submit" value="Save Project" />
+    <input class="new-project-input" type="text" placeholder="New project name" />
+    <span class="save-project-button">Save Project</span>
   </span>
 
   <div class="project-container">
     <div class="project">
       <span class="project-name">Project 1</span>
-      <span class="project-palette">
-        <span class="palette-name">Palette 1</span>
-
-        <span class="palette-color-group">
-          <div class="palette-color"></div>
-          <div class="palette-color"></div>
-          <div class="palette-color"></div>
-          <div class="palette-color"></div>
-          <div class="palette-color"></div>
-        </span>
-
-        <span class="delete-palette-button">Delete</span>
-      </span>
 
       <span class="project-palette">
         <span class="palette-name">Warm Combo</span>
 
         <span class="palette-color-group">
-          <div class="palette-color"></div>
-          <div class="palette-color"></div>
-          <div class="palette-color"></div>
-          <div class="palette-color"></div>
-          <div class="palette-color"></div>
+          <div class="saved-color palette-color-1"></div>
+          <div class="saved-color palette-color-2"></div>
+          <div class="saved-color palette-color-3"></div>
+          <div class="saved-color palette-color-4"></div>
+          <div class="saved-color palette-color-5"></div>
         </span>
 
-        <span class="delete-palette-button">Delete</span>
+        <i class="icon-trash"></i>
       </span>
     </div>
+  </div>
 
-    <div class="project-container">
-      <div class="project">
-        <span class="project-name">Project 1</span>
-        <span class="project-palette">
-          <span class="palette-name">Nature</span>
-
-          <span class="palette-color-group">
-            <div class="palette-color"></div>
-            <div class="palette-color"></div>
-            <div class="palette-color"></div>
-            <div class="palette-color"></div>
-            <div class="palette-color"></div>
-          </span>
-
-          <span class="delete-palette-button">Delete</span>
-        </span>
-      </div>
-    </div>
-
-    <script type="text/js" src="./js/scripts.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/js" src="./js/scripts.js"></script>
 </body>
 
 </html>

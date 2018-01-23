@@ -1,0 +1,175 @@
+body {
+  font-size: 62.5%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Dosis', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 62.5%;
+  font-size: 1.4rem;
+  .header {
+    align-self: center;
+    padding: 10px;
+    color: #008fb3;
+    font-size: 2.4rem;
+    font-weight: 700;
+  }
+  .color-selection-wrapper {
+    display: flex;
+    justify-content: space-around;
+    .color-choice {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      height: 400px;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 1.6rem;
+    }
+    .color-1 {
+      background-color: #d3f6db;
+    }
+    .color-2 {
+      background-color: #92d5e6;
+    }
+    .color-3 {
+      background-color: #772d8b;
+    }
+    .color-4 {
+      background-color: #5a0b4d;
+    }
+    .color-5 {
+      background-color: #a1ef8b;
+    }
+  }
+  .generate-palette-button {
+    align-self: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: #b0c4de;
+    cursor: pointer;
+    &:hover {
+      background-color: #d3ddeb;
+    }
+    &:active {
+      background-color: #769ac9;
+    }
+  }
+  .save-palette-section {
+    align-self: center;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    .project-dropdown {
+      margin: 10px;
+      padding: 10px;
+      background-color: #b0c4de;
+      cursor: pointer;
+      &:hover {
+        background-color: #d3ddeb;
+      }
+      &:active {
+        background-color: #769ac9;
+      }
+    }
+    .save-palette-input {
+      padding: 10px;
+      border: 1px solid lightgrey;
+      font-size: 1.4rem;
+      &:focus {
+        outline: none;
+      }
+    }
+    .save-project-submit {
+      margin: 10px;
+      padding: 10px;
+      background-color: #b0c4de;
+      cursor: pointer;
+      &:hover {
+        background-color: #d3ddeb;
+      }
+      &:active {
+        background-color: #769ac9;
+      }
+    }
+  }
+  .create-project-section {
+    align-self: center;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    .new-project-input {
+      padding: 10px;
+      border: 1px solid lightgrey;
+      font-size: 1.4rem;
+      &:focus {
+        outline: none;
+      }
+    }
+    .save-project-button {
+      margin: 10px;
+      padding: 10px;
+      background-color: #b0c4de;
+      cursor: pointer;
+      &:hover {
+        background-color: #d3ddeb;
+      }
+      &:active {
+        background-color: #769ac9;
+      }
+    }
+  }
+  .project-container {
+    display: flex;
+    padding: 10px;
+    .project {
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+      .project-palette {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        .palette-name {
+          padding: 10px;
+        }
+        .palette-color-group {
+          display: flex;
+          padding: 10px;
+          .saved-color {
+            width: 50px;
+            height: 50px;
+          }
+          .palette-color-1 {
+            background-color: #d3f6db;
+          }
+          .palette-color-2 {
+            background-color: #92d5e6;
+          }
+          .palette-color-3 {
+            background-color: #772d8b;
+          }
+          .palette-color-4 {
+            background-color: #5a0b4d;
+          }
+          .palette-color-5 {
+            background-color: #a1ef8b;
+          }
+        }
+        .icon-trash {
+          font-size: 32px;
+          &:hover {
+            color: red;
+          }
+          &:active {
+            color: lightgrey;
+          }
+        }
+      }
+    }
+  }
+}

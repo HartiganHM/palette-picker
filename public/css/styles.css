@@ -1,0 +1,133 @@
+body {
+  font-size: 62.5%; }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Dosis', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 62.5%;
+  font-size: 1.4rem; }
+  .app .header {
+    align-self: center;
+    padding: 10px;
+    color: #008fb3;
+    font-size: 2.4rem;
+    font-weight: 700; }
+  .app .color-selection-wrapper {
+    display: flex;
+    justify-content: space-around; }
+    .app .color-selection-wrapper .color-choice {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      height: 400px;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 1.6rem; }
+    .app .color-selection-wrapper .color-1 {
+      background-color: #d3f6db; }
+    .app .color-selection-wrapper .color-2 {
+      background-color: #92d5e6; }
+    .app .color-selection-wrapper .color-3 {
+      background-color: #772d8b; }
+    .app .color-selection-wrapper .color-4 {
+      background-color: #5a0b4d; }
+    .app .color-selection-wrapper .color-5 {
+      background-color: #a1ef8b; }
+  .app .generate-palette-button {
+    align-self: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: #b0c4de;
+    cursor: pointer; }
+    .app .generate-palette-button:hover {
+      background-color: #d3ddeb; }
+    .app .generate-palette-button:active {
+      background-color: #769ac9; }
+  .app .save-palette-section {
+    align-self: center;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px; }
+    .app .save-palette-section .project-dropdown {
+      margin: 10px;
+      padding: 10px;
+      background-color: #b0c4de;
+      cursor: pointer; }
+      .app .save-palette-section .project-dropdown:hover {
+        background-color: #d3ddeb; }
+      .app .save-palette-section .project-dropdown:active {
+        background-color: #769ac9; }
+    .app .save-palette-section .save-palette-input {
+      padding: 10px;
+      border: 1px solid lightgrey;
+      font-size: 1.4rem; }
+      .app .save-palette-section .save-palette-input:focus {
+        outline: none; }
+    .app .save-palette-section .save-project-submit {
+      margin: 10px;
+      padding: 10px;
+      background-color: #b0c4de;
+      cursor: pointer; }
+      .app .save-palette-section .save-project-submit:hover {
+        background-color: #d3ddeb; }
+      .app .save-palette-section .save-project-submit:active {
+        background-color: #769ac9; }
+  .app .create-project-section {
+    align-self: center;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px; }
+    .app .create-project-section .new-project-input {
+      padding: 10px;
+      border: 1px solid lightgrey;
+      font-size: 1.4rem; }
+      .app .create-project-section .new-project-input:focus {
+        outline: none; }
+    .app .create-project-section .save-project-button {
+      margin: 10px;
+      padding: 10px;
+      background-color: #b0c4de;
+      cursor: pointer; }
+      .app .create-project-section .save-project-button:hover {
+        background-color: #d3ddeb; }
+      .app .create-project-section .save-project-button:active {
+        background-color: #769ac9; }
+  .app .project-container {
+    display: flex;
+    padding: 10px; }
+    .app .project-container .project {
+      display: flex;
+      flex-direction: column;
+      margin: 10px; }
+      .app .project-container .project .project-palette {
+        display: flex;
+        align-items: center;
+        padding: 10px; }
+        .app .project-container .project .project-palette .palette-name {
+          padding: 10px; }
+        .app .project-container .project .project-palette .palette-color-group {
+          display: flex;
+          padding: 10px; }
+          .app .project-container .project .project-palette .palette-color-group .saved-color {
+            width: 50px;
+            height: 50px; }
+          .app .project-container .project .project-palette .palette-color-group .palette-color-1 {
+            background-color: #d3f6db; }
+          .app .project-container .project .project-palette .palette-color-group .palette-color-2 {
+            background-color: #92d5e6; }
+          .app .project-container .project .project-palette .palette-color-group .palette-color-3 {
+            background-color: #772d8b; }
+          .app .project-container .project .project-palette .palette-color-group .palette-color-4 {
+            background-color: #5a0b4d; }
+          .app .project-container .project .project-palette .palette-color-group .palette-color-5 {
+            background-color: #a1ef8b; }
+        .app .project-container .project .project-palette .icon-trash {
+          font-size: 32px; }
+          .app .project-container .project .project-palette .icon-trash:hover {
+            color: red; }
+          .app .project-container .project .project-palette .icon-trash:active {
+            color: lightgrey; }
