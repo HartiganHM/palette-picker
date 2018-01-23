@@ -1,4 +1,4 @@
-let colorsArray = [
+const colorsArray = [
   { class: '.color-1', hexValue: '000000', locked: false },
   { class: '.color-2', hexValue: '000000', locked: false },
   { class: '.color-3', hexValue: '000000', locked: false },
@@ -73,14 +73,12 @@ const toggleLockIcon = event => {
 
 const toggleColorLock = (event, array, locked) => {
   const parentColorClass = '.' + $(event.target).parent()[0].classList[1];
-  const lockedColors = array.map(color => {
+  array.map(color => {
     if (color.class === parentColorClass) {
       color.locked = locked
     }
     return color;
   })
-
-  return colorsArray = lockedColors;
 }
 
 $(document).ready(generateColors(colorsArray));
