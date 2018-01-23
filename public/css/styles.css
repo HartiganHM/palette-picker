@@ -30,11 +30,10 @@ body {
       .app .color-selection-wrapper .color-choice .lock {
         color: rgba(0, 0, 0, 0.5);
         font-size: 1.4rem;
-        transition: 0.1s color, font-size ease-in-out; }
+        transition: 0.1s color ease-in-out; }
         .app .color-selection-wrapper .color-choice .lock:hover {
           color: rgba(0, 0, 0, 0.75);
-          font-size: 1.5rem;
-          transition: 0.1s color, font-size ease-in-out; }
+          transition: 0.1s color ease-in-out; }
     .app .color-selection-wrapper .color-1 {
       background-color: #d3f6db; }
     .app .color-selection-wrapper .color-2 {
