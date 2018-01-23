@@ -54,5 +54,5 @@ const toggleColorLock = () => {
 }
 
 $(document).ready(generateColors);
-$('.generate-palette-button').on('click', generateColors);
-$('.lock').on('click', toggleColorLock);
+$('.generate-palette-button').click(generateColors);
+$('.lock').click(toggleColorLock);
