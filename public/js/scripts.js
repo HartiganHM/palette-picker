@@ -39,11 +39,15 @@ const generateColors = () => {
     return color;
   });
 
+  applyColors(colorValues);
+};
+
+const applyColors = (colorValues) => {
   colorValues.forEach(color => {
     $(`${color.class}`).css('background-color', [color.value]);
     $(`${color.class}`).children()[1].innerText = `${color.value}`;
   });
-};
+}
 
 $(document).ready(generateColors);
 $('.generate-palette-button').on('click', generateColors);
