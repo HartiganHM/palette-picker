@@ -29,6 +29,7 @@ body {
       margin: 10px 0;
       padding: 10px;
       font-size: 1.6rem;
+      transition: 0.2s background-color ease-in-out;
       .lock {
         color: rgba(0, 0, 0, 0.5);
         font-size: 1.4rem;
