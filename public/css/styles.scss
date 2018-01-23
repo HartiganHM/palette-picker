@@ -77,7 +77,6 @@ body {
       }
     }
     .save-palette-input {
-      flex: 2;
       padding: 10px;
       border: 1px solid lightgrey;
       font-size: 1.4rem;
@@ -86,6 +85,32 @@ body {
       }
     }
     .save-project-submit {
+      margin: 10px;
+      padding: 10px;
+      background-color: #b0c4de;
+      cursor: pointer;
+      &:hover {
+        background-color: #d3ddeb;
+      }
+      &:active {
+        background-color: #769ac9;
+      }
+    }
+  }
+  .create-project-section {
+    align-self: center;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    .new-project-input {
+      padding: 10px;
+      border: 1px solid lightgrey;
+      font-size: 1.4rem;
+      &:focus {
+        outline: none;
+      }
+    }
+    .save-project-button {
       margin: 10px;
       padding: 10px;
       background-color: #b0c4de;
