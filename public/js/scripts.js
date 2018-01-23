@@ -82,9 +82,9 @@ const toggleColorLock = (event, array, locked) => {
 }
 
 $(document).ready(generateColors(colorsArray));
-$(document).on('keyup', (event) => {
-  event.preventDefault()
+$(document).on('keydown', (event) => {
   if (event.keyCode === 32 && event.target === document.body) {
+    event.preventDefault();
     generateColors();
   }
 });
