@@ -1,0 +1,4 @@
+
+.icon-lock-closer:before { content: '\e800'; } /* '' */
+.icon-trash:before { content: '\e801'; } /* '' */
+.icon-lock-open:before { content: '\f13e'; } /* '' */
