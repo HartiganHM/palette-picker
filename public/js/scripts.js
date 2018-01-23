@@ -35,7 +35,10 @@ const generateColors = (colorArray) => {
       })
       .join('');
 
-    color.value = `#${hexValue}`;
+      if (!color.locked) {
+        color.value = `#${hexValue}`;
+      }
+
     return color;
   });
 
@@ -51,23 +54,33 @@ const applyColors = colorValues => {
 
 const toggleLockIcon = event => {
   const element = event.target;
+  let locked;
 
   if ($(element).hasClass('icon-lock-open')) {
     $(element)
       .removeClass('icon-lock-open')
       .addClass('icon-lock-closed');
+      locked = true;
   } else {
     $(element)
       .removeClass('icon-lock-closed')
       .addClass('icon-lock-open');
+      locked = false;
   }
 
-  toggleColorLock(event, colorsArray)
+  toggleColorLock(event, colorsArray, locked)
 };
 
-const toggleColorLock = (event, colorArray) => {
-  const parentColorClass = $(event.target).parent()[0].classList[1];
-  console.log('boom')
+const toggleColorLock = (event, array, locked) => {
+  const parentColorClass = '.' + $(event.target).parent()[0].classList[1];
+  const lockedColors = array.map(color => {
+    if (color.class === parentColorClass) {
+      color.locked = locked
+    }
+    return color;
+  })
+
+  return colorsArray = lockedColors;
 }
 
 $(document).ready(generateColors(colorsArray));
