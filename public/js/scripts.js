@@ -8,12 +8,6 @@ const colorsArray = [
 
 const generateColors = (colorArray) => {
   const hexidecimalValues = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
     0,
     1,
     2,
@@ -23,7 +17,13 @@ const generateColors = (colorArray) => {
     6,
     7,
     8,
-    9
+    9,
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F'
   ];
 
   const colorValues = colorsArray.map(color => {
