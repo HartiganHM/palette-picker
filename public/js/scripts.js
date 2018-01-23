@@ -49,11 +49,19 @@ const applyColors = colorValues => {
   });
 };
 
-const toggleColorLock = (event) => {
+const toggleColorLock = event => {
   const element = event.target;
-  $(element).removeClass('icon-lock-open').addClass('icon-lock-closed');
-}
+  if ($(element).hasClass('icon-lock-open')) {
+    $(element)
+      .removeClass('icon-lock-open')
+      .addClass('icon-lock-closed');
+  } else {
+    $(element)
+      .removeClass('icon-lock-closed')
+      .addClass('icon-lock-open');
+  }
+};
 
 $(document).ready(generateColors);
 $('.generate-palette-button').click(generateColors);
-$('.lock').on('click', (event) => toggleColorLock(event));
+$('.lock').on('click', event => toggleColorLock(event));
