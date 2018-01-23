@@ -1,12 +1,12 @@
-const generateColors = () => {
-  let colorsArray = [
-    { class: '.color-1', hexValue: '000000', locked: false },
-    { class: '.color-2', hexValue: '000000', locked: false },
-    { class: '.color-3', hexValue: '000000', locked: false },
-    { class: '.color-4', hexValue: '000000', locked: false },
-    { class: '.color-5', hexValue: '000000', locked: false }
-  ];
+let colorsArray = [
+  { class: '.color-1', hexValue: '000000', locked: false },
+  { class: '.color-2', hexValue: '000000', locked: false },
+  { class: '.color-3', hexValue: '000000', locked: false },
+  { class: '.color-4', hexValue: '000000', locked: false },
+  { class: '.color-5', hexValue: '000000', locked: false }
+];
 
+const generateColors = (colorArray) => {
   const hexidecimalValues = [
     'A',
     'B',
@@ -49,8 +49,9 @@ const applyColors = colorValues => {
   });
 };
 
-const toggleColorLock = event => {
+const toggleLockIcon = event => {
   const element = event.target;
+
   if ($(element).hasClass('icon-lock-open')) {
     $(element)
       .removeClass('icon-lock-open')
@@ -60,8 +61,15 @@ const toggleColorLock = event => {
       .removeClass('icon-lock-closed')
       .addClass('icon-lock-open');
   }
+
+  toggleColorLock(event, colorsArray)
 };
 
-$(document).ready(generateColors);
-$('.generate-palette-button').click(generateColors);
-$('.lock').on('click', event => toggleColorLock(event));
+const toggleColorLock = (event, colorArray) => {
+  const parentColorClass = $(event.target).parent()[0].classList[1];
+  console.log('boom')
+}
+
+$(document).ready(generateColors(colorsArray));
+$('.generate-palette-button').click((colorsArray) => generateColors(colorsArray));
+$('.lock').on('click', event => toggleLockIcon(event));
