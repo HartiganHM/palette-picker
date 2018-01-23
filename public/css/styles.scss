@@ -29,6 +29,16 @@ body {
       margin: 10px 0;
       padding: 10px;
       font-size: 1.6rem;
+      .lock {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.4rem;
+        transition: 0.1s color, font-size ease-in-out;
+        &:hover {
+          color: rgba(0, 0, 0, 0.75);
+          font-size: 1.5rem;
+          transition: 0.1s color, font-size ease-in-out;
+        }
+      }
     }
     .color-1 {
       background-color: #d3f6db;
