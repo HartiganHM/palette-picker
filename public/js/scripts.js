@@ -42,12 +42,17 @@ const generateColors = () => {
   applyColors(colorValues);
 };
 
-const applyColors = (colorValues) => {
+const applyColors = colorValues => {
   colorValues.forEach(color => {
     $(`${color.class}`).css('background-color', [color.value]);
     $(`${color.class}`).children()[1].innerText = `${color.value}`;
   });
+};
+
+const toggleColorLock = () => {
+  console.log('click');
 }
 
 $(document).ready(generateColors);
 $('.generate-palette-button').on('click', generateColors);
+$('.lock').on('click', toggleColorLock);
