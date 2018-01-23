@@ -28,7 +28,6 @@ body {
       height: 400px;
       margin: 10px 0;
       padding: 10px;
-      border-radius: 10px;
       font-size: 1.6rem;
     }
     .color-1 {
@@ -51,11 +50,52 @@ body {
     align-self: center;
     margin: 10px;
     padding: 10px;
-    border-radius: 5px;
     background-color: #b0c4de;
     cursor: pointer;
+    &:hover {
+      background-color: #d3ddeb;
+    }
+    &:active {
+      background-color: #769ac9;
+    }
   }
-  .generate-palette-button:hover {
-    background-color: #d3ddeb;
+  .save-palette-section {
+    align-self: center;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    .project-dropdown {
+      margin: 10px;
+      padding: 10px;
+      background-color: #b0c4de;
+      cursor: pointer;
+      &:hover {
+        background-color: #d3ddeb;
+      }
+      &:active {
+        background-color: #769ac9;
+      }
+    }
+    .save-palette-input {
+      flex: 2;
+      padding: 10px;
+      border: 1px solid lightgrey;
+      font-size: 1.4rem;
+      &:focus {
+        outline: none;
+      }
+    }
+    .save-project-submit {
+      margin: 10px;
+      padding: 10px;
+      background-color: #b0c4de;
+      cursor: pointer;
+      &:hover {
+        background-color: #d3ddeb;
+      }
+      &:active {
+        background-color: #769ac9;
+      }
+    }
   }
 }

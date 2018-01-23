@@ -26,7 +26,6 @@ body {
       height: 400px;
       margin: 10px 0;
       padding: 10px;
-      border-radius: 10px;
       font-size: 1.6rem; }
     .app .color-selection-wrapper .color-1 {
       background-color: #d3f6db; }
@@ -42,8 +41,39 @@ body {
     align-self: center;
     margin: 10px;
     padding: 10px;
-    border-radius: 5px;
     background-color: #b0c4de;
     cursor: pointer; }
-  .app .generate-palette-button:hover {
-    background-color: #d3ddeb; }
+    .app .generate-palette-button:hover {
+      background-color: #d3ddeb; }
+    .app .generate-palette-button:active {
+      background-color: #769ac9; }
+  .app .save-palette-section {
+    align-self: center;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px; }
+    .app .save-palette-section .project-dropdown {
+      margin: 10px;
+      padding: 10px;
+      background-color: #b0c4de;
+      cursor: pointer; }
+      .app .save-palette-section .project-dropdown:hover {
+        background-color: #d3ddeb; }
+      .app .save-palette-section .project-dropdown:active {
+        background-color: #769ac9; }
+    .app .save-palette-section .save-palette-input {
+      flex: 2;
+      padding: 10px;
+      border: 1px solid lightgrey;
+      font-size: 1.4rem; }
+      .app .save-palette-section .save-palette-input:focus {
+        outline: none; }
+    .app .save-palette-section .save-project-submit {
+      margin: 10px;
+      padding: 10px;
+      background-color: #b0c4de;
+      cursor: pointer; }
+      .app .save-palette-section .save-project-submit:hover {
+        background-color: #d3ddeb; }
+      .app .save-palette-section .save-project-submit:active {
+        background-color: #769ac9; }
