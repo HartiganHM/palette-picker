@@ -49,10 +49,11 @@ const applyColors = colorValues => {
   });
 };
 
-const toggleColorLock = () => {
-  console.log('click');
+const toggleColorLock = (event) => {
+  const element = event.target;
+  $(element).removeClass('icon-lock-open').addClass('icon-lock-closed');
 }
 
 $(document).ready(generateColors);
 $('.generate-palette-button').click(generateColors);
-$('.lock').click(toggleColorLock);
+$('.lock').on('click', (event) => toggleColorLock(event));
