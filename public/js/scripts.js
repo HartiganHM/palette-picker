@@ -192,6 +192,7 @@ const selectProject = event => {
     toggleProjects();
     $('.project').remove();
     renderProject($(dropdownItem)[0].innerText);
+    renderPalettes(savedProjects[$(dropdownItem)[0].innerText])
   }
 };
 
@@ -208,7 +209,7 @@ const savePalette = event => {
     const selectedProject = projectList.find(project => project === projectDom);
     const currentPalette = colorsArray.map(color => color.value);
 
-    if(!savedProjects[selectedProject]) {
+    if (!savedProjects[selectedProject]) {
       savedProjects[selectedProject] = [];
     }
 
@@ -217,13 +218,6 @@ const savePalette = event => {
   }
 };
 
-const renderPalettes = palettes => {
-  const renderedPalettes = Object.keys(palettes).map(palette => {
-    return palettes[palette].map(color => {
-      console.log(color)
-    })
-  })
-}
 
 $(document).ready(generateColors(colorsArray));
 $(document).on('keydown', event => {
