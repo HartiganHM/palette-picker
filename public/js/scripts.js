@@ -154,24 +154,20 @@ const createNewProject = title => {
   );
 
   savedProjects[title.value] = {};
+  buildProjectDropdown(title.value);
   title.value = '';
 };
 
-const toggleProjects = event => {
-  const projectsList = Object.keys(savedProjects);
+const buildProjectDropdown = project => {
+  $('.dropdown-placeholder').remove();
 
-  if (projectsList.length === 0) {
-    $('.project-selection').toggleClass('hidden');
-  } else {
-    $('.dropdown-placeholder').remove();
-    $('.project-selection').toggleClass('hidden');
-
-    projectsList.forEach(project => {
-      $('.project-selection').append(`
+  $('.project-selection').append(`
       <span class="dropdown-item">${project}</span>
     `);
-    });
-  }
+};
+
+const toggleProjects = event => {
+  $('.project-selection').toggleClass('hidden');
 };
 
 $(document).ready(generateColors(colorsArray));
