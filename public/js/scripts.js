@@ -31,7 +31,7 @@ const colorsArray = [
   }
 ];
 
-const savedProjects = {}
+const savedProjects = {};
 
 const generateColors = colorArray => {
   const hexidecimalValues = [
@@ -157,6 +157,10 @@ const createNewProject = title => {
   title.value = '';
 };
 
+const toggleProjects = (event) => {
+  
+}
+
 $(document).ready(generateColors(colorsArray));
 $(document).on('keydown', event => {
   if (event.keyCode === 32 && event.target === document.body) {
@@ -167,3 +171,4 @@ $(document).on('keydown', event => {
 $('.generate-palette-button').click(colorsArray => generateColors(colorsArray));
 $('.lock').on('click', event => toggleLockIcon(event));
 $('.save-project-button').click(event => inputCheck(event));
+$('.project-dropdown').click(event => toggleProjects(event));
