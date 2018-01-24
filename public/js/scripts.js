@@ -153,13 +153,26 @@ const createNewProject = title => {
     `
   );
 
-  savedProjects[title.value] = {}
+  savedProjects[title.value] = {};
   title.value = '';
 };
 
-const toggleProjects = (event) => {
-  
-}
+const toggleProjects = event => {
+  const projectsList = Object.keys(savedProjects);
+
+  if (projectsList.length === 0) {
+    $('.project-selection').toggleClass('hidden');
+  } else {
+    $('.dropdown-placeholder').remove();
+    $('.project-selection').toggleClass('hidden');
+
+    projectsList.forEach(project => {
+      $('.project-selection').append(`
+      <span class="dropdown-item">${project}</span>
+    `);
+    });
+  }
+};
 
 $(document).ready(generateColors(colorsArray));
 $(document).on('keydown', event => {
@@ -172,3 +185,4 @@ $('.generate-palette-button').click(colorsArray => generateColors(colorsArray));
 $('.lock').on('click', event => toggleLockIcon(event));
 $('.save-project-button').click(event => inputCheck(event));
 $('.project-dropdown').click(event => toggleProjects(event));
+$('.dropdown-item').click(event => selectProject(event));
