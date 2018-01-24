@@ -8,12 +8,36 @@ body {
   font-weight: 400;
   font-size: 62.5%;
   font-size: 1.4rem; }
-  .app .header {
-    align-self: center;
-    padding: 10px;
-    color: #008fb3;
-    font-size: 2.4rem;
-    font-weight: 700; }
+  .app .header-wrapper {
+    display: flex;
+    justify-content: space-between; }
+    .app .header-wrapper .header {
+      align-self: center;
+      margin: 10px;
+      padding: 10px;
+      color: #008fb3;
+      font-size: 2.4rem;
+      font-weight: 700; }
+    .app .header-wrapper .create-project-section {
+      align-self: center;
+      justify-content: space-between;
+      margin: 10px;
+      padding: 10px; }
+      .app .header-wrapper .create-project-section .new-project-input {
+        padding: 10px;
+        border: 1px solid lightgrey;
+        font-size: 1.4rem; }
+        .app .header-wrapper .create-project-section .new-project-input:focus {
+          outline: none; }
+      .app .header-wrapper .create-project-section .save-project-button {
+        margin: 10px;
+        padding: 10px;
+        background-color: #b0c4de;
+        cursor: pointer; }
+        .app .header-wrapper .create-project-section .save-project-button:hover {
+          background-color: #d3ddeb; }
+        .app .header-wrapper .create-project-section .save-project-button:active {
+          background-color: #769ac9; }
   .app .color-selection-wrapper {
     display: flex;
     justify-content: space-around; }
@@ -44,16 +68,6 @@ body {
         .app .color-selection-wrapper .color-choice .color-hex-value:hover {
           opacity: 1;
           transition: 0.1s opacity ease-in-out; }
-    .app .color-selection-wrapper .color-1 {
-      background-color: #d3f6db; }
-    .app .color-selection-wrapper .color-2 {
-      background-color: #92d5e6; }
-    .app .color-selection-wrapper .color-3 {
-      background-color: #772d8b; }
-    .app .color-selection-wrapper .color-4 {
-      background-color: #5a0b4d; }
-    .app .color-selection-wrapper .color-5 {
-      background-color: #a1ef8b; }
   .app .generate-palette-button {
     align-self: center;
     margin: 10px;
@@ -92,26 +106,6 @@ body {
       .app .save-palette-section .save-project-submit:hover {
         background-color: #d3ddeb; }
       .app .save-palette-section .save-project-submit:active {
-        background-color: #769ac9; }
-  .app .create-project-section {
-    align-self: center;
-    justify-content: space-between;
-    margin: 10px;
-    padding: 10px; }
-    .app .create-project-section .new-project-input {
-      padding: 10px;
-      border: 1px solid lightgrey;
-      font-size: 1.4rem; }
-      .app .create-project-section .new-project-input:focus {
-        outline: none; }
-    .app .create-project-section .save-project-button {
-      margin: 10px;
-      padding: 10px;
-      background-color: #b0c4de;
-      cursor: pointer; }
-      .app .create-project-section .save-project-button:hover {
-        background-color: #d3ddeb; }
-      .app .create-project-section .save-project-button:active {
         background-color: #769ac9; }
   .app .project-container {
     display: flex;
