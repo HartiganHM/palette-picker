@@ -149,19 +149,21 @@ const renderProject = title => {
       <div class="project">
         <span class="project-name">${title}</span>
 
-        <span class="project-palette palette-placeholder">
-        <span class="palette-name">No palettes</span>
+        <span class="palette-container">
+          <span class="project-palette palette-placeholder">
+            <span class="palette-name">No palettes</span>
 
-        <span class="palette-color-group">
-          <div class="saved-color"></div>
-          <div class="saved-color"></div>
-          <div class="saved-color"></div>
-          <div class="saved-color"></div>
-          <div class="saved-color"></div>
+            <span class="palette-color-group">
+              <div class="saved-color"></div>
+              <div class="saved-color"></div>
+              <div class="saved-color"></div>
+              <div class="saved-color"></div>
+              <div class="saved-color"></div>
+            </span>
+
+            <i class="icon-trash trash-placeholder" disabled></i>
+          </span>
         </span>
-
-        <i class="icon-trash trash-placeholder" disabled></i>
-      </span>
       </div>
     `
   );
@@ -205,12 +207,23 @@ const savePalette = event => {
     const projectDom = $('.project-name')[0].innerText;
     const selectedProject = projectList.find(project => project === projectDom);
     const currentPalette = colorsArray.map(color => color.value);
-    const paletteObject = { [paletteName]: currentPalette };
 
-    savedProjects[selectedProject] = [];
-    savedProjects[selectedProject].push(paletteObject);
+    if(!savedProjects[selectedProject]) {
+      savedProjects[selectedProject] = [];
+    }
+
+    savedProjects[selectedProject][paletteName] = currentPalette;
+    renderPalettes(savedProjects[selectedProject]);
   }
 };
+
+const renderPalettes = palettes => {
+  const renderedPalettes = palettes.map(palette => {
+    return palette.map(color => {
+      
+    })
+  })
+}
 
 $(document).ready(generateColors(colorsArray));
 $(document).on('keydown', event => {
