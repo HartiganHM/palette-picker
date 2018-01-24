@@ -141,14 +141,15 @@ body {
         background-color: #769ac9; }
   .app .project-container {
     display: flex;
-    padding: 10px;
-    overflow-x: scroll; }
+    padding: 10px; }
     .app .project-container .project {
       display: flex;
       flex-direction: column;
       margin: 10px; }
       .app .project-container .project .palette-container {
-        display: flex; }
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; }
         .app .project-container .project .palette-container .project-palette {
           display: flex;
           align-items: center;
