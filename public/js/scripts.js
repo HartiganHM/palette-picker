@@ -31,6 +31,8 @@ const colorsArray = [
   }
 ];
 
+const savedProjects = {}
+
 const generateColors = colorArray => {
   const hexidecimalValues = [
     0,
@@ -150,6 +152,8 @@ const createNewProject = title => {
       </div>
     `
   );
+
+  savedProjects[title.value] = {}
   title.value = '';
 };
 
