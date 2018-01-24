@@ -145,7 +145,7 @@ const createNewProject = title => {
           <div class="saved-color"></div>
         </span>
 
-        <i class="icon-trash delete-placeholder" disabled></i>
+        <i class="icon-trash trash-placeholder" disabled></i>
       </span>
       </div>
     `
