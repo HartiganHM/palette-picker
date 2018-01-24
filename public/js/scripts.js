@@ -72,7 +72,7 @@ const generateColors = colorArray => {
       color.value = `#${hexValue}`;
       color.brightnessValue = brightnessValue;
     }
-    console.log(brightnessValue);
+
     return color;
   });
 
