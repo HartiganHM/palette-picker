@@ -218,6 +218,31 @@ const savePalette = event => {
   }
 };
 
+const renderPalettes = palettes => {
+  const renderedPalettes = Object.keys(palettes).forEach((palette, index) => {
+    $('.palette-placeholder').remove();
+    if ($(`.${palette}`).length === 1) {
+      return
+    } else {
+      $('.palette-container').prepend(
+        `
+              <span class="project-palette">
+                <span class="palette-name">${palette}</span>
+                <span class="palette-color-group ${palette}">
+                </span>
+                <i class="icon-trash"></i>
+              </span>
+            `
+      );
+      palettes[palette].forEach((color, index) => {
+        $(`.${palette}`).append(
+          `<div class="saved-color ${palette}-palette-color-${index}"></div>`
+        );
+        $(`.${palette}-palette-color-${index}`).css('background-color', color);
+      });
+    }
+  });
+};
 
 $(document).ready(generateColors(colorsArray));
 $(document).on('keydown', event => {
