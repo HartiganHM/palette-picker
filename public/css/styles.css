@@ -20,6 +20,7 @@ body {
       font-weight: 700; }
     .app .header-wrapper .create-project-section {
       align-self: center;
+      display: flex;
       justify-content: space-between;
       margin: 10px;
       padding: 10px; }
@@ -30,7 +31,6 @@ body {
         .app .header-wrapper .create-project-section .new-project-input:focus {
           outline: none; }
       .app .header-wrapper .create-project-section .save-project-button {
-        margin: 10px;
         padding: 10px;
         background-color: #b0c4de;
         cursor: pointer; }
@@ -38,6 +38,8 @@ body {
           background-color: #d3ddeb; }
         .app .header-wrapper .create-project-section .save-project-button:active {
           background-color: #769ac9; }
+        .app .header-wrapper .create-project-section .save-project-button:focus {
+          outline: none; }
   .app .color-selection-wrapper {
     display: flex;
     justify-content: space-around; }
@@ -114,7 +116,8 @@ body {
           background-color: #375377;
           color: #F9F9F9;
           text-align: center;
-          box-sizing: border-box; }
+          box-sizing: border-box;
+          cursor: pointer; }
       .app .save-palette-section .dropdown-wrapper .hidden {
         display: none; }
     .app .save-palette-section .save-palette-input {
