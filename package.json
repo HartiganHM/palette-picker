@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "browser": "browser-sync start --server 'public' --files 'public'",
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-css": "node-sass-chokidar public/css/ -o public/css/",

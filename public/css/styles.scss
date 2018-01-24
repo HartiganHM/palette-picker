@@ -29,6 +29,27 @@ body {
       margin: 10px 0;
       padding: 10px;
       font-size: 1.6rem;
+      transition: 0.2s background-color ease-in-out;
+      .lock {
+        color: #FFF;
+        font-size: 1.8rem;
+        opacity: 0.75;
+        transition: 0.1s opacity ease-in-out;
+        &:hover {
+          opacity: 1;
+          transition: 0.1s opacity ease-in-out;
+        }
+      }
+      .color-hex-value {
+        color: #FFF;
+        font-size: 1.8rem;
+        opacity: 0.75;
+        transition: 0.1s opacity ease-in-out;
+        &:hover {
+          opacity: 1;
+          transition: 0.1s opacity ease-in-out;
+        }
+      }
     }
     .color-1 {
       background-color: #d3f6db;

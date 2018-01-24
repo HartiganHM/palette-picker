@@ -26,7 +26,24 @@ body {
       height: 400px;
       margin: 10px 0;
       padding: 10px;
-      font-size: 1.6rem; }
+      font-size: 1.6rem;
+      transition: 0.2s background-color ease-in-out; }
+      .app .color-selection-wrapper .color-choice .lock {
+        color: #FFF;
+        font-size: 1.8rem;
+        opacity: 0.75;
+        transition: 0.1s opacity ease-in-out; }
+        .app .color-selection-wrapper .color-choice .lock:hover {
+          opacity: 1;
+          transition: 0.1s opacity ease-in-out; }
+      .app .color-selection-wrapper .color-choice .color-hex-value {
+        color: #FFF;
+        font-size: 1.8rem;
+        opacity: 0.75;
+        transition: 0.1s opacity ease-in-out; }
+        .app .color-selection-wrapper .color-choice .color-hex-value:hover {
+          opacity: 1;
+          transition: 0.1s opacity ease-in-out; }
     .app .color-selection-wrapper .color-1 {
       background-color: #d3f6db; }
     .app .color-selection-wrapper .color-2 {
