@@ -197,6 +197,8 @@ const selectProject = event => {
 };
 
 const savePalette = event => {
+  event.preventDefault();
+
   const projectList = Object.keys(savedProjects);
   const paletteName = $('.save-palette-input')[0].value;
 
