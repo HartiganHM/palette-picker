@@ -62,7 +62,7 @@ body {
       font-size: 1.6rem;
       transition: 0.2s background-color ease-in-out;
       .lock {
-        color: #FFF;
+        color: #fff;
         font-size: 1.8rem;
         opacity: 0.75;
         transition: 0.1s opacity ease-in-out;
@@ -72,7 +72,7 @@ body {
         }
       }
       .color-hex-value {
-        color: #FFF;
+        color: #fff;
         font-size: 1.8rem;
         opacity: 0.75;
         transition: 0.1s opacity ease-in-out;
@@ -97,23 +97,51 @@ body {
     }
   }
   .save-palette-section {
-    align-self: center;
+    align-self: stretch;
+    display: flex;
     justify-content: space-between;
-    margin: 10px;
-    padding: 10px;
-    .project-dropdown {
-      margin: 10px;
-      padding: 10px;
-      background-color: #b0c4de;
-      cursor: pointer;
-      &:hover {
-        background-color: #d3ddeb;
+    .dropdown-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      .project-dropdown {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: #b0c4de;
+        cursor: pointer;
+        &:hover {
+          background-color: #d3ddeb;
+        }
+        &:active {
+          background-color: #769ac9;
+        }
       }
-      &:active {
-        background-color: #769ac9;
+      .project-selection {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        .dropdown-item {
+          flex: 1;
+          margin: 0 0 5px;
+          padding: 10px;
+          background-color: #375377;
+          color: #F9F9F9;
+          text-align: center;
+          box-sizing: border-box;
+        }
+      }
+      .hidden {
+        display: none;
       }
     }
     .save-palette-input {
+      flex: 2;
       padding: 10px;
       border: 1px solid lightgrey;
       font-size: 1.4rem;
@@ -122,7 +150,10 @@ body {
       }
     }
     .save-project-submit {
-      margin: 10px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 10px;
       background-color: #b0c4de;
       cursor: pointer;
