@@ -182,11 +182,13 @@ const toggleProjects = () => {
 const selectProject = event => {
   const dropdownItem = $(event.target).closest('.dropdown-item');
 
-  if ($(dropdownItem)[0].innerText === 'No Projects') {
+  if (!dropdownItem[0]) {
+    return;
+
+  } else if ($(dropdownItem)[0].innerText === 'No Projects') {
     toggleProjects();
 
   } else if ($(dropdownItem)[0].innerText) {
-    console.log('else');
     toggleProjects();
     $('.project').remove();
     renderProject($(dropdownItem)[0].innerText);
