@@ -126,10 +126,12 @@ body {
         flex-direction: column;
         position: absolute;
         width: 100%;
+        top: 48px;
         .dropdown-item {
           flex: 1;
           margin: 0 0 5px;
           padding: 10px;
+          border: 1px solid #F9F9F9;
           background-color: #375377;
           color: #F9F9F9;
           text-align: center;
