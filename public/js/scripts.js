@@ -218,9 +218,9 @@ const savePalette = event => {
 };
 
 const renderPalettes = palettes => {
-  const renderedPalettes = palettes.map(palette => {
-    return palette.map(color => {
-      
+  const renderedPalettes = Object.keys(palettes).map(palette => {
+    return palettes[palette].map(color => {
+      console.log(color)
     })
   })
 }
