@@ -85,7 +85,7 @@ const applyColors = colorValues => {
     const icon = $(`${color.class}`).children()[0];
 
     $(`${color.class}`).css('background-color', [color.value]);
-    $(colorText).innerText = `${color.value}`;
+    colorText.innerText = `${color.value}`;
     $(colorText).css('color', [color.brightnessValue]);
     $(icon).css('color', [color.brightnessValue]);
   });
