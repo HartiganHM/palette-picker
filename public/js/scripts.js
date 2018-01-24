@@ -194,7 +194,22 @@ const selectProject = event => {
 };
 
 const savePalette = event => {
-  console.log(event);
+  const projectList = Object.keys(savedProjects);
+  const paletteName = $('.save-palette-input')[0].value;
+
+  if(projectList.length === 0) {
+    alert('Please create a project')
+  } else if (paletteName === '') {
+    $('.save-palette-input').attr('placeholder', 'Please enter a palette name');
+  } else {
+    const projectDom = $('.project-name')[0].innerText;
+    const selectedProject = projectList.find(project => project === projectDom);
+    const paletteObject = { paletteName: []}
+    const currentPalette = colorsArray.map(color => color.value);
+
+    savedProjects[selectedProject] = []
+    savedProjects[selectedProject].push({ [paletteName]: currentPalette })
+  }
 };
 
 $(document).ready(generateColors(colorsArray));
