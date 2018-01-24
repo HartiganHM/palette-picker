@@ -120,15 +120,23 @@ const toggleColorLock = (event, array, locked) => {
   });
 };
 
-const createNewProject = event => {
-  const projectTitle = $(event.target).siblings()[1].value;
+const inputCheck = event => {
+  const input = $(event.target).siblings()[1];
+
+  input.value === ''
+    ? $(input).attr('placeholder', 'Please enter a title')
+    : createNewProject(input);
+};
+
+const createNewProject = title => {
   $('.project-container').prepend(
     `
       <div class="project">
-        <span class="project-name">${projectTitle}</span>
+        <span class="project-name">${title.value}</span>
       </div>
     `
   );
+  title.value = '';
 };
 
 $(document).ready(generateColors(colorsArray));
@@ -140,4 +148,4 @@ $(document).on('keydown', event => {
 });
 $('.generate-palette-button').click(colorsArray => generateColors(colorsArray));
 $('.lock').on('click', event => toggleLockIcon(event));
-$('.save-project-button').click(event => createNewProject(event));
+$('.save-project-button').click(event => inputCheck(event));
