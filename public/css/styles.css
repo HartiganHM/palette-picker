@@ -147,35 +147,37 @@ body {
       display: flex;
       flex-direction: column;
       margin: 10px; }
-      .app .project-container .project .project-palette {
-        display: flex;
-        align-items: center;
-        padding: 10px; }
-        .app .project-container .project .project-palette .palette-name {
-          padding: 10px; }
-        .app .project-container .project .project-palette .palette-color-group {
+      .app .project-container .project .palette-container {
+        display: flex; }
+        .app .project-container .project .palette-container .project-palette {
           display: flex;
+          align-items: center;
           padding: 10px; }
-          .app .project-container .project .project-palette .palette-color-group .saved-color {
-            width: 50px;
-            height: 50px; }
-          .app .project-container .project .project-palette .palette-color-group .palette-color-1 {
-            background-color: #d3f6db; }
-          .app .project-container .project .project-palette .palette-color-group .palette-color-2 {
-            background-color: #92d5e6; }
-          .app .project-container .project .project-palette .palette-color-group .palette-color-3 {
-            background-color: #772d8b; }
-          .app .project-container .project .project-palette .palette-color-group .palette-color-4 {
-            background-color: #5a0b4d; }
-          .app .project-container .project .project-palette .palette-color-group .palette-color-5 {
-            background-color: #a1ef8b; }
-        .app .project-container .project .project-palette .icon-trash {
-          font-size: 32px;
-          cursor: pointer; }
-          .app .project-container .project .project-palette .icon-trash:hover {
-            color: red; }
-          .app .project-container .project .project-palette .icon-trash:active {
-            color: lightgrey; }
-        .app .project-container .project .project-palette .trash-placeholder {
-          opacity: 0;
-          cursor: default; }
+          .app .project-container .project .palette-container .project-palette .palette-name {
+            padding: 10px; }
+          .app .project-container .project .palette-container .project-palette .palette-color-group {
+            display: flex;
+            padding: 10px; }
+            .app .project-container .project .palette-container .project-palette .palette-color-group .saved-color {
+              width: 50px;
+              height: 50px; }
+            .app .project-container .project .palette-container .project-palette .palette-color-group .palette-color-1 {
+              background-color: #d3f6db; }
+            .app .project-container .project .palette-container .project-palette .palette-color-group .palette-color-2 {
+              background-color: #92d5e6; }
+            .app .project-container .project .palette-container .project-palette .palette-color-group .palette-color-3 {
+              background-color: #772d8b; }
+            .app .project-container .project .palette-container .project-palette .palette-color-group .palette-color-4 {
+              background-color: #5a0b4d; }
+            .app .project-container .project .palette-container .project-palette .palette-color-group .palette-color-5 {
+              background-color: #a1ef8b; }
+          .app .project-container .project .palette-container .project-palette .icon-trash {
+            font-size: 32px;
+            cursor: pointer; }
+            .app .project-container .project .palette-container .project-palette .icon-trash:hover {
+              color: red; }
+            .app .project-container .project .palette-container .project-palette .icon-trash:active {
+              color: lightgrey; }
+          .app .project-container .project .palette-container .project-palette .trash-placeholder {
+            opacity: 0;
+            cursor: default; }
