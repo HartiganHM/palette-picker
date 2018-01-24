@@ -184,15 +184,17 @@ const selectProject = event => {
 
   if (!dropdownItem[0]) {
     return;
-
   } else if ($(dropdownItem)[0].innerText === 'No Projects') {
     toggleProjects();
-
   } else if ($(dropdownItem)[0].innerText) {
     toggleProjects();
     $('.project').remove();
     renderProject($(dropdownItem)[0].innerText);
   }
+};
+
+const savePalette = event => {
+  console.log(event);
 };
 
 $(document).ready(generateColors(colorsArray));
@@ -207,3 +209,4 @@ $('.lock').on('click', event => toggleLockIcon(event));
 $('.save-project-button').click(event => inputCheck(event));
 $('.project-dropdown').click(toggleProjects);
 $('.dropdown-wrapper').click(event => selectProject(event));
+$('.save-palette-submit').click(event => savePalette(event));
