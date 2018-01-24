@@ -127,7 +127,7 @@ body {
       font-size: 1.4rem; }
       .app .save-palette-section .save-palette-input:focus {
         outline: none; }
-    .app .save-palette-section .save-project-submit {
+    .app .save-palette-section .save-palette-submit {
       flex: 1;
       display: flex;
       align-items: center;
@@ -135,9 +135,9 @@ body {
       padding: 10px;
       background-color: #b0c4de;
       cursor: pointer; }
-      .app .save-palette-section .save-project-submit:hover {
+      .app .save-palette-section .save-palette-submit:hover {
         background-color: #d3ddeb; }
-      .app .save-palette-section .save-project-submit:active {
+      .app .save-palette-section .save-palette-submit:active {
         background-color: #769ac9; }
   .app .project-container {
     display: flex;
