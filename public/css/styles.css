@@ -137,8 +137,12 @@ body {
           .app .project-container .project .project-palette .palette-color-group .palette-color-5 {
             background-color: #a1ef8b; }
         .app .project-container .project .project-palette .icon-trash {
-          font-size: 32px; }
+          font-size: 32px;
+          cursor: pointer; }
           .app .project-container .project .project-palette .icon-trash:hover {
             color: red; }
           .app .project-container .project .project-palette .icon-trash:active {
             color: lightgrey; }
+        .app .project-container .project .project-palette .trash-placeholder {
+          opacity: 0;
+          cursor: default; }

@@ -173,12 +173,17 @@ body {
         }
         .icon-trash {
           font-size: 32px;
+          cursor: pointer;
           &:hover {
             color: red;
           }
           &:active {
             color: lightgrey;
           }
+        }
+        .trash-placeholder {
+          opacity: 0;
+          cursor: default;
         }
       }
     }
