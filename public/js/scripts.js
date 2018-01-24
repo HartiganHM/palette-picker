@@ -31,6 +31,8 @@ const colorsArray = [
   }
 ];
 
+const savedProjects = {};
+
 const generateColors = colorArray => {
   const hexidecimalValues = [
     0,
@@ -120,6 +122,79 @@ const toggleColorLock = (event, array, locked) => {
   });
 };
 
+const inputCheck = event => {
+  event.preventDefault();
+  const input = $(event.target).siblings()[0];
+
+  input.value === ''
+    ? $(input).attr('placeholder', 'Please enter a title')
+    : createNewProject(input);
+};
+
+const createNewProject = title => {
+  const projectList = Object.keys(savedProjects);
+
+  if (projectList.length === 0) {
+    renderProject(title.value);
+  }
+
+  savedProjects[title.value] = {};
+  renderProjectDropdown(title.value);
+  title.value = '';
+};
+
+const renderProject = title => {
+  $('.project-container').prepend(
+    `
+      <div class="project">
+        <span class="project-name">${title}</span>
+
+        <span class="project-palette palette-placeholder">
+        <span class="palette-name">No palettes</span>
+
+        <span class="palette-color-group">
+          <div class="saved-color"></div>
+          <div class="saved-color"></div>
+          <div class="saved-color"></div>
+          <div class="saved-color"></div>
+          <div class="saved-color"></div>
+        </span>
+
+        <i class="icon-trash trash-placeholder" disabled></i>
+      </span>
+      </div>
+    `
+  );
+};
+
+const renderProjectDropdown = project => {
+  $('.dropdown-placeholder').remove();
+
+  $('.project-selection').append(`
+      <span class="dropdown-item">${project}</span>
+    `);
+};
+
+const toggleProjects = () => {
+  $('.project-selection').toggleClass('hidden');
+};
+
+const selectProject = event => {
+  const dropdownItem = $(event.target).closest('.dropdown-item');
+
+  if (!dropdownItem[0]) {
+    return;
+
+  } else if ($(dropdownItem)[0].innerText === 'No Projects') {
+    toggleProjects();
+
+  } else if ($(dropdownItem)[0].innerText) {
+    toggleProjects();
+    $('.project').remove();
+    renderProject($(dropdownItem)[0].innerText);
+  }
+};
+
 $(document).ready(generateColors(colorsArray));
 $(document).on('keydown', event => {
   if (event.keyCode === 32 && event.target === document.body) {
@@ -129,3 +204,6 @@ $(document).on('keydown', event => {
 });
 $('.generate-palette-button').click(colorsArray => generateColors(colorsArray));
 $('.lock').on('click', event => toggleLockIcon(event));
+$('.save-project-button').click(event => inputCheck(event));
+$('.project-dropdown').click(toggleProjects);
+$('.dropdown-wrapper').click(event => selectProject(event));

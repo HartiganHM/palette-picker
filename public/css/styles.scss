@@ -9,12 +9,46 @@ body {
   font-weight: 400;
   font-size: 62.5%;
   font-size: 1.4rem;
-  .header {
-    align-self: center;
-    padding: 10px;
-    color: #008fb3;
-    font-size: 2.4rem;
-    font-weight: 700;
+  .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    .header {
+      align-self: center;
+      margin: 10px;
+      padding: 10px;
+      color: #008fb3;
+      font-size: 2.4rem;
+      font-weight: 700;
+    }
+    .create-project-section {
+      align-self: center;
+      display: flex;
+      justify-content: space-between;
+      margin: 10px;
+      padding: 10px;
+      .new-project-input {
+        padding: 10px;
+        border: 1px solid lightgrey;
+        font-size: 1.4rem;
+        &:focus {
+          outline: none;
+        }
+      }
+      .save-project-button {
+        padding: 10px;
+        background-color: #b0c4de;
+        cursor: pointer;
+        &:hover {
+          background-color: #d3ddeb;
+        }
+        &:active {
+          background-color: #769ac9;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+    }
   }
   .color-selection-wrapper {
     display: flex;
@@ -31,7 +65,7 @@ body {
       font-size: 1.6rem;
       transition: 0.2s background-color ease-in-out;
       .lock {
-        color: #FFF;
+        color: #fff;
         font-size: 1.8rem;
         opacity: 0.75;
         transition: 0.1s opacity ease-in-out;
@@ -41,7 +75,7 @@ body {
         }
       }
       .color-hex-value {
-        color: #FFF;
+        color: #fff;
         font-size: 1.8rem;
         opacity: 0.75;
         transition: 0.1s opacity ease-in-out;
@@ -50,21 +84,6 @@ body {
           transition: 0.1s opacity ease-in-out;
         }
       }
-    }
-    .color-1 {
-      background-color: #d3f6db;
-    }
-    .color-2 {
-      background-color: #92d5e6;
-    }
-    .color-3 {
-      background-color: #772d8b;
-    }
-    .color-4 {
-      background-color: #5a0b4d;
-    }
-    .color-5 {
-      background-color: #a1ef8b;
     }
   }
   .generate-palette-button {
@@ -81,23 +100,54 @@ body {
     }
   }
   .save-palette-section {
-    align-self: center;
+    align-self: stretch;
+    display: flex;
     justify-content: space-between;
-    margin: 10px;
-    padding: 10px;
-    .project-dropdown {
-      margin: 10px;
-      padding: 10px;
-      background-color: #b0c4de;
-      cursor: pointer;
-      &:hover {
-        background-color: #d3ddeb;
+    .dropdown-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      .project-dropdown {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: #b0c4de;
+        cursor: pointer;
+        &:hover {
+          background-color: #d3ddeb;
+        }
+        &:active {
+          background-color: #769ac9;
+        }
       }
-      &:active {
-        background-color: #769ac9;
+      .project-selection {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        top: 48px;
+        .dropdown-item {
+          flex: 1;
+          margin: 0 0 5px;
+          padding: 10px;
+          border: 1px solid #F9F9F9;
+          background-color: #375377;
+          color: #F9F9F9;
+          text-align: center;
+          box-sizing: border-box;
+          cursor: pointer;
+        }
+      }
+      .hidden {
+        display: none;
       }
     }
     .save-palette-input {
+      flex: 2;
       padding: 10px;
       border: 1px solid lightgrey;
       font-size: 1.4rem;
@@ -106,33 +156,10 @@ body {
       }
     }
     .save-project-submit {
-      margin: 10px;
-      padding: 10px;
-      background-color: #b0c4de;
-      cursor: pointer;
-      &:hover {
-        background-color: #d3ddeb;
-      }
-      &:active {
-        background-color: #769ac9;
-      }
-    }
-  }
-  .create-project-section {
-    align-self: center;
-    justify-content: space-between;
-    margin: 10px;
-    padding: 10px;
-    .new-project-input {
-      padding: 10px;
-      border: 1px solid lightgrey;
-      font-size: 1.4rem;
-      &:focus {
-        outline: none;
-      }
-    }
-    .save-project-button {
-      margin: 10px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 10px;
       background-color: #b0c4de;
       cursor: pointer;
@@ -147,6 +174,7 @@ body {
   .project-container {
     display: flex;
     padding: 10px;
+    overflow-x: scroll;
     .project {
       display: flex;
       flex-direction: column;
@@ -183,12 +211,17 @@ body {
         }
         .icon-trash {
           font-size: 32px;
+          cursor: pointer;
           &:hover {
             color: red;
           }
           &:active {
             color: lightgrey;
           }
+        }
+        .trash-placeholder {
+          opacity: 0;
+          cursor: default;
         }
       }
     }
