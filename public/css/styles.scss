@@ -137,6 +137,7 @@ body {
   .project-container {
     display: flex;
     padding: 10px;
+    overflow-x: scroll;
     .project {
       display: flex;
       flex-direction: column;

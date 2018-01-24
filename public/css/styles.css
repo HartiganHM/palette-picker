@@ -109,7 +109,8 @@ body {
         background-color: #769ac9; }
   .app .project-container {
     display: flex;
-    padding: 10px; }
+    padding: 10px;
+    overflow-x: scroll; }
     .app .project-container .project {
       display: flex;
       flex-direction: column;
