@@ -133,6 +133,20 @@ const createNewProject = title => {
     `
       <div class="project">
         <span class="project-name">${title.value}</span>
+
+        <span class="project-palette palette-placeholder">
+        <span class="palette-name">No palettes</span>
+
+        <span class="palette-color-group">
+          <div class="saved-color"></div>
+          <div class="saved-color"></div>
+          <div class="saved-color"></div>
+          <div class="saved-color"></div>
+          <div class="saved-color"></div>
+        </span>
+
+        <i class="icon-trash delete-placeholder" disabled></i>
+      </span>
       </div>
     `
   );
