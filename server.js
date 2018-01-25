@@ -124,18 +124,11 @@ app.post('/api/v1/projects/:projectId/palettes', (request, response) => {
     });
 })
 
-app.delete('/api/v1/palettes/:id', (response, request) => {
-  const { id } = request.params;
-  database('palette').where('id', id).select()
+app.delete('/api/v1/palettes/:paletteId', (request, response) => {
+  const { paletteId } = request.params;
+  database('palettes').where('id', paletteId).delete()
     .then(palettes => {
-      if (palettes.length) {
-        palettes.delete();
-        return response.sendStatus(204);
-      } else {
-        return response.status(422).json({
-          error: `Could not find any palettes with id of ${id}`
-        });
-      }
+      return response.sendStatus(204);
     })
     .catch(error => {
       return response.status(500).json({ error });
