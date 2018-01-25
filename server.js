@@ -53,7 +53,7 @@ app.get('/api/v1/projects/:id', (request, response) => {
     });
 })
 
-app.get('/api/v1/projects/:id/palettes', (request, response) => {
+app.get('/api/v1/projects/:projectId/palettes', (request, response) => {
   const { projectId } = request.params;
 
   database('palettes').where('project_id', projectId).select()
