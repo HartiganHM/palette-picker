@@ -22,6 +22,15 @@ exports.seed = function(knex, Promise) {
                 color4: '#A22691',
                 color5: '#6F7703',
                 project_id: project[0]
+              },
+              {
+                name: 'Green',
+                color1: '#FFFFFF',
+                color2: '#5FD185',
+                color3: '#D895C0',
+                color4: '#A22691',
+                color5: '#000000',
+                project_id: project[0]
               }
             ]);
           })
