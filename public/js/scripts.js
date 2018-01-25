@@ -1,3 +1,11 @@
+const getProjects = async () => {
+  const fetchedProjects = await fetch('http://localhost:3000/api/v1/projects');
+  const jsonProjects = await fetchedProjects.json();
+  return savedProjects = jsonProjects;
+}
+
+let savedProjects = {};
+
 const colorsArray = [
   {
     class: '.color-1',
@@ -30,8 +38,6 @@ const colorsArray = [
     locked: false
   }
 ];
-
-const savedProjects = {};
 
 const generateColors = colorArray => {
   const hexidecimalValues = [
@@ -283,7 +289,10 @@ const deletePalette = event => {
   }
 };
 
-$(document).ready(generateColors(colorsArray));
+$(document).ready(() => {
+  getProjects();
+  generateColors(colorsArray)
+});
 $(document).on('keydown', event => {
   if (event.keyCode === 32 && event.target === document.body) {
     event.preventDefault();
