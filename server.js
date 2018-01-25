@@ -124,6 +124,24 @@ app.post('/api/v1/projects/:projectId/palettes', (request, response) => {
     });
 })
 
+app.delete('/api/v1/palettes/:id', (response, request) => {
+  const { id } = request.params;
+  database('palette').where('id', id).select()
+    .then(palettes => {
+      if (palettes.length) {
+        palettes.delete();
+        return response.sendStatus(204);
+      } else {
+        return response.status(422).json({
+          error: `Could not find any palettes with id of ${id}`
+        });
+      }
+    })
+    .catch(error => {
+      return response.status(500).json({ error });
+    });
+})
+
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
