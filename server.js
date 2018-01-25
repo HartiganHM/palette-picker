@@ -8,11 +8,31 @@ const configuration = require('./knexfile')[environment];
 const database = require('knex')(configuration);
 const port = process.env.PORT || 3000;
 
+const urlLogger = (request, response, next) => {
+  console.log('Request URL:', request.url);
+  next();
+};
+
+const timeLogger = (request, response, next) => {
+  console.log('Datetime:', new Date(Date.now()).toString());
+  next();
+};
+
+const accessControlAllowOrigin = (request, response, next) => {
+  response.header('Access-Control-Allow-Origin', '*');
+  response.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+};
+
 app.locals.title = 'Palette Picker';
 
 app.set('port', port);
 
 app
+  .use(timeLogger, urlLogger, accessControlAllowOrigin)
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
   .use(express.static(path.join(__dirname, 'public')));
