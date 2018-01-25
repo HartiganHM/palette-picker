@@ -255,9 +255,8 @@ const deletePalette = event => {
   $(deleteButton.parent()).remove();
 
   if (Object.keys(savedProjects[projectName]).length === 0) {
-    $('.palette-container')
-      .prepend(
-        `
+    $('.palette-container').prepend(
+      `
         <span class="project-palette palette-placeholder">
           <span class="palette-name">No palettes</span>
 
@@ -272,7 +271,7 @@ const deletePalette = event => {
           <i class="icon-trash trash-placeholder" disabled></i>
         </span>
       `
-      );
+    );
   }
 };
 
@@ -290,3 +289,14 @@ $('.project-dropdown').click(toggleProjects);
 $('.dropdown-wrapper').click(event => selectProject(event));
 $('.save-palette-submit').click(event => savePalette(event));
 $('.project-container').click(event => deletePalette(event));
+$('.save-palette-input').keypress(event => {
+  const regex = new RegExp('^[a-zA-Z0-9]+$');
+  const input = String.fromCharCode(
+    !event.charCode ? event.which : event.charCode
+  );
+  if (regex.test(input) || event.keyCode === 13) {
+    return true;
+  }
+
+  return false;
+});
