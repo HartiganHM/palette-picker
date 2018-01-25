@@ -251,6 +251,11 @@ const renderPalettes = palettes => {
 
 const deletePalette = event => {
   const deleteButton = $(event.target).closest('.icon-trash');
+
+  if (!$(deleteButton).siblings()[0]) {
+    return
+  }
+
   const paletteName = $(deleteButton).siblings()[0].innerText;
   const projectName = $('.project-name')[0].innerText;
 
