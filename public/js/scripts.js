@@ -246,6 +246,17 @@ const renderPalettes = palettes => {
   });
 };
 
+const deletePalette = event => {
+  const deleteButton = $(event.target).closest('.icon-trash');
+  const paletteName = $(deleteButton).siblings()[0].innerText;
+  const project = $(deleteButton).parentsUntil('.project-container')[2];
+  const projectName = $(project).children()[0].innerText;
+
+  console.log(projectName)
+  delete savedProjects[projectName][paletteName]
+  $(deleteButton.parent()).remove()
+}
+
 $(document).ready(generateColors(colorsArray));
 $(document).on('keydown', event => {
   if (event.keyCode === 32 && event.target === document.body) {
@@ -259,3 +270,4 @@ $('.save-project-button').click(event => inputCheck(event));
 $('.project-dropdown').click(toggleProjects);
 $('.dropdown-wrapper').click(event => selectProject(event));
 $('.save-palette-submit').click(event => savePalette(event));
+$('.project-container').click(event => deletePalette(event));
