@@ -272,30 +272,28 @@ const savePalette = event => {
 };
 
 const renderPalettes = palettes => {
-  const renderedPalettes = Object.keys(palettes).forEach((palette, index) => {
-    const paletteClass = palette.split(' ').join('-');
-
+  const renderedPalettes = palettes.forEach(palette => {
     $('.palette-placeholder').remove();
-    if ($(`.${paletteClass}`).length === 1) {
-      return;
-    } else {
       $('.palette-container').prepend(
         `
           <span class="project-palette">
-            <span class="palette-name">${palette}</span>
-            <span class="palette-color-group ${paletteClass}">
+            <span class="palette-name">${palette.name}</span>
+            <span class="palette-color-group">
+              <div class="saved-color ${palette.name}-color1"></div>
+              <div class="saved-color ${palette.name}-color2"></div>
+              <div class="saved-color ${palette.name}-color3"></div>
+              <div class="saved-color ${palette.name}-color4"></div>
+              <div class="saved-color ${palette.name}-color5"></div>
             </span>
             <i class="icon-trash"></i>
           </span>
         `
       );
-      palettes[palette].forEach((color, index) => {
-        $(`.${paletteClass}`).append(
-          `<div class="saved-color ${paletteClass}-palette-color-${index}"></div>`
-        );
-        $(`.${paletteClass}-palette-color-${index}`).css('background-color', color);
-      });
-    }
+      $(`.${palette.name}-color1`).css('background-color', palette.color1);
+      $(`.${palette.name}-color2`).css('background-color', palette.color2);
+      $(`.${palette.name}-color3`).css('background-color', palette.color3);
+      $(`.${palette.name}-color4`).css('background-color', palette.color4);
+      $(`.${palette.name}-color5`).css('background-color', palette.color5);
   });
 };
 
