@@ -98,10 +98,22 @@ app.post('/api/v1/projects/:projectId/palettes', (request, response) => {
   for (let requiredParameter of ['name', 'color1', 'color2', 'color3', 'color4', 'color5']) {
     if (!palette[requiredParameter]) {
       return response.status(422).json({
-        error: `Your are missin the required parameter ${requiredParameter}`
+        error: `Your are missing the required parameter ${requiredParameter}`
       });
     }
   }
+
+  database('projects').where('id', projectId).select()
+    .then(projects => {
+      if (!projects.length) {
+        return response.status(404).json({
+          error: `Could not find project with id of ${projectId}`
+        });
+      }
+    })
+    .catch(error => {
+      return response.status(500).json({ error });
+    });
 
   database('palettes').insert(palette, 'id')
     .then(palette => {
