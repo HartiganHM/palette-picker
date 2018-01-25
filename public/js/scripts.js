@@ -14,19 +14,6 @@ const getPalettes = async () => {
   renderPalettes(savedPalettes.palettes)
 }
 
-const postPalette = async (paletteObject, projectId) => {
-  const { name, color1, color2, color3, color4, color5 } = paletteObject;
-
-  const fetchedEndpoint = await fetch(`http://localhost:3000/api/v1/projects/${projectId}/palettes`, {
-    method: 'POST',
-    body: JSON.stringify({ ...paletteObject }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-
-  getPalettes();
-}
 
 const postProject = async projectName => {
   const fetchedEndpoint = await fetch('http://localhost:3000/api/v1/projects', {
@@ -39,6 +26,20 @@ const postProject = async projectName => {
 
   const jsonResponse = fetchedEndpoint.json();
   getProjects();
+}
+
+const postPalette = async (paletteObject, projectId) => {
+  const { name, color1, color2, color3, color4, color5 } = paletteObject;
+
+  const fetchedEndpoint = await fetch(`http://localhost:3000/api/v1/projects/${projectId}/palettes`, {
+    method: 'POST',
+    body: JSON.stringify({ ...paletteObject }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  getPalettes();
 }
 
 let savedProjects;
