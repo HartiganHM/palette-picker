@@ -43,8 +43,11 @@ const postPalette = async (paletteObject, projectId) => {
 }
 
 const deletePalette = async paletteId => {
-  const fetchedDelete = await fetch(`http://localhost:3000/api/v1/palettes/${paletteId}`, {
-    method: 'POST"'
+  const fetchedDelete = await fetch(`/api/v1/palettes/${paletteId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
 }
 
@@ -308,7 +311,7 @@ const renderPalettes = palettes => {
   });
 };
 
-const deletePalette = event => {
+const removePalette = event => {
   const deleteButton = $(event.target).closest('.icon-trash');
 
   if (!$(deleteButton).siblings()[0]) {
@@ -316,12 +319,12 @@ const deletePalette = event => {
   }
 
   const paletteName = $(deleteButton).siblings()[0].innerText;
-  const projectName = $('.project-name')[0].innerText;
+  const selectedPalette = savedPalettes.palettes.find(palette => palette.name === paletteName);
 
-  delete savedProjects[projectName][paletteName];
+  deletePalette(selectedPalette.id);
   $(deleteButton.parent()).remove();
 
-  if (Object.keys(savedProjects[projectName]).length === 0) {
+  if (savedProjects.projects.length === 0) {
     $('.palette-container').prepend(
       `
         <span class="project-palette palette-placeholder">
@@ -359,7 +362,7 @@ $('.save-project-button').click(event => inputCheck(event));
 $('.project-dropdown').click(toggleProjects);
 $('.dropdown-wrapper').click(event => selectProject(event));
 $('.save-palette-submit').click(event => savePalette(event));
-$('.project-container').click(event => deletePalette(event));
+$('.project-container').click(event => removePalette(event));
 $('.save-palette-input').keypress(event => {
   const regex = new RegExp('^[a-zA-Z0-9]+$');
   const input = String.fromCharCode(
