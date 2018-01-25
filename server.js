@@ -1,3 +1,5 @@
+import { read } from 'fs';
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -65,6 +67,26 @@ app.get('/api/v1/projects/:projectId/palettes', (request, response) => {
           error: `Could not find any palettes with project id of ${projectId}`
         });
       }
+    })
+    .catch(error => {
+      return response.status(500).json({ error });
+    });
+})
+
+app.post('/api/v1/projects', (request, response) => {
+  const project = request.body;
+
+  for (let requiredParameter of ['name']) {
+    if (!project[requiredParameter]) {
+      return response.status(422).json({
+        error: `You are missing the required parameter ${requiredParamter}`
+      });
+    }
+  }
+
+  database('projects').insert(project, 'id')
+    .then(project => {
+      return response.status(201).json({ id: project[0] });
     })
     .catch(error => {
       return response.status(500).json({ error });
