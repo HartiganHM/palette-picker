@@ -134,34 +134,36 @@ const inputCheck = event => {
 const createNewProject = title => {
   const projectList = Object.keys(savedProjects);
 
-  if (projectList.length === 0) {
-    renderProject(title.value);
-  }
-
+  renderProject(title.value);
   savedProjects[title.value] = {};
+
   renderProjectDropdown(title.value);
+
   title.value = '';
 };
 
 const renderProject = title => {
+  $('.project').remove();
   $('.project-container').prepend(
     `
       <div class="project">
         <span class="project-name">${title}</span>
 
-        <span class="project-palette palette-placeholder">
-        <span class="palette-name">No palettes</span>
+        <span class="palette-container">
+          <span class="project-palette palette-placeholder">
+            <span class="palette-name">No palettes</span>
 
-        <span class="palette-color-group">
-          <div class="saved-color"></div>
-          <div class="saved-color"></div>
-          <div class="saved-color"></div>
-          <div class="saved-color"></div>
-          <div class="saved-color"></div>
+            <span class="palette-color-group">
+              <div class="saved-color"></div>
+              <div class="saved-color"></div>
+              <div class="saved-color"></div>
+              <div class="saved-color"></div>
+              <div class="saved-color"></div>
+            </span>
+
+            <i class="icon-trash trash-placeholder" disabled></i>
+          </span>
         </span>
-
-        <i class="icon-trash trash-placeholder" disabled></i>
-      </span>
       </div>
     `
   );
@@ -184,14 +186,100 @@ const selectProject = event => {
 
   if (!dropdownItem[0]) {
     return;
-
   } else if ($(dropdownItem)[0].innerText === 'No Projects') {
     toggleProjects();
-
   } else if ($(dropdownItem)[0].innerText) {
     toggleProjects();
     $('.project').remove();
     renderProject($(dropdownItem)[0].innerText);
+    renderPalettes(savedProjects[$(dropdownItem)[0].innerText]);
+  }
+};
+
+const savePalette = event => {
+  event.preventDefault();
+
+  const projectList = Object.keys(savedProjects);
+  const paletteName = $('.save-palette-input')[0].value;
+
+  if (projectList.length === 0) {
+    alert('Please create a project');
+  } else if (paletteName === '') {
+    $('.save-palette-input').attr('placeholder', 'Please enter a palette name');
+  } else {
+    const projectDom = $('.project-name')[0].innerText;
+    const selectedProject = projectList.find(project => project === projectDom);
+    const currentPalette = colorsArray.map(color => color.value);
+
+    if (!savedProjects[selectedProject]) {
+      savedProjects[selectedProject] = [];
+    }
+
+    savedProjects[selectedProject][paletteName] = currentPalette;
+    $('.save-palette-input')[0].value = '';
+    renderPalettes(savedProjects[selectedProject]);
+  }
+};
+
+const renderPalettes = palettes => {
+  const renderedPalettes = Object.keys(palettes).forEach((palette, index) => {
+    const paletteClass = palette.split(' ').join('-');
+
+    $('.palette-placeholder').remove();
+    if ($(`.${paletteClass}`).length === 1) {
+      return;
+    } else {
+      $('.palette-container').prepend(
+        `
+          <span class="project-palette">
+            <span class="palette-name">${palette}</span>
+            <span class="palette-color-group ${paletteClass}">
+            </span>
+            <i class="icon-trash"></i>
+          </span>
+        `
+      );
+      palettes[palette].forEach((color, index) => {
+        $(`.${paletteClass}`).append(
+          `<div class="saved-color ${paletteClass}-palette-color-${index}"></div>`
+        );
+        $(`.${paletteClass}-palette-color-${index}`).css('background-color', color);
+      });
+    }
+  });
+};
+
+const deletePalette = event => {
+  const deleteButton = $(event.target).closest('.icon-trash');
+
+  if (!$(deleteButton).siblings()[0]) {
+    return
+  }
+
+  const paletteName = $(deleteButton).siblings()[0].innerText;
+  const projectName = $('.project-name')[0].innerText;
+
+  delete savedProjects[projectName][paletteName];
+  $(deleteButton.parent()).remove();
+
+  if (Object.keys(savedProjects[projectName]).length === 0) {
+    $('.palette-container').prepend(
+      `
+        <span class="project-palette palette-placeholder">
+          <span class="palette-name">No palettes</span>
+
+          <span class="palette-color-group">
+            <div class="saved-color"></div>
+            <div class="saved-color"></div>
+            <div class="saved-color"></div>
+            <div class="saved-color"></div>
+            <div class="saved-color"></div>
+          </span>
+
+          <i class="icon-trash trash-placeholder" disabled></i>
+        </span>
+      `
+    );
   }
 };
 
@@ -207,3 +295,16 @@ $('.lock').on('click', event => toggleLockIcon(event));
 $('.save-project-button').click(event => inputCheck(event));
 $('.project-dropdown').click(toggleProjects);
 $('.dropdown-wrapper').click(event => selectProject(event));
+$('.save-palette-submit').click(event => savePalette(event));
+$('.project-container').click(event => deletePalette(event));
+$('.save-palette-input').keypress(event => {
+  const regex = new RegExp('^[a-zA-Z0-9]+$');
+  const input = String.fromCharCode(
+    !event.charCode ? event.which : event.charCode
+  );
+  if (regex.test(input) || event.keyCode === 13 || event.keyCode === 32) {
+    return true;
+  }
+
+  return false;
+});
