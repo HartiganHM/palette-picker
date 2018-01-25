@@ -42,6 +42,12 @@ const postPalette = async (paletteObject, projectId) => {
   getPalettes();
 }
 
+const deletePalette = async paletteId => {
+  const fetchedDelete = await fetch(`http://localhost:3000/api/v1/palettes/${paletteId}`, {
+    method: 'POST"'
+  })
+}
+
 let savedProjects;
 let savedPalettes;
 
