@@ -1,5 +1,3 @@
-import { read } from 'fs';
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -79,7 +77,7 @@ app.post('/api/v1/projects', (request, response) => {
   for (let requiredParameter of ['name']) {
     if (!project[requiredParameter]) {
       return response.status(422).json({
-        error: `You are missing the required parameter ${requiredParamter}`
+        error: `You are missing the required parameter ${requiredParameter}`
       });
     }
   }
