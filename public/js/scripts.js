@@ -192,7 +192,7 @@ const selectProject = event => {
     toggleProjects();
     $('.project').remove();
     renderProject($(dropdownItem)[0].innerText);
-    renderPalettes(savedProjects[$(dropdownItem)[0].innerText])
+    renderPalettes(savedProjects[$(dropdownItem)[0].innerText]);
   }
 };
 
@@ -224,17 +224,17 @@ const renderPalettes = palettes => {
   const renderedPalettes = Object.keys(palettes).forEach((palette, index) => {
     $('.palette-placeholder').remove();
     if ($(`.${palette}`).length === 1) {
-      return
+      return;
     } else {
       $('.palette-container').prepend(
         `
-              <span class="project-palette">
-                <span class="palette-name">${palette}</span>
-                <span class="palette-color-group ${palette}">
-                </span>
-                <i class="icon-trash"></i>
-              </span>
-            `
+          <span class="project-palette">
+            <span class="palette-name">${palette}</span>
+            <span class="palette-color-group ${palette}">
+            </span>
+            <i class="icon-trash"></i>
+          </span>
+        `
       );
       palettes[palette].forEach((color, index) => {
         $(`.${palette}`).append(
@@ -252,10 +252,30 @@ const deletePalette = event => {
   const project = $(deleteButton).parentsUntil('.project-container')[2];
   const projectName = $(project).children()[0].innerText;
 
-  console.log(projectName)
-  delete savedProjects[projectName][paletteName]
-  $(deleteButton.parent()).remove()
-}
+  delete savedProjects[projectName][paletteName];
+  $(deleteButton.parent()).remove();
+
+  if (Object.keys(savedProjects[projectName]).length === 0) {
+    $('.palette-container')
+      .prepend(
+        `
+        <span class="project-palette palette-placeholder">
+          <span class="palette-name">No palettes</span>
+
+          <span class="palette-color-group">
+            <div class="saved-color"></div>
+            <div class="saved-color"></div>
+            <div class="saved-color"></div>
+            <div class="saved-color"></div>
+            <div class="saved-color"></div>
+          </span>
+
+          <i class="icon-trash trash-placeholder" disabled></i>
+        </span>
+      `
+      );
+  }
+};
 
 $(document).ready(generateColors(colorsArray));
 $(document).on('keydown', event => {
