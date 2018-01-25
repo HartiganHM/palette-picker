@@ -1,7 +1,9 @@
 const getProjects = async () => {
   const fetchedProjects = await fetch('http://localhost:3000/api/v1/projects');
   const jsonProjects = await fetchedProjects.json();
-  return savedProjects = jsonProjects;
+
+  savedProjects = jsonProjects;
+  renderProjectDropdown(savedProjects.projects);
 }
 
 const postProject = async projectName => {
@@ -159,7 +161,6 @@ const inputCheck = event => {
 const createNewProject = title => {
     renderProject(title.value);
     postProject(title.value);
-    renderProjectDropdown(title.value);
     title.value = '';
 };
 
@@ -190,12 +191,14 @@ const renderProject = title => {
   );
 };
 
-const renderProjectDropdown = project => {
+const renderProjectDropdown = savedProjects => {
   $('.dropdown-placeholder').remove();
 
-  $('.project-selection').append(`
-      <span class="dropdown-item">${project}</span>
-    `);
+  savedProjects.forEach(project => {
+    $('.project-selection').append(`
+        <span class="dropdown-item">${project.name}</span>
+      `);
+  })
 };
 
 const toggleProjects = () => {
@@ -306,7 +309,7 @@ const deletePalette = event => {
 
 $(document).ready(() => {
   getProjects();
-  generateColors(colorsArray)
+  generateColors(colorsArray);
 });
 $(document).on('keydown', event => {
   if (event.keyCode === 32 && event.target === document.body) {
