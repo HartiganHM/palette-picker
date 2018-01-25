@@ -4,6 +4,18 @@ const getProjects = async () => {
   return savedProjects = jsonProjects;
 }
 
+const postProject = async projectName => {
+  const fetchedEndpoint = await fetch('http://localhost:3000/api/v1/projects', {
+    method: 'POST',
+    body: JSON.stringify({ name: projectName}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const jsonResponse = fetchedEndpoint.json();
+}
+
 let savedProjects = {};
 
 const colorsArray = [
@@ -141,10 +153,8 @@ const createNewProject = title => {
   const projectList = Object.keys(savedProjects);
 
   renderProject(title.value);
-  savedProjects[title.value] = {};
-
+  postProject(title.value);
   renderProjectDropdown(title.value);
-
   title.value = '';
 };
 
