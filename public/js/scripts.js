@@ -6,6 +6,13 @@ const getProjects = async () => {
   renderProjectDropdown(savedProjects.projects);
 }
 
+const getPalettes = async () => {
+  const fetchedPalettes = await fetch('http://localhost:3000/api/v1/palettes');
+  const jsonPalettes = await fetchedPalettes.json();
+
+  savedPalettes = jsonPalettes;
+}
+
 const postProject = async projectName => {
   const fetchedEndpoint = await fetch('http://localhost:3000/api/v1/projects', {
     method: 'POST',
@@ -19,7 +26,8 @@ const postProject = async projectName => {
   getProjects();
 }
 
-let savedProjects = {};
+let savedProjects;
+let savedPalettes;
 
 const colorsArray = [
   {
@@ -309,6 +317,7 @@ const deletePalette = event => {
 
 $(document).ready(() => {
   getProjects();
+  getPalettes();
   generateColors(colorsArray);
 });
 $(document).on('keydown', event => {
