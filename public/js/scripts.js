@@ -134,16 +134,16 @@ const inputCheck = event => {
 const createNewProject = title => {
   const projectList = Object.keys(savedProjects);
 
-  if (projectList.length === 0) {
-    renderProject(title.value);
-  }
-
+  renderProject(title.value);
   savedProjects[title.value] = {};
+
   renderProjectDropdown(title.value);
+
   title.value = '';
 };
 
 const renderProject = title => {
+  $('.project').remove();
   $('.project-container').prepend(
     `
       <div class="project">
@@ -216,6 +216,7 @@ const savePalette = event => {
     }
 
     savedProjects[selectedProject][paletteName] = currentPalette;
+    $('.save-palette-input')[0].value = '';
     renderPalettes(savedProjects[selectedProject]);
   }
 };
