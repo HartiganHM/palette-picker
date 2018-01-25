@@ -126,13 +126,16 @@ app.post('/api/v1/projects/:projectId/palettes', (request, response) => {
 
 app.delete('/api/v1/projects/:projectId', (request, response) => {
   const { projectId } = request.params;
-  database('projects').where('id', projectId).delete()
+  database('palettes').where('project_id', projectId).delete()
     .then(projects => {
-      return response.sendStatus(204);
+      database('projects').where('id', projectId).delete()
+        .then(projects => {
+          return response.sendStatus(204);
+        })
+        .catch(error => {
+          return response.status(500).json({ error });
+        });
     })
-    .catch(error => {
-      return response.status(500).json({ error });
-    });
 })
 
 app.delete('/api/v1/palettes/:paletteId', (request, response) => {
