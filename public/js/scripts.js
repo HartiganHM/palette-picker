@@ -11,10 +11,11 @@ const getPalettes = async () => {
   const jsonPalettes = await fetchedPalettes.json();
 
   savedPalettes = jsonPalettes;
+  renderPalettes(savedPalettes.palettes)
 }
 
 const postPalette = async (paletteObject, projectId) => {
-  // const { name, color1, color2, color3, color4, color5 } = paletteObject;
+  const { name, color1, color2, color3, color4, color5 } = paletteObject;
 
   const fetchedEndpoint = await fetch(`http://localhost:3000/api/v1/projects/${projectId}/palettes`, {
     method: 'POST',
@@ -257,21 +258,24 @@ const savePalette = event => {
     paletteInput.placeholder = 'Please enter a palette name';
   } else {
     const projectDom = $('.project-name')[0].innerText;
-    const selectedProject = projectList.find(project => project.name === projectDom);
-    const currentPalette = colorsArray.map(color => color.value);
-    console.log(selectedProject)
+    const selectedProject = savedProjects.projects.find(project => project.name === projectDom);
 
-    if (!savedProjects[selectedProject]) {
-      savedProjects[selectedProject] = [];
-    }
+    const currentPalette = colorsArray.reduce((currentPalette, color, index) => {
+      const colorNumber = 'color' + (index + 1);
+      currentPalette[colorNumber] = color.value;
 
-    savedProjects[selectedProject][paletteName] = currentPalette;
+      return currentPalette;
+    }, {});
+
+    const paletteObject = Object.assign({}, currentPalette, { name: paletteInput.value })
+
     $('.save-palette-input')[0].value = '';
-    renderPalettes(savedProjects[selectedProject]);
+    postPalette(paletteObject, selectedProject.id)
   }
 };
 
 const renderPalettes = palettes => {
+  $('.project-palette').remove();
   const renderedPalettes = palettes.forEach(palette => {
     $('.palette-placeholder').remove();
       $('.palette-container').prepend(
