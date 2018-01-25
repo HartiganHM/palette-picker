@@ -91,6 +91,27 @@ app.post('/api/v1/projects', (request, response) => {
     });
 })
 
+app.post('/api/v1/projects/:projectId/palettes', (request, response) => {
+  const { projectId } = request.params;
+  const palette = Object.assign({}, request.body, { project_id: projectId });
+
+  for (let requiredParameter of ['name', 'color1', 'color2', 'color3', 'color4', 'color5']) {
+    if (!palette[requiredParameter]) {
+      return response.status(422).json({
+        error: `Your are missin the required parameter ${requiredParameter}`
+      });
+    }
+  }
+
+  database('palettes').insert(palette, 'id')
+    .then(palette => {
+      return response.status(201).json({ id: palette[0] });
+    })
+    .catch(error => {
+      return response.status(500).json({ error });
+    });
+})
+
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
