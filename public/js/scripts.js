@@ -14,6 +14,7 @@ const postProject = async projectName => {
   });
 
   const jsonResponse = fetchedEndpoint.json();
+  getProjects();
 }
 
 let savedProjects = {};
@@ -150,12 +151,15 @@ const inputCheck = event => {
 };
 
 const createNewProject = title => {
-  const projectList = Object.keys(savedProjects);
-
-  renderProject(title.value);
-  postProject(title.value);
-  renderProjectDropdown(title.value);
-  title.value = '';
+  if (savedProjects.projects.find(project => project.name === title)) {
+    renderProject(title.value);
+    postProject(title.value);
+    renderProjectDropdown(title.value);
+    title.value = '';
+  } else {
+    title.value = '';
+    title.placeholder = 'Project already exists'
+  }
 };
 
 const renderProject = title => {
