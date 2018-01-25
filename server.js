@@ -27,6 +27,16 @@ app.get('/api/v1/projects', (request, response) => {
     });
 });
 
+app.get('/api/v1/palettes', (request, response) => {
+  database('palettes').select()
+    .then(palettes => {
+      return response.status(200).json({ palettes });
+    })
+    .catch(error => {
+      return response.status(500).json({ error });
+    });
+})
+
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
