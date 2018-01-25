@@ -37,6 +37,22 @@ app.get('/api/v1/palettes', (request, response) => {
     });
 })
 
+app.get('/api/v1/projects/:id', (request, response) => {
+  database('projects').where('id', request.params.id).select()
+    .then(projects => {
+      if (projects.length) {
+        return response.status(200).json({ projects });
+      } else {
+        return response.status(404).json({
+          error: `Could not find project with if of ${request.params.id}`
+        });
+      }
+    })
+    .catch(error => {
+      return response.status(500).json({ error });
+    });
+})
+
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
