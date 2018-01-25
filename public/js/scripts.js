@@ -235,27 +235,31 @@ const selectProject = event => {
   } else if ($(dropdownItem)[0].innerText === 'No Projects') {
     toggleProjects();
   } else if ($(dropdownItem)[0].innerText) {
+    const selectedProject = savedProjects.projects.find(project => project.name === $(dropdownItem)[0].innerText);
+    const selectedPalettes = savedPalettes.palettes.filter(palette => palette['project_id'] === selectedProject.id);
+
     toggleProjects();
     $('.project').remove();
-    renderProject($(dropdownItem)[0].innerText);
-    renderPalettes(savedProjects[$(dropdownItem)[0].innerText]);
+    renderProject(selectedProject.name);
+    renderPalettes(selectedPalettes);
   }
 };
 
 const savePalette = event => {
   event.preventDefault();
 
-  const projectList = Object.keys(savedProjects);
-  const paletteName = $('.save-palette-input')[0].value;
+  const projectList = savedProjects.projects;
+  const paletteInput = $('.save-palette-input')[0];
 
   if (projectList.length === 0) {
     alert('Please create a project');
-  } else if (paletteName === '') {
-    $('.save-palette-input').attr('placeholder', 'Please enter a palette name');
+  } else if (paletteInput.value === '') {
+    paletteInput.placeholder = 'Please enter a palette name';
   } else {
     const projectDom = $('.project-name')[0].innerText;
-    const selectedProject = projectList.find(project => project === projectDom);
+    const selectedProject = projectList.find(project => project.name === projectDom);
     const currentPalette = colorsArray.map(color => color.value);
+    console.log(selectedProject)
 
     if (!savedProjects[selectedProject]) {
       savedProjects[selectedProject] = [];
