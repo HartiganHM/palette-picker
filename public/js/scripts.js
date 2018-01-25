@@ -144,22 +144,23 @@ const toggleColorLock = (event, array, locked) => {
 const inputCheck = event => {
   event.preventDefault();
   const input = $(event.target).siblings()[0];
+  const projectCheck = savedProjects.projects.filter(project => project.name === input.value)
 
-  input.value === ''
-    ? $(input).attr('placeholder', 'Please enter a title')
-    : createNewProject(input);
+  if (input.value === '') {
+    input.placeholder = 'Please enter a title';
+  } else if (projectCheck.length) {
+    input.value = '';
+    input.placeholder = 'Project already exists';
+  } else {
+    createNewProject(input);
+  }
 };
 
 const createNewProject = title => {
-  if (savedProjects.projects.find(project => project.name === title)) {
     renderProject(title.value);
     postProject(title.value);
     renderProjectDropdown(title.value);
     title.value = '';
-  } else {
-    title.value = '';
-    title.placeholder = 'Project already exists'
-  }
 };
 
 const renderProject = title => {
