@@ -1,56 +1,74 @@
 const getProjects = async () => {
-  const fetchedProjects = await fetch('http://localhost:3000/api/v1/projects');
-  const jsonProjects = await fetchedProjects.json();
+  try {
+    const fetchedProjects = await fetch('http://localhost:3000/api/v1/projects');
+    const jsonProjects = await fetchedProjects.json();
 
-  savedProjects = jsonProjects;
-  renderProjectDropdown(savedProjects.projects);
+    savedProjects = jsonProjects;
+    renderProjectDropdown(savedProjects.projects);
+  } catch (error) {
+    return new Error(`Error fetching projects: ${error}`);
+  }
 }
 
 const getPalettes = async () => {
-  const fetchedPalettes = await fetch('http://localhost:3000/api/v1/palettes');
-  const jsonPalettes = await fetchedPalettes.json();
+  try {
+    const fetchedPalettes = await fetch('http://localhost:3000/api/v1/palettes');
+    const jsonPalettes = await fetchedPalettes.json();
 
-  savedPalettes = jsonPalettes;
-  if($('.project-name').length) {
-    renderPalettes(savedPalettes.palettes)
-  }
+    savedPalettes = jsonPalettes;
+    if($('.project-name').length) {
+      renderPalettes(savedPalettes.palettes)
+    }
+  } catch (error) {
+    return new Error(`Error fetching palettes: ${error}`);
 }
 
 
 const postProject = async projectName => {
-  const fetchedEndpoint = await fetch('http://localhost:3000/api/v1/projects', {
-    method: 'POST',
-    body: JSON.stringify({ name: projectName}),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+  try {
+    const fetchedEndpoint = await fetch('http://localhost:3000/api/v1/projects', {
+      method: 'POST',
+      body: JSON.stringify({ name: projectName}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
 
-  const jsonResponse = fetchedEndpoint.json();
-  getProjects();
+    const jsonResponse = fetchedEndpoint.json();
+    getProjects();
+  } catch (error) {
+    return new Error(`Error posting project: ${error}`);
 }
 
 const postPalette = async (paletteObject, projectId) => {
-  const { name, color1, color2, color3, color4, color5 } = paletteObject;
+  try {
+    const { name, color1, color2, color3, color4, color5 } = paletteObject;
 
-  const fetchedEndpoint = await fetch(`http://localhost:3000/api/v1/projects/${projectId}/palettes`, {
-    method: 'POST',
-    body: JSON.stringify({ ...paletteObject }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+    const fetchedEndpoint = await fetch(`http://localhost:3000/api/v1/projects/${projectId}/palettes`, {
+      method: 'POST',
+      body: JSON.stringify({ ...paletteObject }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
 
-  getPalettes();
+    getPalettes();
+  } catch (error) {
+    return new Error(`Error posting palette: ${error}`);
+  }
 }
 
 const deletePalette = async paletteId => {
-  const fetchedDelete = await fetch(`/api/v1/palettes/${paletteId}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
+  try {
+    const fetchedDelete = await fetch(`/api/v1/palettes/${paletteId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+  } catch (error) {
+    return new Error(`Error deleting palette: ${error}`);
+  }
 }
 
 let savedProjects;
