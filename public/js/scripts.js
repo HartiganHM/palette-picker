@@ -11,7 +11,9 @@ const getPalettes = async () => {
   const jsonPalettes = await fetchedPalettes.json();
 
   savedPalettes = jsonPalettes;
-  renderPalettes(savedPalettes.palettes)
+  if($('.project-name').length) {
+    renderPalettes(savedPalettes.palettes)
+  }
 }
 
 
@@ -56,31 +58,31 @@ let savedPalettes;
 
 const colorsArray = [
   {
-    class: '.color-1',
+    class: 'color1',
     hexValue: '000000',
     brightnessValue: '#FFF',
     locked: false
   },
   {
-    class: '.color-2',
+    class: 'color2',
     hexValue: '000000',
     brightnessValue: '#FFF',
     locked: false
   },
   {
-    class: '.color-3',
+    class: 'color3',
     hexValue: '000000',
     brightnessValue: '#FFF',
     locked: false
   },
   {
-    class: '.color-4',
+    class: 'color4',
     hexValue: '000000',
     brightnessValue: '#FFF',
     locked: false
   },
   {
-    class: '.color-5',
+    class: 'color5',
     hexValue: '000000',
     brightnessValue: '#FFF',
     locked: false
@@ -137,10 +139,10 @@ const generateColors = colorArray => {
 
 const applyColors = colorValues => {
   colorValues.forEach(color => {
-    const colorText = $(`${color.class}`).children()[1];
-    const icon = $(`${color.class}`).children()[0];
+    const colorText = $(`.${color.class}`).children()[1];
+    const icon = $(`.${color.class}`).children()[0];
 
-    $(`${color.class}`).css('background-color', [color.value]);
+    $(`.${color.class}`).css('background-color', [color.value]);
     colorText.innerText = `${color.value}`;
     $(colorText).css('color', [color.brightnessValue]);
     $(icon).css('color', [color.brightnessValue]);
@@ -286,14 +288,17 @@ const savePalette = event => {
 };
 
 const renderPalettes = palettes => {
+  const selectedProject = savedProjects.projects.find(project => project.name === $('.project-name')[0].innerText);
+  const selectedPalettes = palettes.filter(palette => palette['project_id'] === selectedProject.id);
+
   $('.project-palette').remove();
-  const renderedPalettes = palettes.forEach(palette => {
+  const renderedPalettes = selectedPalettes.forEach(palette => {
     $('.palette-placeholder').remove();
       $('.palette-container').prepend(
         `
           <span class="project-palette">
             <span class="palette-name">${palette.name}</span>
-            <span class="palette-color-group">
+            <span class="palette-color-group ${palette.id}">
               <div class="saved-color ${palette.id}-color1"></div>
               <div class="saved-color ${palette.id}-color2"></div>
               <div class="saved-color ${palette.id}-color3"></div>
@@ -351,17 +356,32 @@ const paletteLengthCheck = () => {
   }
 }
 
+const setPaletteColors = event => {
+  const colorPaletteGroupId = JSON.parse($(event.target).closest('.palette-color-group')[0].classList[1]);
+  const selectedPalette = savedPalettes.palettes.find(palette => palette.id === colorPaletteGroupId);
+
+  colorsArray.forEach(color => {
+    const colorText = $(`.${color.class}`).children()[1];
+    const icon = $(`.${color.class}`).children()[0];
+
+    $(`.${color.class}`).css('background-color', selectedPalette[color.class]);
+    colorText.innerText = `${selectedPalette[color.class]}`;
+  })
+}
+
 $(document).ready(() => {
   getProjects();
   getPalettes();
   generateColors(colorsArray);
 });
+
 $(document).on('keydown', event => {
   if (event.keyCode === 32 && event.target === document.body) {
     event.preventDefault();
     generateColors();
   }
 });
+
 $('.generate-palette-button').click(colorsArray => generateColors(colorsArray));
 $('.lock').on('click', event => toggleLockIcon(event));
 $('.save-project-button').click(event => inputCheck(event));
@@ -369,6 +389,7 @@ $('.project-dropdown').click(toggleProjects);
 $('.dropdown-wrapper').click(event => selectProject(event));
 $('.save-palette-submit').click(event => savePalette(event));
 $('.project-container').click(event => removePalette(event));
+$('.project-container').click(event => setPaletteColors(event));
 $('.save-palette-input').keypress(event => {
   const regex = new RegExp('^[a-zA-Z0-9]+$');
   const input = String.fromCharCode(
