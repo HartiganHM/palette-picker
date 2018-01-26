@@ -68,6 +68,7 @@ const deleteProject = async projectId => {
         'Content-Type': 'application/json'
       }
     })
+    getProjects();
   } catch (error) {
     return new Error(`Error deleting project: ${error}`);
   }
