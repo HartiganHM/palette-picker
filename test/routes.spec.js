@@ -81,12 +81,34 @@ describe('API Routes', () => {
 
   describe('GET to /api/v1/projects/:id', () => {
     it('Should return the request project', () => {
+      return chai.request(server)
+      .get('/api/v1/projects/1')
+      .then(response => {
+        response.should.have.status(200);
+        response.should.be.json;
+        response.should.be.a('object');
+        response.body.should.have.property('projects');
+        response.body.projects.length.should.equal(1);
 
+        let mockProject = { name: 'Awesome' }
+        response.body.projects.find(project => project.name === mockProject.name)
+      })
+      .catch(error => {
+        throw error;
+      });
     });
 
     it('Should send a 404 if the project does not exist', () => {
-      
-    })
+      return chai.request(server)
+      .get('/api/v1/projects/2')
+      .then(response => {
+        response.should.have.status(404);
+        response.error.text.should.equal('{"error":"Could not find project with id of 2"}')
+      })
+      .catch(error => {
+        throw error;
+      });
+    });
 
   });
 
