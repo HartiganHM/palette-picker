@@ -378,7 +378,10 @@ const removeProject = event => {
   }
 
   const projectName = $(deleteButton)[0].parentElement.innerText;
-  console.log($(deleteButton)[0].parentElement.innerText)
+  const selectedProject = savedProjects.projects.find(project => project.name === projectName);
+
+  deleteProject(selectedProject.id);
+  $('.project').remove();
 }
 
 const paletteLengthCheck = () => {
