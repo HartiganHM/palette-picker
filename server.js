@@ -121,7 +121,7 @@ app.post('/api/v1/projects/:projectId/palettes', (request, response) => {
   for (let requiredParameter of ['name', 'color1', 'color2', 'color3', 'color4', 'color5']) {
     if (!palette[requiredParameter]) {
       return response.status(422).json({
-        error: `Your are missing the required parameter ${requiredParameter}`
+        error: `You are missing the required parameter ${requiredParameter}`
       });
     }
   }
