@@ -31,8 +31,11 @@ app.locals.title = 'Palette Picker';
 
 app.set('port', port);
 
+if (process.env.NODE_ENV !== 'test') {
+  app.use(timeLogger, urlLogger, accessControlAllowOrigin)
+}
+
 app
-  .use(timeLogger, urlLogger, accessControlAllowOrigin)
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
   .use(express.static(path.join(__dirname, 'public')));
@@ -118,7 +121,7 @@ app.post('/api/v1/projects/:projectId/palettes', (request, response) => {
   for (let requiredParameter of ['name', 'color1', 'color2', 'color3', 'color4', 'color5']) {
     if (!palette[requiredParameter]) {
       return response.status(422).json({
-        error: `Your are missing the required parameter ${requiredParameter}`
+        error: `You are missing the required parameter ${requiredParameter}`
       });
     }
   }
@@ -172,3 +175,5 @@ app.delete('/api/v1/palettes/:paletteId', (request, response) => {
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
+
+module.exports = app;
