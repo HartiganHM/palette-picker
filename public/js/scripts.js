@@ -58,6 +58,19 @@ const postPalette = async (paletteObject, projectId) => {
   }
 }
 
+const deleteProject = async projectId => {
+  try {
+    const fetchedDelete = await fetch(`/api/v1/projects/${projectId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+  } catch (error) {
+    return new Error(`Error deleting project: ${error}`);
+  }
+}
+
 const deletePalette = async paletteId => {
   try {
     const fetchedDelete = await fetch(`/api/v1/palettes/${paletteId}`, {
