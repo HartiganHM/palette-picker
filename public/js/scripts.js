@@ -298,7 +298,7 @@ const renderPalettes = palettes => {
         `
           <span class="project-palette">
             <span class="palette-name">${palette.name}</span>
-            <span class="palette-color-group">
+            <span class="palette-color-group ${palette.id}">
               <div class="saved-color ${palette.id}-color1"></div>
               <div class="saved-color ${palette.id}-color2"></div>
               <div class="saved-color ${palette.id}-color3"></div>
@@ -356,17 +356,26 @@ const paletteLengthCheck = () => {
   }
 }
 
+const setPaletteColors = event => {
+  const colorPaletteGroupId = JSON.parse($(event.target).closest('.palette-color-group')[0].classList[1]);
+  const selectedPalette = savedPalettes.palettes.find(palette => palette.id === colorPaletteGroupId);
+
+  console.log(selectedPalette)
+}
+
 $(document).ready(() => {
   getProjects();
   getPalettes();
   generateColors(colorsArray);
 });
+
 $(document).on('keydown', event => {
   if (event.keyCode === 32 && event.target === document.body) {
     event.preventDefault();
     generateColors();
   }
 });
+
 $('.generate-palette-button').click(colorsArray => generateColors(colorsArray));
 $('.lock').on('click', event => toggleLockIcon(event));
 $('.save-project-button').click(event => inputCheck(event));
@@ -374,6 +383,7 @@ $('.project-dropdown').click(toggleProjects);
 $('.dropdown-wrapper').click(event => selectProject(event));
 $('.save-palette-submit').click(event => savePalette(event));
 $('.project-container').click(event => removePalette(event));
+$('.project-container').click(event => setPaletteColors(event));
 $('.save-palette-input').keypress(event => {
   const regex = new RegExp('^[a-zA-Z0-9]+$');
   const input = String.fromCharCode(
