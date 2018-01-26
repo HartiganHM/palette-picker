@@ -31,8 +31,11 @@ app.locals.title = 'Palette Picker';
 
 app.set('port', port);
 
+if (process.env.NODE_ENV !== 'test') {
+  app.use(timeLogger, urlLogger, accessControlAllowOrigin)
+}
+
 app
-  .use(timeLogger, urlLogger, accessControlAllowOrigin)
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
   .use(express.static(path.join(__dirname, 'public')));
