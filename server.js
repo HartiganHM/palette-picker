@@ -40,7 +40,7 @@ app
   .use(bodyParser.urlencoded({ extended: true }))
   .use(express.static(path.join(__dirname, 'public')));
 
-app.get('/api/v1/projects', (request, response) => { // Setting enpoint for server to get all projects from database
+app.get('/api/v1/projects', (request, response) => { // Setting enpoint for server to GET all projects from database
   database('projects').select() // Accesses projects table in database
     .then(projects => {
       return response.status(200).json({ projects }) // Processes promise and sends response with OK status and jsons projects from database
@@ -50,7 +50,7 @@ app.get('/api/v1/projects', (request, response) => { // Setting enpoint for serv
     });
 });
 
-app.get('/api/v1/palettes', (request, response) => { // Setting enpoint for server to get all palettes from database
+app.get('/api/v1/palettes', (request, response) => { // Setting enpoint for server to GET all palettes from database
   database('palettes').select() // Accesses palettes table in database
     .then(palettes => {
       return response.status(200).json({ palettes }); // Processes promise and sends response with OK status and jsons palettes from database
@@ -60,7 +60,7 @@ app.get('/api/v1/palettes', (request, response) => { // Setting enpoint for serv
     });
 })
 
-app.get('/api/v1/projects/:id', (request, response) => { // Setting enpoint for server to get all a specific project from database by id property
+app.get('/api/v1/projects/:id', (request, response) => { // Setting enpoint for server to GET all a specific project from database by id property
   database('projects').where('id', request.params.id).select() // Accesses projects table in database where id matches id sent through endpoint
     .then(projects => {
       if (projects.length) {
@@ -76,7 +76,7 @@ app.get('/api/v1/projects/:id', (request, response) => { // Setting enpoint for 
     });
 })
 
-app.get('/api/v1/projects/:projectId/palettes', (request, response) => { // Setting enpoint for server to get all a specific palette from database by id property
+app.get('/api/v1/projects/:projectId/palettes', (request, response) => { // Setting enpoint for server to GET all a specific palette from database by id property
   const { projectId } = request.params; // Deconstructs projectId variable from request parameters
 
   database('palettes').where('project_id', projectId).select() // Accesses palettes table in database where id matches id sent through endpoint
@@ -94,7 +94,7 @@ app.get('/api/v1/projects/:projectId/palettes', (request, response) => { // Sett
     });
 })
 
-app.post('/api/v1/projects', (request, response) => { // Setting enpoint for server to post a new project to database table of projects
+app.post('/api/v1/projects', (request, response) => { // Setting enpoint for server to POST a new project to database table of projects
   const project = request.body; // Create project variable from request body
 
   for (let requiredParameter of ['name']) { // Conditional for loop check to see if required parameters are sent through with post to endpoint
@@ -114,7 +114,7 @@ app.post('/api/v1/projects', (request, response) => { // Setting enpoint for ser
     });
 })
 
-app.post('/api/v1/projects/:projectId/palettes', (request, response) => { // Setting enpoint for server to post a new palette to database table of palettes
+app.post('/api/v1/projects/:projectId/palettes', (request, response) => { // Setting enpoint for server to POST a new palette to database table of palettes
   const { projectId } = request.params; // Deconstructs projectId variable from request parameters
   const palette = Object.assign({}, request.body, { project_id: projectId }); // Create palette variable from request body adding newly created projectId variable
 
