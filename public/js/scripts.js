@@ -11,6 +11,9 @@ const getPalettes = async () => {
   const jsonPalettes = await fetchedPalettes.json();
 
   savedPalettes = jsonPalettes;
+  if($('.project-name').length) {
+    renderPalettes(savedPalettes.palettes)
+  }
 }
 
 
