@@ -171,7 +171,9 @@ const toggleLockIcon = event => {
 const toggleColorLock = (event, array, locked) => {
   const parentColorClass = '.' + $(event.target).parent()[0].classList[1];
   array.map(color => {
-    if (color.class === parentColorClass) {
+    const colorClass = '.' + color.class;
+
+    if (colorClass === parentColorClass) {
       color.locked = locked;
     }
     return color;
