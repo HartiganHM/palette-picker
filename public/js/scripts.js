@@ -1,56 +1,90 @@
 const getProjects = async () => {
-  const fetchedProjects = await fetch('/api/v1/projects');
-  const jsonProjects = await fetchedProjects.json();
+  try {
+    const fetchedProjects = await fetch('/api/v1/projects');
+    const jsonProjects = await fetchedProjects.json();
 
-  savedProjects = jsonProjects;
-  renderProjectDropdown(savedProjects.projects);
+    savedProjects = jsonProjects;
+    renderProjectDropdown(savedProjects.projects);
+  } catch (error) {
+    return new Error(`Error fetching projects: ${error}`);
+  }
 }
 
 const getPalettes = async () => {
-  const fetchedPalettes = await fetch('/api/v1/palettes');
-  const jsonPalettes = await fetchedPalettes.json();
+  try {
+    const fetchedPalettes = await fetch('http://localhost:3000/api/v1/palettes');
+    const jsonPalettes = await fetchedPalettes.json();
 
-  savedPalettes = jsonPalettes;
-  if($('.project-name').length) {
-    renderPalettes(savedPalettes.palettes)
+    savedPalettes = jsonPalettes;
+    if($('.project-name').length) {
+      renderPalettes(savedPalettes.palettes)
+    }
+  } catch (error) {
+    return new Error(`Error fetching palettes: ${error}`);
   }
 }
 
 
 const postProject = async projectName => {
-  const fetchedEndpoint = await fetch('/api/v1/projects', {
-    method: 'POST',
-    body: JSON.stringify({ name: projectName}),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+  try {
+    const fetchedEndpoint = await fetch('/api/v1/projects', {
+      method: 'POST',
+      body: JSON.stringify({ name: projectName}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
 
-  const jsonResponse = fetchedEndpoint.json();
-  getProjects();
+    const jsonResponse = fetchedEndpoint.json();
+    getProjects();
+  } catch (error) {
+    return new Error(`Error posting project: ${error}`);
+  }
 }
 
 const postPalette = async (paletteObject, projectId) => {
-  const { name, color1, color2, color3, color4, color5 } = paletteObject;
+  try {
+    const { name, color1, color2, color3, color4, color5 } = paletteObject;
 
-  const fetchedEndpoint = await fetch(`/api/v1/projects/${projectId}/palettes`, {
-    method: 'POST',
-    body: JSON.stringify({ ...paletteObject }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+    const fetchedEndpoint = await fetch(`http://localhost:3000/api/v1/projects/${projectId}/palettes`, {
+      method: 'POST',
+      body: JSON.stringify({ ...paletteObject }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
 
-  getPalettes();
+    getPalettes();
+  } catch (error) {
+    return new Error(`Error posting palette: ${error}`);
+  }
+}
+
+const deleteProject = async projectId => {
+  try {
+    const fetchedDelete = await fetch(`/api/v1/projects/${projectId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    getProjects();
+  } catch (error) {
+    return new Error(`Error deleting project: ${error}`);
+  }
 }
 
 const deletePalette = async paletteId => {
-  const fetchedDelete = await fetch(`/api/v1/palettes/${paletteId}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
+  try {
+    const fetchedDelete = await fetch(`/api/v1/palettes/${paletteId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+  } catch (error) {
+    return new Error(`Error deleting palette: ${error}`);
+  }
 }
 
 let savedProjects;
@@ -171,7 +205,9 @@ const toggleLockIcon = event => {
 const toggleColorLock = (event, array, locked) => {
   const parentColorClass = '.' + $(event.target).parent()[0].classList[1];
   array.map(color => {
-    if (color.class === parentColorClass) {
+    const colorClass = '.' + color.class;
+
+    if (colorClass === parentColorClass) {
       color.locked = locked;
     }
     return color;
@@ -204,7 +240,7 @@ const renderProject = title => {
   $('.project-container').prepend(
     `
       <div class="project">
-        <span class="project-name">${title}</span>
+        <span class="project-name">${title}<i id="remove-project" class="icon-trash"></i></span>
 
         <span class="palette-container">
           <span class="project-palette palette-placeholder">
@@ -228,6 +264,7 @@ const renderProject = title => {
 
 const renderProjectDropdown = savedProjects => {
   $('.dropdown-placeholder').remove();
+  $('.dropdown-item').remove();
 
   savedProjects.forEach(project => {
     $('.project-selection').append(`
@@ -269,6 +306,8 @@ const savePalette = event => {
     alert('Please create a project');
   } else if (paletteInput.value === '') {
     paletteInput.placeholder = 'Please enter a palette name';
+  } else if ($('.project-name').length === 0) {
+    alert('Please select a project to save this palette to');
   } else {
     const projectDom = $('.project-name')[0].innerText;
     const selectedProject = savedProjects.projects.find(project => project.name === projectDom);
@@ -332,6 +371,20 @@ const removePalette = event => {
   paletteLengthCheck();
 };
 
+const removeProject = event => {
+  const deleteButton = $(event.target).closest('#remove-project');
+
+  if (!deleteButton.length) {
+    return
+  }
+
+  const projectName = $(deleteButton)[0].parentElement.innerText;
+  const selectedProject = savedProjects.projects.find(project => project.name === projectName);
+
+  deleteProject(selectedProject.id);
+  $('.project').remove();
+}
+
 const paletteLengthCheck = () => {
   const currentProjectPalettes = $('.project-palette');
 
@@ -357,6 +410,10 @@ const paletteLengthCheck = () => {
 }
 
 const setPaletteColors = event => {
+  if($(event.target).closest('.palette-color-group').length === 0) {
+    return
+  }
+
   const colorPaletteGroupId = JSON.parse($(event.target).closest('.palette-color-group')[0].classList[1]);
   const selectedPalette = savedPalettes.palettes.find(palette => palette.id === colorPaletteGroupId);
 
@@ -389,15 +446,5 @@ $('.project-dropdown').click(toggleProjects);
 $('.dropdown-wrapper').click(event => selectProject(event));
 $('.save-palette-submit').click(event => savePalette(event));
 $('.project-container').click(event => removePalette(event));
+$('.project-container').click(event => removeProject(event));
 $('.project-container').click(event => setPaletteColors(event));
-$('.save-palette-input').keypress(event => {
-  const regex = new RegExp('^[a-zA-Z0-9]+$');
-  const input = String.fromCharCode(
-    !event.charCode ? event.which : event.charCode
-  );
-  if (regex.test(input) || event.keyCode === 13 || event.keyCode === 32) {
-    return true;
-  }
-
-  return false;
-});
