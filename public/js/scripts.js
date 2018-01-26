@@ -12,7 +12,7 @@ const getProjects = async () => {
 
 const getPalettes = async () => {
   try {
-    const fetchedPalettes = await fetch('http://localhost:3000/api/v1/palettes');
+    const fetchedPalettes = await fetch('/api/v1/palettes');
     const jsonPalettes = await fetchedPalettes.json();
 
     savedPalettes = jsonPalettes;
@@ -46,7 +46,7 @@ const postPalette = async (paletteObject, projectId) => {
   try {
     const { name, color1, color2, color3, color4, color5 } = paletteObject;
 
-    const fetchedEndpoint = await fetch(`http://localhost:3000/api/v1/projects/${projectId}/palettes`, {
+    const fetchedEndpoint = await fetch(`/api/v1/projects/${projectId}/palettes`, {
       method: 'POST',
       body: JSON.stringify({ ...paletteObject }),
       headers: {
