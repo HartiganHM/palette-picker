@@ -4,6 +4,7 @@ const chai = require('chai');
 const should = chai.should();
 const chaiHttp = require('chai-http');
 const server = require('../server');
+const knex = require('../db/knex');
 
 chai.use(chaiHttp);
 
@@ -33,6 +34,22 @@ describe('Client Routes', () => {
 });
 
 describe('API Routes', () => {
+  before(() => {
+    knex.migrate.latest()
+    .then(() => {
+      return knex.seed.run()
+      .then(() => {
+        done();
+      });
+    });
+  });
+
+  beforeEach((done) => {
+    knex.seed.run()
+    .then(() => {
+      done();
+    });
+  });
 
   describe('GET to /api/v1/projects', () => {
     it('Should return all of the projects', () => {
