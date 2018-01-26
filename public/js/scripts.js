@@ -230,6 +230,7 @@ const renderProject = title => {
 
 const renderProjectDropdown = savedProjects => {
   $('.dropdown-placeholder').remove();
+  $('.dropdown-item').remove();
 
   savedProjects.forEach(project => {
     $('.project-selection').append(`
