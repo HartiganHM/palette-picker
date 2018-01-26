@@ -54,4 +54,32 @@ describe('API Routes', () => {
     });
   });
 
+  describe('GET to /api/v1/palettes', () => {
+
+  });
+
+  describe('GET to /api/v1/projects/:id', () => {
+
+  });
+
+  describe('GET to /api/v1/projects/:projectId/palettes', () => {
+
+  });
+
+  describe('POST to /api/v1/projects', () => {
+
+  });
+
+  describe('POST to /api/v1/palettes', () => {
+
+  });
+
+  describe('DELETE to /api/v1/projects/:projectId', () => {
+
+  });
+
+  describe('DELETE to /api/v1/palettes/:paletteId', () => {
+
+  });
+
 });
