@@ -58,31 +58,31 @@ let savedPalettes;
 
 const colorsArray = [
   {
-    class: '.color-1',
+    class: 'color1',
     hexValue: '000000',
     brightnessValue: '#FFF',
     locked: false
   },
   {
-    class: '.color-2',
+    class: 'color2',
     hexValue: '000000',
     brightnessValue: '#FFF',
     locked: false
   },
   {
-    class: '.color-3',
+    class: 'color3',
     hexValue: '000000',
     brightnessValue: '#FFF',
     locked: false
   },
   {
-    class: '.color-4',
+    class: 'color4',
     hexValue: '000000',
     brightnessValue: '#FFF',
     locked: false
   },
   {
-    class: '.color-5',
+    class: 'color5',
     hexValue: '000000',
     brightnessValue: '#FFF',
     locked: false
@@ -139,10 +139,10 @@ const generateColors = colorArray => {
 
 const applyColors = colorValues => {
   colorValues.forEach(color => {
-    const colorText = $(`${color.class}`).children()[1];
-    const icon = $(`${color.class}`).children()[0];
+    const colorText = $(`.${color.class}`).children()[1];
+    const icon = $(`.${color.class}`).children()[0];
 
-    $(`${color.class}`).css('background-color', [color.value]);
+    $(`.${color.class}`).css('background-color', [color.value]);
     colorText.innerText = `${color.value}`;
     $(colorText).css('color', [color.brightnessValue]);
     $(icon).css('color', [color.brightnessValue]);
@@ -360,7 +360,10 @@ const setPaletteColors = event => {
   const colorPaletteGroupId = JSON.parse($(event.target).closest('.palette-color-group')[0].classList[1]);
   const selectedPalette = savedPalettes.palettes.find(palette => palette.id === colorPaletteGroupId);
 
-  console.log(selectedPalette)
+  colorsArray.forEach(color => {
+    console.log(selectedPalette[color.class])
+    $(`.${color.class}`).css('background-color', selectedPalette[color.class]);
+  })
 }
 
 $(document).ready(() => {
