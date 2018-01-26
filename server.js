@@ -8,17 +8,17 @@ const configuration = require('./knexfile')[environment]; // Sets configuration 
 const database = require('knex')(configuration); // Sets database variable to use knex method and pass in configuration variable
 const port = process.env.PORT || 3000; // Sets port variable to use port determined by process accessing server or fall back to port 3000
 
-const urlLogger = (request, response, next) => {
+const urlLogger = (request, response, next) => { // Middleware used to log the request url
   console.log('Request URL:', request.url);
   next();
 };
 
-const timeLogger = (request, response, next) => {
+const timeLogger = (request, response, next) => { // Middleware used to timestamp the request
   console.log('Datetime:', new Date(Date.now()).toString());
   next();
 };
 
-const accessControlAllowOrigin = (request, response, next) => {
+const accessControlAllowOrigin = (request, response, next) => { // Middleware used to set Access-Control-Allow-Origin header in response to avoid CORS errors
   response.header('Access-Control-Allow-Origin', '*');
   response.header(
     'Access-Control-Allow-Headers',
@@ -27,11 +27,11 @@ const accessControlAllowOrigin = (request, response, next) => {
   next();
 };
 
-app.locals.title = 'Palette Picker';
+app.locals.title = 'Palette Picker'; // Sets app locals title to name of prohect
 
-app.set('port', port);
+app.set('port', port); // Sets app to use the port variable mentioned above
 
-if (process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV !== 'test') { // Conditional check to avoid using logs in test environment
   app.use(timeLogger, urlLogger, accessControlAllowOrigin)
 }
 
