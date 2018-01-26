@@ -178,6 +178,18 @@ body {
       display: flex;
       flex-direction: column;
       margin: 10px;
+      .project-name {
+        .icon-trash {
+          font-size: 18px;
+          cursor: pointer;
+          &:hover {
+            color: red;
+          }
+          &:active {
+            color: lightgrey;
+          }
+        }
+      }
       .palette-container {
         display: flex;
         flex-wrap: wrap;
