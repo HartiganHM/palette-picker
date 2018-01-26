@@ -1,3 +1,59 @@
+const getProjects = async () => {
+  const fetchedProjects = await fetch('http://localhost:3000/api/v1/projects');
+  const jsonProjects = await fetchedProjects.json();
+
+  savedProjects = jsonProjects;
+  renderProjectDropdown(savedProjects.projects);
+}
+
+const getPalettes = async () => {
+  const fetchedPalettes = await fetch('http://localhost:3000/api/v1/palettes');
+  const jsonPalettes = await fetchedPalettes.json();
+
+  savedPalettes = jsonPalettes;
+  renderPalettes(savedPalettes.palettes)
+}
+
+
+const postProject = async projectName => {
+  const fetchedEndpoint = await fetch('http://localhost:3000/api/v1/projects', {
+    method: 'POST',
+    body: JSON.stringify({ name: projectName}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const jsonResponse = fetchedEndpoint.json();
+  getProjects();
+}
+
+const postPalette = async (paletteObject, projectId) => {
+  const { name, color1, color2, color3, color4, color5 } = paletteObject;
+
+  const fetchedEndpoint = await fetch(`http://localhost:3000/api/v1/projects/${projectId}/palettes`, {
+    method: 'POST',
+    body: JSON.stringify({ ...paletteObject }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  getPalettes();
+}
+
+const deletePalette = async paletteId => {
+  const fetchedDelete = await fetch(`/api/v1/palettes/${paletteId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+}
+
+let savedProjects;
+let savedPalettes;
+
 const colorsArray = [
   {
     class: '.color-1',
@@ -30,8 +86,6 @@ const colorsArray = [
     locked: false
   }
 ];
-
-const savedProjects = {};
 
 const generateColors = colorArray => {
   const hexidecimalValues = [
@@ -125,21 +179,22 @@ const toggleColorLock = (event, array, locked) => {
 const inputCheck = event => {
   event.preventDefault();
   const input = $(event.target).siblings()[0];
+  const projectCheck = savedProjects.projects.filter(project => project.name === input.value)
 
-  input.value === ''
-    ? $(input).attr('placeholder', 'Please enter a title')
-    : createNewProject(input);
+  if (input.value === '') {
+    input.placeholder = 'Please enter a title';
+  } else if (projectCheck.length) {
+    input.value = '';
+    input.placeholder = 'Project already exists';
+  } else {
+    createNewProject(input);
+  }
 };
 
 const createNewProject = title => {
-  const projectList = Object.keys(savedProjects);
-
-  renderProject(title.value);
-  savedProjects[title.value] = {};
-
-  renderProjectDropdown(title.value);
-
-  title.value = '';
+    renderProject(title.value);
+    postProject(title.value);
+    title.value = '';
 };
 
 const renderProject = title => {
@@ -169,12 +224,14 @@ const renderProject = title => {
   );
 };
 
-const renderProjectDropdown = project => {
+const renderProjectDropdown = savedProjects => {
   $('.dropdown-placeholder').remove();
 
-  $('.project-selection').append(`
-      <span class="dropdown-item">${project}</span>
-    `);
+  savedProjects.forEach(project => {
+    $('.project-selection').append(`
+        <span class="dropdown-item">${project.name}</span>
+      `);
+  })
 };
 
 const toggleProjects = () => {
@@ -189,67 +246,73 @@ const selectProject = event => {
   } else if ($(dropdownItem)[0].innerText === 'No Projects') {
     toggleProjects();
   } else if ($(dropdownItem)[0].innerText) {
+    const selectedProject = savedProjects.projects.find(project => project.name === $(dropdownItem)[0].innerText);
+    const selectedPalettes = savedPalettes.palettes.filter(palette => palette['project_id'] === selectedProject.id);
+
     toggleProjects();
     $('.project').remove();
-    renderProject($(dropdownItem)[0].innerText);
-    renderPalettes(savedProjects[$(dropdownItem)[0].innerText]);
+    renderProject(selectedProject.name);
+    renderPalettes(selectedPalettes);
+    paletteLengthCheck()
   }
 };
 
 const savePalette = event => {
   event.preventDefault();
 
-  const projectList = Object.keys(savedProjects);
-  const paletteName = $('.save-palette-input')[0].value;
+  const projectList = savedProjects.projects;
+  const paletteInput = $('.save-palette-input')[0];
 
   if (projectList.length === 0) {
     alert('Please create a project');
-  } else if (paletteName === '') {
-    $('.save-palette-input').attr('placeholder', 'Please enter a palette name');
+  } else if (paletteInput.value === '') {
+    paletteInput.placeholder = 'Please enter a palette name';
   } else {
     const projectDom = $('.project-name')[0].innerText;
-    const selectedProject = projectList.find(project => project === projectDom);
-    const currentPalette = colorsArray.map(color => color.value);
+    const selectedProject = savedProjects.projects.find(project => project.name === projectDom);
 
-    if (!savedProjects[selectedProject]) {
-      savedProjects[selectedProject] = [];
-    }
+    const currentPalette = colorsArray.reduce((currentPalette, color, index) => {
+      const colorNumber = 'color' + (index + 1);
+      currentPalette[colorNumber] = color.value;
 
-    savedProjects[selectedProject][paletteName] = currentPalette;
+      return currentPalette;
+    }, {});
+
+    const paletteObject = Object.assign({}, currentPalette, { name: paletteInput.value })
+
     $('.save-palette-input')[0].value = '';
-    renderPalettes(savedProjects[selectedProject]);
+    postPalette(paletteObject, selectedProject.id)
   }
 };
 
 const renderPalettes = palettes => {
-  const renderedPalettes = Object.keys(palettes).forEach((palette, index) => {
-    const paletteClass = palette.split(' ').join('-');
-
+  $('.project-palette').remove();
+  const renderedPalettes = palettes.forEach(palette => {
     $('.palette-placeholder').remove();
-    if ($(`.${paletteClass}`).length === 1) {
-      return;
-    } else {
       $('.palette-container').prepend(
         `
           <span class="project-palette">
-            <span class="palette-name">${palette}</span>
-            <span class="palette-color-group ${paletteClass}">
+            <span class="palette-name">${palette.name}</span>
+            <span class="palette-color-group">
+              <div class="saved-color ${palette.id}-color1"></div>
+              <div class="saved-color ${palette.id}-color2"></div>
+              <div class="saved-color ${palette.id}-color3"></div>
+              <div class="saved-color ${palette.id}-color4"></div>
+              <div class="saved-color ${palette.id}-color5"></div>
             </span>
             <i class="icon-trash"></i>
           </span>
         `
       );
-      palettes[palette].forEach((color, index) => {
-        $(`.${paletteClass}`).append(
-          `<div class="saved-color ${paletteClass}-palette-color-${index}"></div>`
-        );
-        $(`.${paletteClass}-palette-color-${index}`).css('background-color', color);
-      });
-    }
+      $(`.${palette.id}-color1`).css('background-color', palette.color1);
+      $(`.${palette.id}-color2`).css('background-color', palette.color2);
+      $(`.${palette.id}-color3`).css('background-color', palette.color3);
+      $(`.${palette.id}-color4`).css('background-color', palette.color4);
+      $(`.${palette.id}-color5`).css('background-color', palette.color5);
   });
 };
 
-const deletePalette = event => {
+const removePalette = event => {
   const deleteButton = $(event.target).closest('.icon-trash');
 
   if (!$(deleteButton).siblings()[0]) {
@@ -257,12 +320,17 @@ const deletePalette = event => {
   }
 
   const paletteName = $(deleteButton).siblings()[0].innerText;
-  const projectName = $('.project-name')[0].innerText;
+  const selectedPalette = savedPalettes.palettes.find(palette => palette.name === paletteName);
 
-  delete savedProjects[projectName][paletteName];
+  deletePalette(selectedPalette.id);
   $(deleteButton.parent()).remove();
+  paletteLengthCheck();
+};
 
-  if (Object.keys(savedProjects[projectName]).length === 0) {
+const paletteLengthCheck = () => {
+  const currentProjectPalettes = $('.project-palette');
+
+  if (!currentProjectPalettes.length) {
     $('.palette-container').prepend(
       `
         <span class="project-palette palette-placeholder">
@@ -281,9 +349,13 @@ const deletePalette = event => {
       `
     );
   }
-};
+}
 
-$(document).ready(generateColors(colorsArray));
+$(document).ready(() => {
+  getProjects();
+  getPalettes();
+  generateColors(colorsArray);
+});
 $(document).on('keydown', event => {
   if (event.keyCode === 32 && event.target === document.body) {
     event.preventDefault();
@@ -296,7 +368,7 @@ $('.save-project-button').click(event => inputCheck(event));
 $('.project-dropdown').click(toggleProjects);
 $('.dropdown-wrapper').click(event => selectProject(event));
 $('.save-palette-submit').click(event => savePalette(event));
-$('.project-container').click(event => deletePalette(event));
+$('.project-container').click(event => removePalette(event));
 $('.save-palette-input').keypress(event => {
   const regex = new RegExp('^[a-zA-Z0-9]+$');
   const input = String.fromCharCode(
