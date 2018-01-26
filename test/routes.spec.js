@@ -55,7 +55,28 @@ describe('API Routes', () => {
   });
 
   describe('GET to /api/v1/palettes', () => {
+    it('Should get all of the palettes', () => {
+      return chai.request(server)
+      .get('/api/v1/palettes')
+      .then(response => {
+        response.should.have.status(200);
+        response.should.be.json;
+        response.should.be.a('object');
+        response.body.should.have.property('palettes');
+        response.body.palettes.length.should.equal(2);
 
+        let mockPalette = { name: 'Green', color1: '#FFFFFF', color2: '#5FD185', color3: '#D895C0', color4: '#A22691', color5: '#000000' }
+        response.body.palettes.find(palette => palette.name === mockPalette.name);
+        response.body.palettes.find(palette => palette.color1 === mockPalette.color1);
+        response.body.palettes.find(palette => palette.color2 === mockPalette.color2);
+        response.body.palettes.find(palette => palette.color3 === mockPalette.color3);
+        response.body.palettes.find(palette => palette.color4 === mockPalette.color4);
+        response.body.palettes.find(palette => palette.color5 === mockPalette.color5);
+      })
+      .catch(error => {
+        throw error;
+      });
+    });
   });
 
   describe('GET to /api/v1/projects/:id', () => {
