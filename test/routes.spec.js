@@ -272,8 +272,20 @@ describe('API Routes', () => {
 
   describe('DELETE to /api/v1/palettes/:paletteId', () => {
     it('Should remove a specified palette', () => {
+      return chai.request(server)
+      .get('/api/v1/palettes')
+      .then(response => {
+        const id = response.body.palettes[0].id;
 
+        return chai.request(server)
+        .delete(`/api/v1/palettes/${id}`)
+        .then(response => {
+          response.should.have.status(204);
+        })
+        .catch(error => {
+          throw error;
+        });
+      });
     });
   });
-
 });
