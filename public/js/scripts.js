@@ -11,7 +11,6 @@ const getPalettes = async () => {
   const jsonPalettes = await fetchedPalettes.json();
 
   savedPalettes = jsonPalettes;
-  renderPalettes(savedPalettes.palettes)
 }
 
 
@@ -286,8 +285,11 @@ const savePalette = event => {
 };
 
 const renderPalettes = palettes => {
+  const selectedProject = savedProjects.projects.find(project => project.name === $('.project-name')[0].innerText);
+  const selectedPalettes = palettes.filter(palette => palette['project_id'] === selectedProject.id);
+
   $('.project-palette').remove();
-  const renderedPalettes = palettes.forEach(palette => {
+  const renderedPalettes = selectedPalettes.forEach(palette => {
     $('.palette-placeholder').remove();
       $('.palette-container').prepend(
         `
