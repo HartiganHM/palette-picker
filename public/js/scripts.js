@@ -253,6 +253,7 @@ const selectProject = event => {
     $('.project').remove();
     renderProject(selectedProject.name);
     renderPalettes(selectedPalettes);
+    paletteLengthCheck()
   }
 };
 
@@ -293,21 +294,21 @@ const renderPalettes = palettes => {
           <span class="project-palette">
             <span class="palette-name">${palette.name}</span>
             <span class="palette-color-group">
-              <div class="saved-color ${palette.name}-color1"></div>
-              <div class="saved-color ${palette.name}-color2"></div>
-              <div class="saved-color ${palette.name}-color3"></div>
-              <div class="saved-color ${palette.name}-color4"></div>
-              <div class="saved-color ${palette.name}-color5"></div>
+              <div class="saved-color ${palette.id}-color1"></div>
+              <div class="saved-color ${palette.id}-color2"></div>
+              <div class="saved-color ${palette.id}-color3"></div>
+              <div class="saved-color ${palette.id}-color4"></div>
+              <div class="saved-color ${palette.id}-color5"></div>
             </span>
             <i class="icon-trash"></i>
           </span>
         `
       );
-      $(`.${palette.name}-color1`).css('background-color', palette.color1);
-      $(`.${palette.name}-color2`).css('background-color', palette.color2);
-      $(`.${palette.name}-color3`).css('background-color', palette.color3);
-      $(`.${palette.name}-color4`).css('background-color', palette.color4);
-      $(`.${palette.name}-color5`).css('background-color', palette.color5);
+      $(`.${palette.id}-color1`).css('background-color', palette.color1);
+      $(`.${palette.id}-color2`).css('background-color', palette.color2);
+      $(`.${palette.id}-color3`).css('background-color', palette.color3);
+      $(`.${palette.id}-color4`).css('background-color', palette.color4);
+      $(`.${palette.id}-color5`).css('background-color', palette.color5);
   });
 };
 
@@ -323,8 +324,13 @@ const removePalette = event => {
 
   deletePalette(selectedPalette.id);
   $(deleteButton.parent()).remove();
+  paletteLengthCheck();
+};
 
-  if (savedProjects.projects.length === 0) {
+const paletteLengthCheck = () => {
+  const currentProjectPalettes = $('.project-palette');
+
+  if (!currentProjectPalettes.length) {
     $('.palette-container').prepend(
       `
         <span class="project-palette palette-placeholder">
@@ -343,7 +349,7 @@ const removePalette = event => {
       `
     );
   }
-};
+}
 
 $(document).ready(() => {
   getProjects();
