@@ -370,6 +370,17 @@ const removePalette = event => {
   paletteLengthCheck();
 };
 
+const removeProject = event => {
+  const deleteButton = $(event.target).closest('#remove-project');
+
+  if (!deleteButton.length) {
+    return
+  }
+
+  const projectName = $(deleteButton)[0].parentElement.innerText;
+  console.log($(deleteButton)[0].parentElement.innerText)
+}
+
 const paletteLengthCheck = () => {
   const currentProjectPalettes = $('.project-palette');
 
@@ -431,4 +442,5 @@ $('.project-dropdown').click(toggleProjects);
 $('.dropdown-wrapper').click(event => selectProject(event));
 $('.save-palette-submit').click(event => savePalette(event));
 $('.project-container').click(event => removePalette(event));
+$('.project-container').click(event => removeProject(event));
 $('.project-container').click(event => setPaletteColors(event));
