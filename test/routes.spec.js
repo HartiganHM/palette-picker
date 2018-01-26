@@ -34,16 +34,6 @@ describe('Client Routes', () => {
 });
 
 describe('API Routes', () => {
-  before(() => {
-    knex.migrate.latest()
-    .then(() => {
-      return knex.seed.run()
-      .then(() => {
-        done();
-      });
-    });
-  });
-
   beforeEach((done) => {
     knex.seed.run()
     .then(() => {
@@ -99,20 +89,26 @@ describe('API Routes', () => {
   describe('GET to /api/v1/projects/:id', () => {
     it('Should return the requested project', () => {
       return chai.request(server)
-      .get('/api/v1/projects/1')
+      .get('/api/v1/projects')
       .then(response => {
-        response.should.have.status(200);
-        response.should.be.json;
-        response.should.be.a('object');
-        response.body.should.have.property('projects');
-        response.body.projects.length.should.equal(1);
+        const id = response.body.projects[0].id;
 
-        let mockProject = { name: 'Awesome' }
-        response.body.projects.find(project => project.name === mockProject.name)
+        return chai.request(server)
+        .get(`/api/v1/projects/${id}`)
+        .then(response => {
+          response.should.have.status(200);
+          response.should.be.json;
+          response.should.be.a('object');
+          response.body.should.have.property('projects');
+          response.body.projects.length.should.equal(1);
+
+          let mockProject = { name: 'Awesome' }
+          response.body.projects.find(project => project.name === mockProject.name)
+        })
+        .catch(error => {
+          throw error;
+        });
       })
-      .catch(error => {
-        throw error;
-      });
     });
 
     it('Should send a 404 if the project does not exist', () => {
@@ -131,19 +127,25 @@ describe('API Routes', () => {
   describe('GET to /api/v1/projects/:projectId/palettes', () => {
     it('Should return the requested palettes', () => {
       return chai.request(server)
-      .get('/api/v1/projects/1/palettes')
+      .get('/api/v1/projects')
       .then(response => {
-        response.should.have.status(200);
-        response.should.be.json;
-        response.should.be.a('object');
-        response.body.should.have.property('palettes');
-        response.body.palettes.length.should.equal(2);
+        const id = response.body.projects[0].id;
 
-        let mockPalette = { name: 'Green' }
-        response.body.palettes.find(palette => palette.name === mockPalette.name)
-      })
-      .catch(error => {
-        throw error;
+        return chai.request(server)
+        .get(`/api/v1/projects/${id}/palettes`)
+        .then(response => {
+          response.should.have.status(200);
+          response.should.be.json;
+          response.should.be.a('object');
+          response.body.should.have.property('palettes');
+          response.body.palettes.length.should.equal(2);
+
+          let mockPalette = { name: 'Green' }
+          response.body.palettes.find(palette => palette.name === mockPalette.name)
+        })
+        .catch(error => {
+          throw error;
+        });
       });
     });
 
@@ -162,11 +164,37 @@ describe('API Routes', () => {
 
   describe('POST to /api/v1/projects', () => {
     it('Should create a new project', () => {
-
+      return chai.request(server)
+      .post('/api/v1/projects')
+      .send({
+        name: 'Torin'
+      })
+      .then(response => {
+        response.should.have.status(201);
+        response.body.should.be.a('object');
+        response.body.should.have.property('id');
+      })
+      .catch(error => {
+        throw error;
+      });
     });
 
     it('Should not create a project with missing data', () => {
-
+      it('Should create a new project', () => {
+        return chai.request(server)
+        .post('/api/v1/projects')
+        .send({
+          dog: 'Torin'
+        })
+        .then(response => {
+          console.log(response)
+          response.should.have.status(422);
+          response.error.text.should.equal('{"error":"You are missing the required property name"}')
+        })
+        .catch(error => {
+          throw error;
+        });
+      });
     });
   });
 
