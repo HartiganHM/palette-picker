@@ -144,19 +144,35 @@ describe('API Routes', () => {
   });
 
   describe('POST to /api/v1/projects', () => {
+    it('Should create a new project', () => {
 
+    });
+
+    it('Should not create a project with missing data', () => {
+
+    });
   });
 
   describe('POST to /api/v1/palettes', () => {
+    it('Should create a new palette', () => {
 
+    });
+
+    it('Should not create a palette with missing data', () => {
+
+    });
   });
 
   describe('DELETE to /api/v1/projects/:projectId', () => {
+    it('Should remove a specified project', () => {
 
+    });
   });
 
   describe('DELETE to /api/v1/palettes/:paletteId', () => {
+    it('Should remove a specified palette', () => {
 
+    });
   });
 
 });
