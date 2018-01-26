@@ -361,8 +361,11 @@ const setPaletteColors = event => {
   const selectedPalette = savedPalettes.palettes.find(palette => palette.id === colorPaletteGroupId);
 
   colorsArray.forEach(color => {
-    console.log(selectedPalette[color.class])
+    const colorText = $(`.${color.class}`).children()[1];
+    const icon = $(`.${color.class}`).children()[0];
+
     $(`.${color.class}`).css('background-color', selectedPalette[color.class]);
+    colorText.innerText = `${selectedPalette[color.class]}`;
   })
 }
 
