@@ -180,31 +180,74 @@ describe('API Routes', () => {
     });
 
     it('Should not create a project with missing data', () => {
-      it('Should create a new project', () => {
-        return chai.request(server)
-        .post('/api/v1/projects')
-        .send({
-          dog: 'Torin'
-        })
-        .then(response => {
-          console.log(response)
-          response.should.have.status(422);
-          response.error.text.should.equal('{"error":"You are missing the required property name"}')
-        })
-        .catch(error => {
-          throw error;
-        });
+      return chai.request(server)
+      .post('/api/v1/projects')
+      .send({
+        dog: 'Torin'
+      })
+      .then(response => {
+        response.should.have.status(422);
+        response.error.text.should.equal('{"error":"You are missing the required parameter name"}')
+      })
+      .catch(error => {
+        throw error;
       });
     });
   });
 
   describe('POST to /api/v1/palettes', () => {
     it('Should create a new palette', () => {
+      return chai.request(server)
+      .get('/api/v1/projects')
+      .then(response => {
+        const id = response.body.projects[0].id;
 
+        return chai.request(server)
+        .post(`/api/v1/projects/${id}/palettes`)
+        .send({
+          name: 'Torin',
+          color1: '#FFF',
+          color2: '#F9F9F9',
+          color3: '#000',
+          color4: '#666',
+          color5: '#777',
+          'project_id': id
+        })
+        .then(response => {
+          response.should.have.status(201);
+          response.body.should.be.a('object');
+          response.body.should.have.property('id');
+        })
+        .catch(error => {
+          throw error;
+        });
+      })
     });
 
     it('Should not create a palette with missing data', () => {
+      return chai.request(server)
+      .get('/api/v1/projects')
+      .then(response => {
+        const id = response.body.projects[0].id;
 
+        return chai.request(server)
+        .post(`/api/v1/projects/${id}/palettes`)
+        .send({
+          name: 'Torin',
+          color1: '#FFF',
+          color2: '#F9F9F9',
+          color3: '#000',
+          color4: '#666',
+          colorblah: '#777'
+        })
+        .then(response => {
+          response.should.have.status(422);
+          response.error.text.should.equal('{"error":"You are missing the required parameter color5"}')
+        })
+        .catch(error => {
+          throw error;
+        });
+      })
     });
   });
 
