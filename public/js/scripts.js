@@ -21,6 +21,7 @@ const getPalettes = async () => {
     }
   } catch (error) {
     return new Error(`Error fetching palettes: ${error}`);
+  }
 }
 
 
@@ -38,6 +39,7 @@ const postProject = async projectName => {
     getProjects();
   } catch (error) {
     return new Error(`Error posting project: ${error}`);
+  }
 }
 
 const postPalette = async (paletteObject, projectId) => {
@@ -237,7 +239,7 @@ const renderProject = title => {
   $('.project-container').prepend(
     `
       <div class="project">
-        <span class="project-name">${title}</span>
+        <span class="project-name">${title}<i class="icon-trash remove-project"></i></span>
 
         <span class="palette-container">
           <span class="project-palette palette-placeholder">
