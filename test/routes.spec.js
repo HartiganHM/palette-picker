@@ -4,7 +4,7 @@ const chai = require('chai');
 const should = chai.should();
 const chaiHttp = require('chai-http');
 const server = require('../server');
-const knex = require('knex');
+const knex = require('../db/knex');
 
 chai.use(chaiHttp);
 
