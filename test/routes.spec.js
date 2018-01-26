@@ -80,7 +80,7 @@ describe('API Routes', () => {
   });
 
   describe('GET to /api/v1/projects/:id', () => {
-    it('Should return the request project', () => {
+    it('Should return the requested project', () => {
       return chai.request(server)
       .get('/api/v1/projects/1')
       .then(response => {
@@ -109,11 +109,38 @@ describe('API Routes', () => {
         throw error;
       });
     });
-
   });
 
   describe('GET to /api/v1/projects/:projectId/palettes', () => {
+    it('Should return the requested palettes', () => {
+      return chai.request(server)
+      .get('/api/v1/projects/1/palettes')
+      .then(response => {
+        response.should.have.status(200);
+        response.should.be.json;
+        response.should.be.a('object');
+        response.body.should.have.property('palettes');
+        response.body.palettes.length.should.equal(2);
 
+        let mockPalette = { name: 'Green' }
+        response.body.palettes.find(palette => palette.name === mockPalette.name)
+      })
+      .catch(error => {
+        throw error;
+      });
+    });
+
+    it('Should send a 404 if the project does not exist', () => {
+      return chai.request(server)
+      .get('/api/v1/projects/2/palettes')
+      .then(response => {
+        response.should.have.status(404);
+        response.error.text.should.equal('{"error":"Could not find any palettes with project id of 2"}')
+      })
+      .catch(error => {
+        throw error;
+      });
+    });
   });
 
   describe('POST to /api/v1/projects', () => {
