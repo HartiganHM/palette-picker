@@ -80,6 +80,13 @@ describe('API Routes', () => {
   });
 
   describe('GET to /api/v1/projects/:id', () => {
+    it('Should return the request project', () => {
+
+    });
+
+    it('Should send a 404 if the project does not exist', () => {
+      
+    })
 
   });
 
