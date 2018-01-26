@@ -239,7 +239,7 @@ const renderProject = title => {
   $('.project-container').prepend(
     `
       <div class="project">
-        <span class="project-name">${title}<i class="icon-trash remove-project"></i></span>
+        <span class="project-name">${title}<i id="remove-project" class="icon-trash"></i></span>
 
         <span class="palette-container">
           <span class="project-palette palette-placeholder">
