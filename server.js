@@ -1,12 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const app = express();
+const app = express(); // Sets app variable to a new instance of express
 
-const environment = process.env.NODE_ENV || 'development';
-const configuration = require('./knexfile')[environment];
-const database = require('knex')(configuration);
-const port = process.env.PORT || 3000;
+const environment = process.env.NODE_ENV || 'development'; // Sets environment variable to use environment determine by process accessing server or to fallback to 'development'
+const configuration = require('./knexfile')[environment]; // Sets configuration variable to use .knexfile at property of environment
+const database = require('knex')(configuration); // Sets database variable to use knex method and pass in configuration variable
+const port = process.env.PORT || 3000; // Sets port variable to use port determined by process accessing server or fall back to port 3000
 
 const urlLogger = (request, response, next) => {
   console.log('Request URL:', request.url);
