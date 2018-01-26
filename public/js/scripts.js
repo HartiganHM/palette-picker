@@ -399,14 +399,3 @@ $('.dropdown-wrapper').click(event => selectProject(event));
 $('.save-palette-submit').click(event => savePalette(event));
 $('.project-container').click(event => removePalette(event));
 $('.project-container').click(event => setPaletteColors(event));
-$('.save-palette-input').keypress(event => {
-  const regex = new RegExp('^[a-zA-Z0-9]+$');
-  const input = String.fromCharCode(
-    !event.charCode ? event.which : event.charCode
-  );
-  if (regex.test(input) || event.keyCode === 13 || event.keyCode === 32) {
-    return true;
-  }
-
-  return false;
-});
