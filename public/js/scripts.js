@@ -362,6 +362,10 @@ const paletteLengthCheck = () => {
 }
 
 const setPaletteColors = event => {
+  if($(event.target).closest('.palette-color-group').length === 0) {
+    return
+  }
+
   const colorPaletteGroupId = JSON.parse($(event.target).closest('.palette-color-group')[0].classList[1]);
   const selectedPalette = savedPalettes.palettes.find(palette => palette.id === colorPaletteGroupId);
 
