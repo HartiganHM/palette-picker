@@ -4,7 +4,11 @@ const getProjects = async () => {
     const jsonProjects = await fetchedProjects.json();
 
     savedProjects = jsonProjects;
-    renderProjectDropdown(savedProjects.projects);
+
+    if(jsonProjects.projects.length) {
+      renderProjectDropdown(savedProjects.projects)
+    }
+
   } catch (error) {
     return new Error(`Error fetching projects: ${error}`);
   }
