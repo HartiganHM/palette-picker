@@ -5,6 +5,8 @@ body {
 .app {
   display: flex;
   flex-direction: column;
+  background-image: url('../images/paper-background.jpg');
+  background-repeat: repeat;
   font-family: 'Dosis', Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 62.5%;
