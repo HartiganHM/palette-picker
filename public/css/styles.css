@@ -4,72 +4,101 @@ body {
 .app {
   display: flex;
   flex-direction: column;
+  background-image: url("../images/paper-background.jpg");
+  background-repeat: repeat;
   font-family: 'Dosis', Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 62.5%;
   font-size: 1.4rem; }
   .app .header-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: space-between; }
     .app .header-wrapper .header {
       align-self: center;
-      margin: 10px;
+      height: 123px;
+      width: 350px;
+      margin-top: 10px;
       padding: 10px;
+      background-image: url("../images/Palette-Picker-Logo.png");
+      background-repeat: no-repeat;
+      background-size: contain;
       color: #008fb3;
       font-size: 2.4rem;
       font-weight: 700; }
     .app .header-wrapper .create-project-section {
       align-self: center;
       display: flex;
-      justify-content: space-between;
-      margin: 10px;
-      padding: 10px; }
-      .app .header-wrapper .create-project-section .new-project-input {
-        padding: 10px;
-        border: 1px solid lightgrey;
-        font-size: 1.4rem; }
-        .app .header-wrapper .create-project-section .new-project-input:focus {
-          outline: none; }
-      .app .header-wrapper .create-project-section .save-project-button {
-        padding: 10px;
-        background-color: #b0c4de;
-        cursor: pointer; }
-        .app .header-wrapper .create-project-section .save-project-button:hover {
-          background-color: #d3ddeb; }
-        .app .header-wrapper .create-project-section .save-project-button:active {
-          background-color: #769ac9; }
-        .app .header-wrapper .create-project-section .save-project-button:focus {
-          outline: none; }
-  .app .color-selection-wrapper {
-    display: flex;
-    justify-content: space-around; }
-    .app .color-selection-wrapper .color-choice {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: flex-end;
-      height: 400px;
-      margin: 10px 0;
-      padding: 10px;
-      font-size: 1.6rem;
-      transition: 0.2s background-color ease-in-out; }
-      .app .color-selection-wrapper .color-choice .lock {
-        color: #fff;
-        font-size: 1.8rem;
-        opacity: 0.75;
-        transition: 0.1s opacity ease-in-out; }
-        .app .color-selection-wrapper .color-choice .lock:hover {
-          opacity: 1;
+      justify-content: center;
+      margin-bottom: 10px; }
+      .app .header-wrapper .create-project-section .new-project-input-wrapper {
+        position: relative;
+        height: 109px;
+        width: 566px;
+        background-image: url("../images/Save-Project-Input.svg");
+        background-repeat: no-repeat;
+        background-size: contain; }
+        .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input {
+          position: absolute;
+          top: 6px;
+          padding: 10px;
+          border: none;
+          background-color: transparent;
+          color: #3F5E60;
+          font-family: 'Space Mono', Courier New, Courier, monospace;
+          font-size: 1.4rem; }
+          .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input:focus {
+            outline: none; }
+          .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input::placeholder {
+            color: #3F5E60; }
+    .app .header-wrapper .save-project-button {
+      position: relative;
+      left: -20px;
+      width: 75px;
+      height: 75px;
+      background-image: url("../images/Save-Project-Button-Default.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer; }
+      .app .header-wrapper .save-project-button:hover {
+        background-image: url("../images/Save-Project-Button-Hover.png"); }
+      .app .header-wrapper .save-project-button:active {
+        background-image: url("../images/Save-Project-Button-Active.png"); }
+      .app .header-wrapper .save-project-button:focus {
+        outline: none; }
+  .app .color-selection-container {
+    display: flex;
+    flex-direction: column; }
+    .app .color-selection-container .color-selection-wrapper {
+      display: flex;
+      justify-content: space-around; }
+      .app .color-selection-container .color-selection-wrapper .color-choice {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        height: 400px;
+        padding: 10px;
+        font-size: 1.6rem;
+        transition: 0.2s background-color ease-in-out; }
+        .app .color-selection-container .color-selection-wrapper .color-choice .lock {
+          color: #fff;
+          font-size: 1.8rem;
+          opacity: 0.75;
           transition: 0.1s opacity ease-in-out; }
-      .app .color-selection-wrapper .color-choice .color-hex-value {
-        color: #fff;
-        font-size: 1.8rem;
-        opacity: 0.75;
-        transition: 0.1s opacity ease-in-out; }
-        .app .color-selection-wrapper .color-choice .color-hex-value:hover {
-          opacity: 1;
+          .app .color-selection-container .color-selection-wrapper .color-choice .lock:hover {
+            opacity: 1;
+            transition: 0.1s opacity ease-in-out; }
+        .app .color-selection-container .color-selection-wrapper .color-choice .color-hex-value {
+          color: #fff;
+          font-size: 1.8rem;
+          opacity: 0.75;
           transition: 0.1s opacity ease-in-out; }
+          .app .color-selection-container .color-selection-wrapper .color-choice .color-hex-value:hover {
+            opacity: 1;
+            transition: 0.1s opacity ease-in-out; }
   .app .generate-palette-button {
     align-self: center;
     margin: 10px;
@@ -112,9 +141,9 @@ body {
           flex: 1;
           margin: 0 0 5px;
           padding: 10px;
-          border: 1px solid #F9F9F9;
+          border: 1px solid #f9f9f9;
           background-color: #375377;
-          color: #F9F9F9;
+          color: #f9f9f9;
           text-align: center;
           box-sizing: border-box;
           cursor: pointer; }

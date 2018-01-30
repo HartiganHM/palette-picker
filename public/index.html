@@ -8,41 +8,49 @@
   <title>Palette Picker</title>
   <link rel="stylesheet" type="text/css" href="./css/fix.css">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
-  <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dosis|Space+Mono" rel="stylesheet">
   <link rel="stylesheet" href="./css/fontello/css/fontello.css">
 </head>
 
 <body class="app">
   <span class="header-wrapper">
-    <span class="header">Palette Picker</span>
+    <span class="header"></span>
 
     <form class="create-project-section">
-      <input class="new-project-input" type="text" placeholder="Create a project" value="" />
-      <button class="save-project-button">Save Project</button>
+      <span class="new-project-input-wrapper">
+        <input class="new-project-input" type="text" placeholder="Create a project" value="" />
+      </span>
+      <button class="save-project-button"></button>
     </form>
   </span>
 
-  <div class="color-selection-wrapper">
-    <div class="color-choice color1">
-      <i class="lock icon-lock-open"></i>
-      <span class="color-hex-value">#D3F6DB</span>
+  <div class="color-selection-container">
+    <img src="./images/Color-Caps-Top.svg" alt="Palette-Picker-Container-Tops"/>
+
+    <div class="color-selection-wrapper">
+      <div class="color-choice color1">
+        <i class="lock icon-lock-open"></i>
+        <span class="color-hex-value">#D3F6DB</span>
+      </div>
+      <div class="color-choice color2">
+        <i class="lock icon-lock-open"></i>
+        <span class="color-hex-value">#92D5E6</span>
+      </div>
+      <div class="color-choice color3">
+        <i class="lock icon-lock-open"></i>
+        <span class="color-hex-value">#772D8B</span>
+      </div>
+      <div class="color-choice color4">
+        <i class="lock icon-lock-open"></i>
+        <span class="color-hex-value">#5A0B4D</span>
+      </div>
+      <div class="color-choice color5">
+        <i class="lock icon-lock-open"></i>
+        <span class="color-hex-value">#A1EF8B</span>
+      </div>
     </div>
-    <div class="color-choice color2">
-      <i class="lock icon-lock-open"></i>
-      <span class="color-hex-value">#92D5E6</span>
-    </div>
-    <div class="color-choice color3">
-      <i class="lock icon-lock-open"></i>
-      <span class="color-hex-value">#772D8B</span>
-    </div>
-    <div class="color-choice color4">
-      <i class="lock icon-lock-open"></i>
-      <span class="color-hex-value">#5A0B4D</span>
-    </div>
-    <div class="color-choice color5">
-      <i class="lock icon-lock-open"></i>
-      <span class="color-hex-value">#A1EF8B</span>
-    </div>
+
+    <img src="./images/Color-Caps-Bottom.svg" alt="Palette-Picker-Container-Bottoms"/>
   </div>
 
   <span class='generate-palette-button'>Generate New Palette</span>
