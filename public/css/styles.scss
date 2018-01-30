@@ -32,12 +32,11 @@ body {
       align-self: center;
       display: flex;
       justify-content: space-between;
-      margin: 10px;
-      padding: 10px;
       .new-project-input-wrapper {
         position: relative;
-        width: 300px;
         height: 93px;
+        width: 300px;
+        margin-bottom: 50px;
         background-image: url('../images/Save-Project-Input.png');
         background-repeat: no-repeat;
         background-size: contain;

@@ -29,13 +29,12 @@ body {
     .app .header-wrapper .create-project-section {
       align-self: center;
       display: flex;
-      justify-content: space-between;
-      margin: 10px;
-      padding: 10px; }
+      justify-content: space-between; }
       .app .header-wrapper .create-project-section .new-project-input-wrapper {
         position: relative;
-        width: 300px;
         height: 93px;
+        width: 300px;
+        margin-bottom: 50px;
         background-image: url("../images/Save-Project-Input.png");
         background-repeat: no-repeat;
         background-size: contain; }
