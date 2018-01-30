@@ -445,11 +445,11 @@ const removePalette = event => {
     return
   }
 
-  const paletteName = $(deleteButton).siblings()[0].innerText;
+  const paletteName = $(deleteButton).parent().siblings('.palette-header')[0].children[0].innerText;
   const selectedPalette = savedPalettes.palettes.find(palette => palette.name === paletteName);
 
   deletePalette(selectedPalette.id);
-  $(deleteButton.parent()).remove();
+  $(deleteButton).closest('.project-palette').remove();
   paletteLengthCheck();
 };
 
