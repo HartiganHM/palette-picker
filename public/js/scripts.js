@@ -256,9 +256,9 @@ const renderProject = title => {
               <div class="saved-color"></div>
               <div class="saved-color"></div>
               <div class="saved-color"></div>
+              <i class="icon-trash trash-placeholder" disabled></i>
             </span>
 
-            <i class="icon-trash trash-placeholder" disabled></i>
           </span>
         </span>
       </div>
@@ -449,7 +449,7 @@ const removePalette = event => {
   const selectedPalette = savedPalettes.palettes.find(palette => palette.name === paletteName);
 
   deletePalette(selectedPalette.id);
-  $(deleteButton).closest('.project-palette').remove();
+  $(deleteButton).parent().parent().remove();
   paletteLengthCheck();
 };
 
@@ -482,9 +482,9 @@ const paletteLengthCheck = () => {
             <div class="saved-color"></div>
             <div class="saved-color"></div>
             <div class="saved-color"></div>
+            <i class="icon-trash trash-placeholder" disabled></i>
           </span>
 
-          <i class="icon-trash trash-placeholder" disabled></i>
         </span>
       `
     );
