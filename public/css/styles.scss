@@ -106,7 +106,7 @@ body {
         background-color: transparent;
         color: #3f5e60;
         font-family: 'Space Mono', Courier New, Courier, monospace;
-        font-size: 1.8rem;
+        font-size: 1.4rem;
         &:focus {
           outline: none;
         }
@@ -243,6 +243,18 @@ body {
             .saved-color {
               width: 50px;
               height: 50px;
+              .glass {
+                fill: none;
+                stroke: #282D33;
+                stroke-width: 16;
+                stroke-miterlimit: 10;
+              }
+              .liquid {
+                fill: #92C9FF;
+              }
+              .bubbles {
+                fill: #F9F9F9;
+              }
             }
           }
           .icon-trash {
