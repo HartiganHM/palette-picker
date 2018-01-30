@@ -33,12 +33,24 @@ body {
       justify-content: space-between;
       margin: 10px;
       padding: 10px;
-      .new-project-input {
-        padding: 10px;
-        border: 1px solid lightgrey;
-        font-size: 1.4rem;
-        &:focus {
-          outline: none;
+      .new-project-input-wrapper {
+        position: relative;
+        width: 300px;
+        height: 93px;
+        background-image: url('../images/Save-Project-Input.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        .new-project-input {
+          position: absolute;
+          top: 8px;
+          padding: 10px;
+          border: none;
+          background-color: transparent;
+          color: #3F5E60;
+          font-size: 1.4rem;
+          &:focus {
+            outline: none;
+          }
         }
       }
       .save-project-button {

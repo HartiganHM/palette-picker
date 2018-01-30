@@ -31,12 +31,23 @@ body {
       justify-content: space-between;
       margin: 10px;
       padding: 10px; }
-      .app .header-wrapper .create-project-section .new-project-input {
-        padding: 10px;
-        border: 1px solid lightgrey;
-        font-size: 1.4rem; }
-        .app .header-wrapper .create-project-section .new-project-input:focus {
-          outline: none; }
+      .app .header-wrapper .create-project-section .new-project-input-wrapper {
+        position: relative;
+        width: 300px;
+        height: 93px;
+        background-image: url("../images/Save-Project-Input.png");
+        background-repeat: no-repeat;
+        background-size: contain; }
+        .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input {
+          position: absolute;
+          top: 8px;
+          padding: 10px;
+          border: none;
+          background-color: transparent;
+          color: #3F5E60;
+          font-size: 1.4rem; }
+          .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input:focus {
+            outline: none; }
       .app .header-wrapper .create-project-section .save-project-button {
         padding: 10px;
         background-color: #b0c4de;
