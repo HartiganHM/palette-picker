@@ -12,6 +12,7 @@ body {
   font-size: 1.4rem; }
   .app .header-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: space-between; }
     .app .header-wrapper .header {
       align-self: center;
@@ -49,13 +50,19 @@ body {
           .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input:focus {
             outline: none; }
       .app .header-wrapper .create-project-section .save-project-button {
-        padding: 10px;
-        background-color: #b0c4de;
+        position: absolute;
+        right: 42%;
+        bottom: -43px;
+        width: 50px;
+        height: 50px;
+        background-image: url("../images/Save-Project-Button-Default.png");
+        background-repeat: no-repeat;
+        background-size: contain;
         cursor: pointer; }
         .app .header-wrapper .create-project-section .save-project-button:hover {
-          background-color: #d3ddeb; }
+          background-image: url("../images/Save-Project-Button-Hover.png"); }
         .app .header-wrapper .create-project-section .save-project-button:active {
-          background-color: #769ac9; }
+          background-image: url("../images/Save-Project-Button-Active.png"); }
         .app .header-wrapper .create-project-section .save-project-button:focus {
           outline: none; }
   .app .color-selection-wrapper {

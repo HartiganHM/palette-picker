@@ -13,6 +13,7 @@ body {
   font-size: 1.4rem;
   .header-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     .header {
       align-self: center;
@@ -54,14 +55,20 @@ body {
         }
       }
       .save-project-button {
-        padding: 10px;
-        background-color: #b0c4de;
+        position: absolute;
+        right: 42%;
+        bottom: -43px;
+        width: 50px;
+        height: 50px;
+        background-image: url('../images/Save-Project-Button-Default.png');
+        background-repeat: no-repeat;
+        background-size: contain;
         cursor: pointer;
         &:hover {
-          background-color: #d3ddeb;
+          background-image: url('../images/Save-Project-Button-Hover.png');
         }
         &:active {
-          background-color: #769ac9;
+          background-image: url('../images/Save-Project-Button-Active.png');
         }
         &:focus {
           outline: none;
