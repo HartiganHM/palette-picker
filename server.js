@@ -27,12 +27,20 @@ const accessControlAllowOrigin = (request, response, next) => { // Middleware us
   next();
 };
 
+const httpsRedirect = (request, response, next) => {
+  if( request.protocol !== 'https') {
+    response.redirect('https://' + request.headers.host + request.url);
+  }
+
+  next();
+}
+
 app.locals.title = 'Palette Picker'; // Sets app locals title to name of prohect
 
 app.set('port', port); // Sets app to use the port variable mentioned above
 
 if (process.env.NODE_ENV !== 'test') { // Conditional check to avoid using logs in test environment
-  app.use(timeLogger, urlLogger, accessControlAllowOrigin)
+  app.use(httpsRedirect, timeLogger, urlLogger, accessControlAllowOrigin)
 }
 
 app
