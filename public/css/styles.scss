@@ -209,11 +209,12 @@ body {
   }
   .project-container {
     display: flex;
-    padding: 10px;
+    min-height: 210px;
+    margin: 10px;
     .project {
       display: flex;
       flex-direction: column;
-      margin: 10px;
+      margin: auto;
       .project-name {
         font-size: 2.4rem;
         .icon-trash {
@@ -229,13 +230,15 @@ body {
       }
       .palette-container {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        flex-wrap: wrap;width: 1600px;
+        margin: auto;
         .project-palette {
           display: flex;
           flex-direction: column;
           align-items: center;
+          width: 280px;
           padding: 10px;
+          margin: 10px;
           .palette-header {
             align-self: stretch;
             display: flex;
@@ -247,6 +250,7 @@ body {
           }
           .palette-color-group {
             display: flex;
+            width: 280px;
             padding: 10px;
             .saved-color {
               width: 50px;
@@ -283,4 +287,28 @@ body {
       }
     }
   }
+}
+
+@media screen and (max-width: 1599px) {
+	.app .project-container .project .palette-container {
+		width: 1280px;
+	}
+}
+
+@media screen and (max-width: 1279px) {
+	.app .project-container .project .palette-container {
+		width: 960px;
+	}
+}
+
+@media screen and (max-width: 959px) {
+	.app .project-container .project .palette-container {
+		width: 640px;
+	}
+}
+
+@media screen and (max-width: 639px) {
+	.app .project-container .project .palette-container {
+		width: 320px;
+	}
 }

@@ -174,11 +174,12 @@ body {
         background-color: #769ac9; }
   .app .project-container {
     display: flex;
-    padding: 10px; }
+    min-height: 210px;
+    margin: 10px; }
     .app .project-container .project {
       display: flex;
       flex-direction: column;
-      margin: 10px; }
+      margin: auto; }
       .app .project-container .project .project-name {
         font-size: 2.4rem; }
         .app .project-container .project .project-name .icon-trash {
@@ -191,12 +192,15 @@ body {
       .app .project-container .project .palette-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between; }
+        width: 1600px;
+        margin: auto; }
         .app .project-container .project .palette-container .project-palette {
           display: flex;
           flex-direction: column;
           align-items: center;
-          padding: 10px; }
+          width: 280px;
+          padding: 10px;
+          margin: 10px; }
           .app .project-container .project .palette-container .project-palette .palette-header {
             align-self: stretch;
             display: flex;
@@ -206,6 +210,7 @@ body {
               padding: 10px; }
           .app .project-container .project .palette-container .project-palette .palette-color-group {
             display: flex;
+            width: 280px;
             padding: 10px; }
             .app .project-container .project .palette-container .project-palette .palette-color-group .saved-color {
               width: 50px;
@@ -229,3 +234,19 @@ body {
             .app .project-container .project .palette-container .project-palette .palette-color-group .trash-placeholder {
               opacity: 0;
               cursor: default; }
+
+@media screen and (max-width: 1599px) {
+  .app .project-container .project .palette-container {
+    width: 1280px; } }
+
+@media screen and (max-width: 1279px) {
+  .app .project-container .project .palette-container {
+    width: 960px; } }
+
+@media screen and (max-width: 959px) {
+  .app .project-container .project .palette-container {
+    width: 640px; } }
+
+@media screen and (max-width: 639px) {
+  .app .project-container .project .palette-container {
+    width: 320px; } }
