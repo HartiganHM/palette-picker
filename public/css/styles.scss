@@ -13,14 +13,12 @@ body {
   font-size: 1.4rem;
   .header-wrapper {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    padding: 10px;
     .header {
-      align-self: center;
-      height: 175px;
-      width: 500px;
-      margin-top: 10px;
-      padding: 10px;
+      flex: 2;
+      align-self: stretch;
+      min-height: 150px;
       background-image: url('../images/Palette-Picker-Logo.png');
       background-repeat: no-repeat;
       background-size: contain;
@@ -29,59 +27,77 @@ body {
       font-weight: 700;
     }
     .create-project-section {
+      flex: 1;
+      position: relative;
+      left: 20px;
       align-self: center;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 10px;
       .new-project-input-wrapper {
+        display: flex;
         position: relative;
-        height: 109px;
-        width: 566px;
+        max-height: 109px;
+        max-width: 566px;
         background-image: url('../images/Save-Project-Input.svg');
         background-repeat: no-repeat;
         background-size: contain;
         .new-project-input {
-          position: absolute;
-          top: 6px;
-          padding: 10px;
+          padding: 20px;
           border: none;
           background-color: transparent;
-          color: #3F5E60;
+          color: #3f5e60;
           font-family: 'Space Mono', Courier New, Courier, monospace;
-          font-size: 1.4rem;
+          font-size: 1.8rem;
           &:focus {
             outline: none;
           }
           &::placeholder {
-            color: #3F5E60;
+            color: #3f5e60;
           }
         }
       }
     }
-        .save-project-button {
-          position: relative;
-          left: -20px;
-          width: 75px;
-          height: 75px;
-          background-image: url('../images/Save-Project-Button-Default.svg');
-          background-repeat: no-repeat;
-          background-size: contain;
-          cursor: pointer;
-          &:hover {
-            background-image: url('../images/Save-Project-Button-Hover.svg');
-          }
-          &:active {
-            background-image: url('../images/Save-Project-Button-Active.svg');
-          }
-          &:focus {
-            outline: none;
-          }
-        }
+    .save-project-button {
+      position: relative;
+      left: -20px;
+      width: 75px;
+      height: 75px;
+      background-image: url('../images/Save-Project-Button-Default.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer;
+      &:hover {
+        background-image: url('../images/Save-Project-Button-Hover.svg');
+      }
+      &:active {
+        background-image: url('../images/Save-Project-Button-Active.svg');
+      }
+      &:focus {
+        outline: none;
+      }
+    }
   }
   .color-selection-container {
     display: flex;
     flex-direction: column;
+    .generate-palette-button {
+      position: relative;
+      bottom: -40px;
+      align-self: center;
+      height: 85px;
+      width: 200px;
+      background-image: url('../images/Generate-Palette-Default.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer;
+      &:hover {
+        background-image: url('../images/Generate-Palette-Hover.svg');
+      }
+      &:active {
+        background-image: url('../images/Generate-Palette-Active.svg');
+      }
+    }
     .color-selection-wrapper {
       display: flex;
       justify-content: space-around;
@@ -116,19 +132,6 @@ body {
           }
         }
       }
-    }
-  }
-  .generate-palette-button {
-    align-self: center;
-    margin: 10px;
-    padding: 10px;
-    background-color: #b0c4de;
-    cursor: pointer;
-    &:hover {
-      background-color: #d3ddeb;
-    }
-    &:active {
-      background-color: #769ac9;
     }
   }
   .save-palette-section {

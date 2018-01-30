@@ -12,14 +12,12 @@ body {
   font-size: 1.4rem; }
   .app .header-wrapper {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; }
+    justify-content: space-between;
+    padding: 10px; }
     .app .header-wrapper .header {
-      align-self: center;
-      height: 175px;
-      width: 500px;
-      margin-top: 10px;
-      padding: 10px;
+      flex: 2;
+      align-self: stretch;
+      min-height: 150px;
       background-image: url("../images/Palette-Picker-Logo.png");
       background-repeat: no-repeat;
       background-size: contain;
@@ -27,31 +25,32 @@ body {
       font-size: 2.4rem;
       font-weight: 700; }
     .app .header-wrapper .create-project-section {
+      flex: 1;
+      position: relative;
+      left: 20px;
       align-self: center;
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin-bottom: 10px; }
+      justify-content: center; }
       .app .header-wrapper .create-project-section .new-project-input-wrapper {
+        display: flex;
         position: relative;
-        height: 109px;
-        width: 566px;
+        max-height: 109px;
+        max-width: 566px;
         background-image: url("../images/Save-Project-Input.svg");
         background-repeat: no-repeat;
         background-size: contain; }
         .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input {
-          position: absolute;
-          top: 6px;
-          padding: 10px;
+          padding: 20px;
           border: none;
           background-color: transparent;
-          color: #3F5E60;
+          color: #3f5e60;
           font-family: 'Space Mono', Courier New, Courier, monospace;
-          font-size: 1.4rem; }
+          font-size: 1.8rem; }
           .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input:focus {
             outline: none; }
           .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input::placeholder {
-            color: #3F5E60; }
+            color: #3f5e60; }
     .app .header-wrapper .save-project-button {
       position: relative;
       left: -20px;
@@ -70,6 +69,20 @@ body {
   .app .color-selection-container {
     display: flex;
     flex-direction: column; }
+    .app .color-selection-container .generate-palette-button {
+      position: relative;
+      bottom: -40px;
+      align-self: center;
+      height: 85px;
+      width: 200px;
+      background-image: url("../images/Generate-Palette-Default.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer; }
+      .app .color-selection-container .generate-palette-button:hover {
+        background-image: url("../images/Generate-Palette-Hover.svg"); }
+      .app .color-selection-container .generate-palette-button:active {
+        background-image: url("../images/Generate-Palette-Active.svg"); }
     .app .color-selection-container .color-selection-wrapper {
       display: flex;
       justify-content: space-around; }
@@ -99,16 +112,6 @@ body {
           .app .color-selection-container .color-selection-wrapper .color-choice .color-hex-value:hover {
             opacity: 1;
             transition: 0.1s opacity ease-in-out; }
-  .app .generate-palette-button {
-    align-self: center;
-    margin: 10px;
-    padding: 10px;
-    background-color: #b0c4de;
-    cursor: pointer; }
-    .app .generate-palette-button:hover {
-      background-color: #d3ddeb; }
-    .app .generate-palette-button:active {
-      background-color: #769ac9; }
   .app .save-palette-section {
     align-self: stretch;
     display: flex;
