@@ -220,7 +220,7 @@ const toggleColorLock = (event, array, locked) => {
 
 const inputCheck = event => {
   event.preventDefault();
-  const input = $(event.target).siblings()[0];
+  const input = $('.new-project-input')[0];
   const projectCheck = savedProjects.projects.filter(project => project.name === input.value)
 
   if (input.value === '') {
