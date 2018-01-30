@@ -64,15 +64,15 @@ body {
           left: -20px;
           width: 75px;
           height: 75px;
-          background-image: url('../images/Save-Project-Button-Default.png');
+          background-image: url('../images/Save-Project-Button-Default.svg');
           background-repeat: no-repeat;
           background-size: contain;
           cursor: pointer;
           &:hover {
-            background-image: url('../images/Save-Project-Button-Hover.png');
+            background-image: url('../images/Save-Project-Button-Hover.svg');
           }
           &:active {
-            background-image: url('../images/Save-Project-Button-Active.png');
+            background-image: url('../images/Save-Project-Button-Active.svg');
           }
           &:focus {
             outline: none;
