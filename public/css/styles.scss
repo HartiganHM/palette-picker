@@ -31,12 +31,14 @@ body {
     .create-project-section {
       align-self: center;
       display: flex;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
       .new-project-input-wrapper {
         position: relative;
         height: 109px;
-        width: 350px;
-        background-image: url('../images/Save-Project-Input.png');
+        width: 566px;
+        background-image: url('../images/Save-Project-Input.svg');
         background-repeat: no-repeat;
         background-size: contain;
         .new-project-input {
@@ -56,27 +58,26 @@ body {
           }
         }
       }
-      .save-project-button {
-        position: absolute;
-        right: 39.5%;
-        bottom: -55px;
-        width: 75px;
-        height: 75px;
-        background-image: url('../images/Save-Project-Button-Default.png');
-        background-repeat: no-repeat;
-        background-size: contain;
-        cursor: pointer;
-        &:hover {
-          background-image: url('../images/Save-Project-Button-Hover.png');
-        }
-        &:active {
-          background-image: url('../images/Save-Project-Button-Active.png');
-        }
-        &:focus {
-          outline: none;
-        }
-      }
     }
+        .save-project-button {
+          position: relative;
+          left: -20px;
+          width: 75px;
+          height: 75px;
+          background-image: url('../images/Save-Project-Button-Default.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          cursor: pointer;
+          &:hover {
+            background-image: url('../images/Save-Project-Button-Hover.png');
+          }
+          &:active {
+            background-image: url('../images/Save-Project-Button-Active.png');
+          }
+          &:focus {
+            outline: none;
+          }
+        }
   }
   .color-selection-container {
     display: flex;

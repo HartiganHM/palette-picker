@@ -29,12 +29,14 @@ body {
     .app .header-wrapper .create-project-section {
       align-self: center;
       display: flex;
-      justify-content: space-between; }
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px; }
       .app .header-wrapper .create-project-section .new-project-input-wrapper {
         position: relative;
         height: 109px;
-        width: 350px;
-        background-image: url("../images/Save-Project-Input.png");
+        width: 566px;
+        background-image: url("../images/Save-Project-Input.svg");
         background-repeat: no-repeat;
         background-size: contain; }
         .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input {
@@ -50,22 +52,21 @@ body {
             outline: none; }
           .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input::placeholder {
             color: #3F5E60; }
-      .app .header-wrapper .create-project-section .save-project-button {
-        position: absolute;
-        right: 39.5%;
-        bottom: -55px;
-        width: 75px;
-        height: 75px;
-        background-image: url("../images/Save-Project-Button-Default.png");
-        background-repeat: no-repeat;
-        background-size: contain;
-        cursor: pointer; }
-        .app .header-wrapper .create-project-section .save-project-button:hover {
-          background-image: url("../images/Save-Project-Button-Hover.png"); }
-        .app .header-wrapper .create-project-section .save-project-button:active {
-          background-image: url("../images/Save-Project-Button-Active.png"); }
-        .app .header-wrapper .create-project-section .save-project-button:focus {
-          outline: none; }
+    .app .header-wrapper .save-project-button {
+      position: relative;
+      left: -20px;
+      width: 75px;
+      height: 75px;
+      background-image: url("../images/Save-Project-Button-Default.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer; }
+      .app .header-wrapper .save-project-button:hover {
+        background-image: url("../images/Save-Project-Button-Hover.png"); }
+      .app .header-wrapper .save-project-button:active {
+        background-image: url("../images/Save-Project-Button-Active.png"); }
+      .app .header-wrapper .save-project-button:focus {
+        outline: none; }
   .app .color-selection-container {
     display: flex;
     flex-direction: column; }
