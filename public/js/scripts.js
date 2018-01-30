@@ -342,7 +342,6 @@ const renderPalettes = palettes => {
           <span class="project-palette">
             <span class ="palette-header">
               <span class="palette-name">${palette.name}</span>
-              <i class="icon-trash"></i>
             </span>
 
             <span class="palette-color-group ${palette.id}">
@@ -425,6 +424,8 @@ const renderPalettes = palettes => {
                   <circle class="bubbles" cx="230" cy="316" r="10"/>
                 </g>
               </svg>
+
+              <i class="icon-trash"></i>
             </span>
           </span>
         `

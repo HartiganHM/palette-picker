@@ -244,20 +244,6 @@ body {
             .palette-name {
               padding: 10px;
             }
-            .icon-trash {
-              font-size: 1.8rem;
-              cursor: pointer;
-              &:hover {
-                color: red;
-              }
-              &:active {
-                color: lightgrey;
-              }
-            }
-            .trash-placeholder {
-              opacity: 0;
-              cursor: default;
-            }
           }
           .palette-color-group {
             display: flex;
@@ -277,6 +263,20 @@ body {
               .bubbles {
                 fill: #F9F9F9;
               }
+            }
+            .icon-trash {
+              font-size: 1.8rem;
+              cursor: pointer;
+              &:hover {
+                color: red;
+              }
+              &:active {
+                color: lightgrey;
+              }
+            }
+            .trash-placeholder {
+              opacity: 0;
+              cursor: default;
             }
           }
         }
