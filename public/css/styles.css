@@ -40,14 +40,17 @@ body {
         background-size: contain; }
         .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input {
           position: absolute;
-          top: 8px;
+          top: 6px;
           padding: 10px;
           border: none;
           background-color: transparent;
           color: #3F5E60;
+          font-family: 'Space Mono', Courier New, Courier, monospace;
           font-size: 1.4rem; }
           .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input:focus {
             outline: none; }
+          .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input::placeholder {
+            color: #3F5E60; }
       .app .header-wrapper .create-project-section .save-project-button {
         position: absolute;
         right: 42%;

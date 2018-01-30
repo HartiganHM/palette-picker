@@ -42,14 +42,18 @@ body {
         background-size: contain;
         .new-project-input {
           position: absolute;
-          top: 8px;
+          top: 6px;
           padding: 10px;
           border: none;
           background-color: transparent;
           color: #3F5E60;
+          font-family: 'Space Mono', Courier New, Courier, monospace;
           font-size: 1.4rem;
           &:focus {
             outline: none;
+          }
+          &::placeholder {
+            color: #3F5E60;
           }
         }
       }
