@@ -18,7 +18,7 @@ body {
       align-self: center;
       height: 123px;
       width: 350px;
-      margin: 10px;
+      margin-top: 10px;
       padding: 10px;
       background-image: url("../images/Palette-Picker-Logo.png");
       background-repeat: no-repeat;
@@ -52,7 +52,7 @@ body {
             color: #3F5E60; }
       .app .header-wrapper .create-project-section .save-project-button {
         position: absolute;
-        right: 38%;
+        right: 39.5%;
         bottom: -55px;
         width: 75px;
         height: 75px;
