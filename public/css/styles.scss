@@ -215,8 +215,9 @@ body {
       flex-direction: column;
       margin: 10px;
       .project-name {
+        font-size: 2.4rem;
         .icon-trash {
-          font-size: 18px;
+          font-size: 1.8rem;
           cursor: pointer;
           &:hover {
             color: red;
@@ -232,10 +233,31 @@ body {
         justify-content: space-between;
         .project-palette {
           display: flex;
+          flex-direction: column;
           align-items: center;
           padding: 10px;
-          .palette-name {
-            padding: 10px;
+          .palette-header {
+            align-self: stretch;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            .palette-name {
+              padding: 10px;
+            }
+            .icon-trash {
+              font-size: 1.8rem;
+              cursor: pointer;
+              &:hover {
+                color: red;
+              }
+              &:active {
+                color: lightgrey;
+              }
+            }
+            .trash-placeholder {
+              opacity: 0;
+              cursor: default;
+            }
           }
           .palette-color-group {
             display: flex;
@@ -256,20 +278,6 @@ body {
                 fill: #F9F9F9;
               }
             }
-          }
-          .icon-trash {
-            font-size: 32px;
-            cursor: pointer;
-            &:hover {
-              color: red;
-            }
-            &:active {
-              color: lightgrey;
-            }
-          }
-          .trash-placeholder {
-            opacity: 0;
-            cursor: default;
           }
         }
       }

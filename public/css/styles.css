@@ -179,23 +179,41 @@ body {
       display: flex;
       flex-direction: column;
       margin: 10px; }
-      .app .project-container .project .project-name .icon-trash {
-        font-size: 18px;
-        cursor: pointer; }
-        .app .project-container .project .project-name .icon-trash:hover {
-          color: red; }
-        .app .project-container .project .project-name .icon-trash:active {
-          color: lightgrey; }
+      .app .project-container .project .project-name {
+        font-size: 2.4rem; }
+        .app .project-container .project .project-name .icon-trash {
+          font-size: 1.8rem;
+          cursor: pointer; }
+          .app .project-container .project .project-name .icon-trash:hover {
+            color: red; }
+          .app .project-container .project .project-name .icon-trash:active {
+            color: lightgrey; }
       .app .project-container .project .palette-container {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between; }
         .app .project-container .project .palette-container .project-palette {
           display: flex;
+          flex-direction: column;
           align-items: center;
           padding: 10px; }
-          .app .project-container .project .palette-container .project-palette .palette-name {
-            padding: 10px; }
+          .app .project-container .project .palette-container .project-palette .palette-header {
+            align-self: stretch;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between; }
+            .app .project-container .project .palette-container .project-palette .palette-header .palette-name {
+              padding: 10px; }
+            .app .project-container .project .palette-container .project-palette .palette-header .icon-trash {
+              font-size: 1.8rem;
+              cursor: pointer; }
+              .app .project-container .project .palette-container .project-palette .palette-header .icon-trash:hover {
+                color: red; }
+              .app .project-container .project .palette-container .project-palette .palette-header .icon-trash:active {
+                color: lightgrey; }
+            .app .project-container .project .palette-container .project-palette .palette-header .trash-placeholder {
+              opacity: 0;
+              cursor: default; }
           .app .project-container .project .palette-container .project-palette .palette-color-group {
             display: flex;
             padding: 10px; }
@@ -211,13 +229,3 @@ body {
                 fill: #92C9FF; }
               .app .project-container .project .palette-container .project-palette .palette-color-group .saved-color .bubbles {
                 fill: #F9F9F9; }
-          .app .project-container .project .palette-container .project-palette .icon-trash {
-            font-size: 32px;
-            cursor: pointer; }
-            .app .project-container .project .palette-container .project-palette .icon-trash:hover {
-              color: red; }
-            .app .project-container .project .palette-container .project-palette .icon-trash:active {
-              color: lightgrey; }
-          .app .project-container .project .palette-container .project-palette .trash-placeholder {
-            opacity: 0;
-            cursor: default; }
