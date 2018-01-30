@@ -342,6 +342,21 @@ const renderPalettes = palettes => {
           <span class="project-palette">
             <span class="palette-name">${palette.name}</span>
             <span class="palette-color-group ${palette.id}">
+              <svg class="saved-color" viewBox="0 0 404 519">
+                <g id="glass">
+                  <path class="glass" d="M58.5,507.5h293c0,0,28-5,38-18s0-48,0-48l-127-237l-1-160c0,0,11-7,11-16s-1-17-10-17s-121,0-121,0s-8,0-8,14
+                    s8,20,8,20v161l-129,242c0,0-10,26,4,42S58.5,507.5,58.5,507.5z"/>
+                </g>
+                <g id="liquid">
+                  <path class="liquid ${palette.id}-color1" d="M140,267L51,432c0,0-8,25,0,34s19,18,39,18s237,0,237,0s20-3,30-14s8-29,4-36s-93-175-93-175s-3-16-17-15
+                    s-16,15-34,18c0,0-13,11-36,12S145,257,140,267z"/>
+                </g>
+                <g id="bubbles">
+                  <circle class="bubbles" cx="155" cy="348" r="17"/>
+                  <circle class="bubbles" cx="185" cy="383" r="30"/>
+                  <circle class="bubbles" cx="230" cy="316" r="10"/>
+                </g>
+              </svg>
               <div class="saved-color ${palette.id}-color1"></div>
               <div class="saved-color ${palette.id}-color2"></div>
               <div class="saved-color ${palette.id}-color3"></div>
