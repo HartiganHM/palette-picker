@@ -28,8 +28,8 @@ const accessControlAllowOrigin = (request, response, next) => { // Middleware us
 };
 
 const httpsRedirect = (request, response, next) => {
-  if( request.protocol !== 'https') {
-    response.redirect('https://' + request.headers.host + request.url);
+  if( request.headers['x-forwarded-proto'] !== 'https') {
+    return response.redirect('https://' + request.get('host') + request.url);
   }
 
   next();
