@@ -8,7 +8,6 @@ body {
   background-repeat: repeat;
   font-family: 'Dosis', Arial, Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 62.5%;
   font-size: 1.4rem; }
   .app .header-wrapper {
     display: flex;
