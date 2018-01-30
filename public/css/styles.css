@@ -16,8 +16,8 @@ body {
     justify-content: space-between; }
     .app .header-wrapper .header {
       align-self: center;
-      height: 105px;
-      width: 300px;
+      height: 123px;
+      width: 350px;
       margin: 10px;
       padding: 10px;
       background-image: url("../images/Palette-Picker-Logo.png");
@@ -32,9 +32,8 @@ body {
       justify-content: space-between; }
       .app .header-wrapper .create-project-section .new-project-input-wrapper {
         position: relative;
-        height: 93px;
-        width: 300px;
-        margin-bottom: 50px;
+        height: 109px;
+        width: 350px;
         background-image: url("../images/Save-Project-Input.png");
         background-repeat: no-repeat;
         background-size: contain; }
@@ -53,10 +52,10 @@ body {
             color: #3F5E60; }
       .app .header-wrapper .create-project-section .save-project-button {
         position: absolute;
-        right: 42%;
-        bottom: -43px;
-        width: 50px;
-        height: 50px;
+        right: 38%;
+        bottom: -55px;
+        width: 75px;
+        height: 75px;
         background-image: url("../images/Save-Project-Button-Default.png");
         background-repeat: no-repeat;
         background-size: contain;
@@ -67,36 +66,38 @@ body {
           background-image: url("../images/Save-Project-Button-Active.png"); }
         .app .header-wrapper .create-project-section .save-project-button:focus {
           outline: none; }
-  .app .color-selection-wrapper {
+  .app .color-selection-container {
     display: flex;
-    justify-content: space-around; }
-    .app .color-selection-wrapper .color-choice {
-      flex: 1;
+    flex-direction: column; }
+    .app .color-selection-container .color-selection-wrapper {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      height: 400px;
-      margin: 10px 0;
-      padding: 10px;
-      font-size: 1.6rem;
-      transition: 0.2s background-color ease-in-out; }
-      .app .color-selection-wrapper .color-choice .lock {
-        color: #fff;
-        font-size: 1.8rem;
-        opacity: 0.75;
-        transition: 0.1s opacity ease-in-out; }
-        .app .color-selection-wrapper .color-choice .lock:hover {
-          opacity: 1;
+      justify-content: space-around; }
+      .app .color-selection-container .color-selection-wrapper .color-choice {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        height: 400px;
+        padding: 10px;
+        font-size: 1.6rem;
+        transition: 0.2s background-color ease-in-out; }
+        .app .color-selection-container .color-selection-wrapper .color-choice .lock {
+          color: #fff;
+          font-size: 1.8rem;
+          opacity: 0.75;
           transition: 0.1s opacity ease-in-out; }
-      .app .color-selection-wrapper .color-choice .color-hex-value {
-        color: #fff;
-        font-size: 1.8rem;
-        opacity: 0.75;
-        transition: 0.1s opacity ease-in-out; }
-        .app .color-selection-wrapper .color-choice .color-hex-value:hover {
-          opacity: 1;
+          .app .color-selection-container .color-selection-wrapper .color-choice .lock:hover {
+            opacity: 1;
+            transition: 0.1s opacity ease-in-out; }
+        .app .color-selection-container .color-selection-wrapper .color-choice .color-hex-value {
+          color: #fff;
+          font-size: 1.8rem;
+          opacity: 0.75;
           transition: 0.1s opacity ease-in-out; }
+          .app .color-selection-container .color-selection-wrapper .color-choice .color-hex-value:hover {
+            opacity: 1;
+            transition: 0.1s opacity ease-in-out; }
   .app .generate-palette-button {
     align-self: center;
     margin: 10px;
