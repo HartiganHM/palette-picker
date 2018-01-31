@@ -244,6 +244,8 @@ body {
                 background-image: url("../images/Delete-Button-Hover.svg"); }
               .app .project-container .project .palette-container .project-palette .palette-color-group .delete-button:active {
                 background-image: url("../images/Delete-Button-Active.svg"); }
+            .app .project-container .project .palette-container .project-palette .palette-color-group .trash-placeholder {
+              opacity: 0; }
 
 @media screen and (max-width: 1599px) {
   .app .project-container .project .palette-container {
