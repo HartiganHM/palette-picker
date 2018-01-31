@@ -244,7 +244,7 @@ const renderProject = title => {
   $('.project-container').prepend(
     `
       <div class="project">
-        <span class="project-name">${title}<i id="remove-project" class="icon-trash"></i></span>
+        <span class="project-name">${title}<span id="remove-project" class="delete-button"></span></span>
 
         <span class="palette-container">
           <span class="project-palette palette-placeholder">
@@ -256,7 +256,7 @@ const renderProject = title => {
               <div class="saved-color"></div>
               <div class="saved-color"></div>
               <div class="saved-color"></div>
-              <i class="icon-trash trash-placeholder" disabled></i>
+              <span class="delete-button trash-placeholder" disabled></span>
             </span>
 
           </span>
@@ -415,7 +415,7 @@ const renderPalettes = palettes => {
                     s8,20,8,20v161l-129,242c0,0-10,26,4,42S58.5,507.5,58.5,507.5z"/>
                 </g>
                 <g id="liquid">
-                  <path class="${palette.id}-color" d="M140,267L51,432c0,0-8,25,0,34s19,18,39,18s237,0,237,0s20-3,30-14s8-29,4-36s-93-175-93-175s-3-16-17-15
+                  <path class="${palette.id}-color5" d="M140,267L51,432c0,0-8,25,0,34s19,18,39,18s237,0,237,0s20-3,30-14s8-29,4-36s-93-175-93-175s-3-16-17-15
                     s-16,15-34,18c0,0-13,11-36,12S145,257,140,267z"/>
                 </g>
                 <g id="bubbles">
@@ -425,7 +425,7 @@ const renderPalettes = palettes => {
                 </g>
               </svg>
 
-              <i class="icon-trash"></i>
+              <span class="delete-button"></span>
             </span>
           </span>
         `
@@ -439,7 +439,7 @@ const renderPalettes = palettes => {
 };
 
 const removePalette = event => {
-  const deleteButton = $(event.target).closest('.icon-trash');
+  const deleteButton = $(event.target).closest('.delete-button');
 
   if (!$(deleteButton).siblings()[0]) {
     return
@@ -482,7 +482,7 @@ const paletteLengthCheck = () => {
             <div class="saved-color"></div>
             <div class="saved-color"></div>
             <div class="saved-color"></div>
-            <i class="icon-trash trash-placeholder" disabled></i>
+            <span class="delete-button trash-placeholder" disabled></span>
           </span>
 
         </span>
