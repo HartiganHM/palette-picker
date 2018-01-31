@@ -210,7 +210,6 @@ body {
   .project-container {
     display: flex;
     min-height: 210px;
-    margin: 10px;
     .project {
       display: flex;
       flex-direction: column;
@@ -220,6 +219,7 @@ body {
         justify-content: flex-start;
         .project-name {
           display: flex;
+          padding: 10px;
           font-size: 3.6rem;
         }
         .delete-project-button {
@@ -303,25 +303,25 @@ body {
   }
 }
 
-@media screen and (max-width: 1599px) {
+@media screen and (max-width: 1614px) {
   .app .project-container .project .palette-container {
     width: 1280px;
   }
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 1294px) {
   .app .project-container .project .palette-container {
     width: 960px;
   }
 }
 
-@media screen and (max-width: 959px) {
+@media screen and (max-width: 974px) {
   .app .project-container .project .palette-container {
     width: 640px;
   }
 }
 
-@media screen and (max-width: 639px) {
+@media screen and (max-width: 654px) {
   .app .project-container .project .palette-container {
     width: 320px;
   }
