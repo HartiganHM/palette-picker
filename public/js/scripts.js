@@ -246,7 +246,7 @@ const renderProject = title => {
       <div class="project">
         <span class="project-name-wrapper">
           <span class="project-name">${title}</span>
-          <span id="remove-project" class="delete-button"></span>
+          <span id="remove-project" class="delete-project-button"></span>
         </span>
 
         <span class="palette-container">
@@ -259,7 +259,7 @@ const renderProject = title => {
               <div class="saved-color"></div>
               <div class="saved-color"></div>
               <div class="saved-color"></div>
-              <span class="delete-button trash-placeholder" disabled></span>
+              <span class="delete-palette-button trash-placeholder" disabled></span>
             </span>
 
           </span>
@@ -428,7 +428,7 @@ const renderPalettes = palettes => {
                 </g>
               </svg>
 
-              <span class="delete-button"></span>
+              <span class="delete-palette-button"></span>
             </span>
           </span>
         `
@@ -442,7 +442,7 @@ const renderPalettes = palettes => {
 };
 
 const removePalette = event => {
-  const deleteButton = $(event.target).closest('.delete-button');
+  const deleteButton = $(event.target).closest('.delete-palette-button');
 
   if (!$(deleteButton).siblings()[0]) {
     return
@@ -463,7 +463,7 @@ const removeProject = event => {
     return
   }
 
-  const projectName = $(deleteButton)[0].parentElement.innerText;
+  const projectName = $(deleteButton).parent().children()[0].innerText;
   const selectedProject = savedProjects.projects.find(project => project.name === projectName);
 
   deleteProject(selectedProject.id);
@@ -485,7 +485,7 @@ const paletteLengthCheck = () => {
             <div class="saved-color"></div>
             <div class="saved-color"></div>
             <div class="saved-color"></div>
-            <span class="delete-button trash-placeholder" disabled></span>
+            <span class="delete-palette-button trash-placeholder" disabled></span>
           </span>
 
         </span>
@@ -532,4 +532,4 @@ $('.dropdown-wrapper').click(event => selectProject(event));
 $('.save-palette-submit').click(event => savePalette(event));
 $('.project-container').click(event => removePalette(event));
 $('.project-container').click(event => removeProject(event));
-$('.project-container').click(event => setPaletteColors(event));
+$('.project-container').on('click', '.saved-color', event => setPaletteColors(event));
