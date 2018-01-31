@@ -186,7 +186,7 @@ body {
         .app .project-container .project .project-name-wrapper .project-name {
           display: flex;
           font-size: 3.6rem; }
-        .app .project-container .project .project-name-wrapper .delete-button {
+        .app .project-container .project .project-name-wrapper .delete-project-button {
           height: 60px;
           width: 60px;
           margin-left: 10px;
@@ -194,9 +194,9 @@ body {
           background-repeat: no-repeat;
           background-size: contain;
           cursor: pointer; }
-          .app .project-container .project .project-name-wrapper .delete-button:hover {
+          .app .project-container .project .project-name-wrapper .delete-project-button:hover {
             background-image: url("../images/Delete-Button-Hover.svg"); }
-          .app .project-container .project .project-name-wrapper .delete-button:active {
+          .app .project-container .project .project-name-wrapper .delete-project-button:active {
             background-image: url("../images/Delete-Button-Active.svg"); }
       .app .project-container .project .palette-container {
         display: flex;
@@ -233,16 +233,16 @@ body {
                 fill: #92c9ff; }
               .app .project-container .project .palette-container .project-palette .palette-color-group .saved-color .bubbles {
                 fill: #f9f9f9; }
-            .app .project-container .project .palette-container .project-palette .palette-color-group .delete-button {
+            .app .project-container .project .palette-container .project-palette .palette-color-group .delete-palette-button {
               height: 50px;
               width: 50px;
               background-image: url("../images/Delete-Button-Default.svg");
               background-repeat: no-repeat;
               background-size: contain;
               cursor: pointer; }
-              .app .project-container .project .palette-container .project-palette .palette-color-group .delete-button:hover {
+              .app .project-container .project .palette-container .project-palette .palette-color-group .delete-palette-button:hover {
                 background-image: url("../images/Delete-Button-Hover.svg"); }
-              .app .project-container .project .palette-container .project-palette .palette-color-group .delete-button:active {
+              .app .project-container .project .palette-container .project-palette .palette-color-group .delete-palette-button:active {
                 background-image: url("../images/Delete-Button-Active.svg"); }
             .app .project-container .project .palette-container .project-palette .palette-color-group .trash-placeholder {
               opacity: 0; }
