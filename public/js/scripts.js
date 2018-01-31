@@ -335,7 +335,6 @@ const savePalette = event => {
 
 const renderPalettes = palettes => {
   const selectedProject = savedProjects.projects.find(project => project.name === $('.project-name')[0].innerText);
-  console.log($('.project-name'))
   const selectedPalettes = palettes.filter(palette => palette['project_id'] === selectedProject.id);
 
   $('.project-palette').remove();
