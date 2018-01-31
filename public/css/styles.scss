@@ -215,9 +215,13 @@ body {
       display: flex;
       flex-direction: column;
       margin: auto;
-      .project-name {
-        display: flex;
-        font-size: 3.6rem;
+      .project-name-wrapper {
+        display:flex;
+        justify-content: flex-start;
+        .project-name {
+          display: flex;
+          font-size: 3.6rem;
+        }
         .delete-button {
           height: 60px;
           width: 60px;
@@ -236,7 +240,8 @@ body {
       }
       .palette-container {
         display: flex;
-        flex-wrap: wrap;width: 1600px;
+        flex-wrap: wrap;
+        width: 1600px;
         margin: auto;
         .project-palette {
           display: flex;
@@ -263,15 +268,15 @@ body {
               height: 50px;
               .glass {
                 fill: none;
-                stroke: #282D33;
+                stroke: #282d33;
                 stroke-width: 16;
                 stroke-miterlimit: 10;
               }
               .liquid {
-                fill: #92C9FF;
+                fill: #92c9ff;
               }
               .bubbles {
-                fill: #F9F9F9;
+                fill: #f9f9f9;
               }
             }
             .delete-button {
@@ -287,6 +292,7 @@ body {
               &:active {
                 background-image: url('../images/Delete-Button-Active.svg');
               }
+            }
           }
         }
       }
@@ -295,25 +301,25 @@ body {
 }
 
 @media screen and (max-width: 1599px) {
-	.app .project-container .project .palette-container {
-		width: 1280px;
-	}
+  .app .project-container .project .palette-container {
+    width: 1280px;
+  }
 }
 
 @media screen and (max-width: 1279px) {
-	.app .project-container .project .palette-container {
-		width: 960px;
-	}
+  .app .project-container .project .palette-container {
+    width: 960px;
+  }
 }
 
 @media screen and (max-width: 959px) {
-	.app .project-container .project .palette-container {
-		width: 640px;
-	}
+  .app .project-container .project .palette-container {
+    width: 640px;
+  }
 }
 
 @media screen and (max-width: 639px) {
-	.app .project-container .project .palette-container {
-		width: 320px;
-	}
+  .app .project-container .project .palette-container {
+    width: 320px;
+  }
 }

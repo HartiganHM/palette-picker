@@ -180,10 +180,13 @@ body {
       display: flex;
       flex-direction: column;
       margin: auto; }
-      .app .project-container .project .project-name {
+      .app .project-container .project .project-name-wrapper {
         display: flex;
-        font-size: 3.6rem; }
-        .app .project-container .project .project-name .delete-button {
+        justify-content: flex-start; }
+        .app .project-container .project .project-name-wrapper .project-name {
+          display: flex;
+          font-size: 3.6rem; }
+        .app .project-container .project .project-name-wrapper .delete-button {
           height: 60px;
           width: 60px;
           margin-left: 10px;
@@ -191,9 +194,9 @@ body {
           background-repeat: no-repeat;
           background-size: contain;
           cursor: pointer; }
-          .app .project-container .project .project-name .delete-button:hover {
+          .app .project-container .project .project-name-wrapper .delete-button:hover {
             background-image: url("../images/Delete-Button-Hover.svg"); }
-          .app .project-container .project .project-name .delete-button:active {
+          .app .project-container .project .project-name-wrapper .delete-button:active {
             background-image: url("../images/Delete-Button-Active.svg"); }
       .app .project-container .project .palette-container {
         display: flex;
@@ -223,23 +226,24 @@ body {
               height: 50px; }
               .app .project-container .project .palette-container .project-palette .palette-color-group .saved-color .glass {
                 fill: none;
-                stroke: #282D33;
+                stroke: #282d33;
                 stroke-width: 16;
                 stroke-miterlimit: 10; }
               .app .project-container .project .palette-container .project-palette .palette-color-group .saved-color .liquid {
-                fill: #92C9FF; }
+                fill: #92c9ff; }
               .app .project-container .project .palette-container .project-palette .palette-color-group .saved-color .bubbles {
-                fill: #F9F9F9; }
-            .app .project-container .project .palette-container .project-palette .palette-color-group .icon-trash {
-              font-size: 1.8rem;
+                fill: #f9f9f9; }
+            .app .project-container .project .palette-container .project-palette .palette-color-group .delete-button {
+              height: 50px;
+              width: 50px;
+              background-image: url("../images/Delete-Button-Default.svg");
+              background-repeat: no-repeat;
+              background-size: contain;
               cursor: pointer; }
-              .app .project-container .project .palette-container .project-palette .palette-color-group .icon-trash:hover {
-                color: red; }
-              .app .project-container .project .palette-container .project-palette .palette-color-group .icon-trash:active {
-                color: lightgrey; }
-            .app .project-container .project .palette-container .project-palette .palette-color-group .trash-placeholder {
-              opacity: 0;
-              cursor: default; }
+              .app .project-container .project .palette-container .project-palette .palette-color-group .delete-button:hover {
+                background-image: url("../images/Delete-Button-Hover.svg"); }
+              .app .project-container .project .palette-container .project-palette .palette-color-group .delete-button:active {
+                background-image: url("../images/Delete-Button-Active.svg"); }
 
 @media screen and (max-width: 1599px) {
   .app .project-container .project .palette-container {
