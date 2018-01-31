@@ -216,15 +216,21 @@ body {
       flex-direction: column;
       margin: auto;
       .project-name {
-        font-size: 2.4rem;
-        .icon-trash {
-          font-size: 1.8rem;
+        display: flex;
+        font-size: 3.6rem;
+        .delete-button {
+          height: 60px;
+          width: 60px;
+          margin-left: 10px;
+          background-image: url('../images/Delete-Button-Default.svg');
+          background-repeat: no-repeat;
+          background-size: contain;
           cursor: pointer;
           &:hover {
-            color: red;
+            background-image: url('../images/Delete-Button-Hover.svg');
           }
           &:active {
-            color: lightgrey;
+            background-image: url('../images/Delete-Button-Active.svg');
           }
         }
       }
@@ -268,20 +274,19 @@ body {
                 fill: #F9F9F9;
               }
             }
-            .icon-trash {
-              font-size: 1.8rem;
+            .delete-button {
+              height: 50px;
+              width: 50px;
+              background-image: url('../images/Delete-Button-Default.svg');
+              background-repeat: no-repeat;
+              background-size: contain;
               cursor: pointer;
               &:hover {
-                color: red;
+                background-image: url('../images/Delete-Button-Hover.svg');
               }
               &:active {
-                color: lightgrey;
+                background-image: url('../images/Delete-Button-Active.svg');
               }
-            }
-            .trash-placeholder {
-              opacity: 0;
-              cursor: default;
-            }
           }
         }
       }
