@@ -244,7 +244,10 @@ const renderProject = title => {
   $('.project-container').prepend(
     `
       <div class="project">
-        <span class="project-name">${title}<span id="remove-project" class="delete-button"></span></span>
+        <span class="project-name-wrapper">
+          <span class="project-name">${title}</span>
+          <span id="remove-project" class="delete-button"></span>
+        </span>
 
         <span class="palette-container">
           <span class="project-palette palette-placeholder">
@@ -332,6 +335,7 @@ const savePalette = event => {
 
 const renderPalettes = palettes => {
   const selectedProject = savedProjects.projects.find(project => project.name === $('.project-name')[0].innerText);
+  console.log($('.project-name'))
   const selectedPalettes = palettes.filter(palette => palette['project_id'] === selectedProject.id);
 
   $('.project-palette').remove();
