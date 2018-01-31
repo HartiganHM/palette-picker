@@ -209,7 +209,8 @@ body {
   }
   .project-container {
     display: flex;
-    min-height: 210px;
+    margin: 20px 0;
+    min-height: 229px;
     .project {
       display: flex;
       flex-direction: column;

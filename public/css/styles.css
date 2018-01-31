@@ -174,7 +174,8 @@ body {
         background-color: #769ac9; }
   .app .project-container {
     display: flex;
-    min-height: 210px; }
+    margin: 20px 0;
+    min-height: 229px; }
     .app .project-container .project {
       display: flex;
       flex-direction: column;
