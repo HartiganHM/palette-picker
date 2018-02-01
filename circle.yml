@@ -4,5 +4,9 @@ machine:
   node:
     version: 8.3.0
 
-  environment:
-    DATABASE_URL: postgresql://ubuntu:@127.0.0.1:5432/palette_picker_test
+environment:
+  DATABASE_URL: postgresql://ubuntu:@127.0.0.1:5432/palette_picker_test
+
+database:
+  override:
+    - knex migrate:latest
