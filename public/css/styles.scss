@@ -47,6 +47,12 @@ body {
         background-image: url('../images/Generate-Palette-Active.svg');
       }
     }
+    .color-cap-left {
+      display: none;
+    }
+    .color-cap-right {
+      display: none;
+    }
     .color-selection-wrapper {
       display: flex;
       justify-content: space-around;
@@ -360,6 +366,51 @@ body {
 }
 
 @media screen and (max-width: 654px) {
+  .app {
+    .color-selection-container {
+      .generate-palette-button {
+        bottom: initial;
+        margin-bottom: 20px;
+      }
+      .color-selection-cap-container {
+        display: flex;
+        .color-cap-top {
+          display: none;
+        }
+        .color-cap-left {
+          display: block;
+          height: 500px;
+        }
+        .color-selection-wrapper {
+          flex: 1;
+          flex-direction: column;
+          .color-choice {
+            height: initial;
+          }
+        }
+        .color-cap-bottom {
+          display: none;
+        }
+        .color-cap-right {
+          display: block;
+          height: 500px;
+        }
+      }
+    }
+    .create-project-section {
+      top: initial;
+      flex-direction: column;
+      margin-top: 25px;
+    }
+    .save-palette-section {
+      top: initial;
+      flex-direction: column;
+      margin-top: 25px;
+      .save-palette-input-wrapper {
+        order: -1;
+      }
+    }
+  }
   .app .project-container .project .palette-container {
     width: 320px;
   }

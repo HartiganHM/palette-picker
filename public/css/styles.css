@@ -41,6 +41,10 @@ body {
         background-image: url("../images/Generate-Palette-Hover.svg"); }
       .app .color-selection-container .generate-palette-button:active {
         background-image: url("../images/Generate-Palette-Active.svg"); }
+    .app .color-selection-container .color-cap-left {
+      display: none; }
+    .app .color-selection-container .color-cap-right {
+      display: none; }
     .app .color-selection-container .color-selection-wrapper {
       display: flex;
       justify-content: space-around; }
@@ -297,5 +301,35 @@ body {
     width: 640px; } }
 
 @media screen and (max-width: 654px) {
+  .app .color-selection-container .generate-palette-button {
+    bottom: initial;
+    margin-bottom: 20px; }
+  .app .color-selection-container .color-selection-cap-container {
+    display: flex; }
+    .app .color-selection-container .color-selection-cap-container .color-cap-top {
+      display: none; }
+    .app .color-selection-container .color-selection-cap-container .color-cap-left {
+      display: block;
+      height: 500px; }
+    .app .color-selection-container .color-selection-cap-container .color-selection-wrapper {
+      flex: 1;
+      flex-direction: column; }
+      .app .color-selection-container .color-selection-cap-container .color-selection-wrapper .color-choice {
+        height: initial; }
+    .app .color-selection-container .color-selection-cap-container .color-cap-bottom {
+      display: none; }
+    .app .color-selection-container .color-selection-cap-container .color-cap-right {
+      display: block;
+      height: 500px; }
+  .app .create-project-section {
+    top: initial;
+    flex-direction: column;
+    margin-top: 25px; }
+  .app .save-palette-section {
+    top: initial;
+    flex-direction: column;
+    margin-top: 25px; }
+    .app .save-palette-section .save-palette-input-wrapper {
+      order: -1; }
   .app .project-container .project .palette-container {
     width: 320px; } }
