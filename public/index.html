@@ -56,24 +56,24 @@
   </form>
 
   <form class="save-palette-section">
-    <input class="save-palette-input" type="text" placeholder="Palette Name" value="" />
-
     <button class="save-palette-submit">Save Palette</button>
 
-      <div class="dropdown-wrapper">
-        <span class="project-dropdown">Select a Project
-          <i class="icon-right-dir"></i>
-        </span>
-
-        <div class="hidden project-selection">
-          <span class="dropdown-item dropdown-placeholder">No Projects</span>
-        </div>
-      </div>
+    <span class="save-palette-input-wrapper">
+      <input class="save-palette-input" type="text" placeholder="Palette Name" value="" />
+    </span>
   </form>
 
-  <div class="project-container">
+  <div class="dropdown-wrapper">
+    <span class="project-dropdown">Select a Project
+      <i class="icon-right-dir"></i>
+    </span>
 
+    <div class="hidden project-selection">
+      <span class="dropdown-item dropdown-placeholder">No Projects</span>
+    </div>
   </div>
+
+  <div class="project-container"></div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="./js/scripts.js"></script>
