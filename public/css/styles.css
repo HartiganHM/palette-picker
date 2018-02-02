@@ -172,6 +172,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-top: 20px;
       padding: 10px;
       background-color: #b0c4de;
       cursor: pointer; }
@@ -185,13 +186,21 @@ body {
       flex-direction: column;
       position: absolute;
       width: 100%;
-      top: 48px; }
+      top: 68px; }
       .app .dropdown-wrapper .project-selection .dropdown-item {
         flex: 1;
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 75px;
+        width: 350px;
         margin: 0 0 5px;
         padding: 10px;
-        border: 1px solid #f9f9f9;
-        background-color: #375377;
+        background-image: url("../images/Project-Name-Container.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
         color: #f9f9f9;
         text-align: center;
         box-sizing: border-box;
