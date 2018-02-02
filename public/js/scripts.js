@@ -312,7 +312,7 @@ const savePalette = event => {
   if (projectList.length === 0) {
     alert('Please create a project');
   } else if (paletteInput.value === '') {
-    paletteInput.placeholder = 'Please enter a palette name';
+    paletteInput.placeholder = 'Please enter a name';
   } else if ($('.project-name').length === 0) {
     alert('Please select a project to save this palette to');
   } else {
