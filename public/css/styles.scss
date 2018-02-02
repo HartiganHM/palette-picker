@@ -195,6 +195,7 @@ body {
     }
   }
   .dropdown-wrapper {
+    align-self: center;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -204,15 +205,13 @@ body {
       align-items: center;
       justify-content: center;
       margin-top: 20px;
-      padding: 10px;
-      background-color: #b0c4de;
+      height: 48px;
+      width: 350px;
+      background-image: url('../images/Select-Project-Dropdown.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
       cursor: pointer;
-      &:hover {
-        background-color: #d3ddeb;
-      }
-      &:active {
-        background-color: #769ac9;
-      }
     }
     .project-selection {
       flex: 1;
@@ -227,15 +226,15 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 75px;
+        height: 48px;
         width: 350px;
-        margin: 0 0 5px;
         padding: 10px;
-        background-image: url('../images/Project-Name-Container.png');
+        background-image: url('../images/Dropdown-Item.png');
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
-        color: #f9f9f9;
+        color: #4a525a;
+        font-family: 'Space Mono', Courier New, Courier, monospace;
         text-align: center;
         box-sizing: border-box;
         cursor: pointer;
