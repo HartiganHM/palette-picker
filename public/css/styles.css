@@ -8,68 +8,43 @@ body {
   background-repeat: repeat;
   font-family: 'Dosis', Arial, Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 62.5%;
   font-size: 1.4rem; }
   .app .header-wrapper {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; }
+    justify-content: space-between;
+    padding: 10px; }
     .app .header-wrapper .header {
-      align-self: center;
-      height: 123px;
-      width: 350px;
-      margin-top: 10px;
-      padding: 10px;
+      flex: 2;
+      align-self: stretch;
+      min-height: 150px;
       background-image: url("../images/Palette-Picker-Logo.png");
+      background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
       color: #008fb3;
       font-size: 2.4rem;
       font-weight: 700; }
-    .app .header-wrapper .create-project-section {
-      align-self: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px; }
-      .app .header-wrapper .create-project-section .new-project-input-wrapper {
-        position: relative;
-        height: 109px;
-        width: 566px;
-        background-image: url("../images/Save-Project-Input.svg");
-        background-repeat: no-repeat;
-        background-size: contain; }
-        .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input {
-          position: absolute;
-          top: 6px;
-          padding: 10px;
-          border: none;
-          background-color: transparent;
-          color: #3F5E60;
-          font-family: 'Space Mono', Courier New, Courier, monospace;
-          font-size: 1.4rem; }
-          .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input:focus {
-            outline: none; }
-          .app .header-wrapper .create-project-section .new-project-input-wrapper .new-project-input::placeholder {
-            color: #3F5E60; }
-    .app .header-wrapper .save-project-button {
-      position: relative;
-      left: -20px;
-      width: 75px;
-      height: 75px;
-      background-image: url("../images/Save-Project-Button-Default.png");
-      background-repeat: no-repeat;
-      background-size: contain;
-      cursor: pointer; }
-      .app .header-wrapper .save-project-button:hover {
-        background-image: url("../images/Save-Project-Button-Hover.png"); }
-      .app .header-wrapper .save-project-button:active {
-        background-image: url("../images/Save-Project-Button-Active.png"); }
-      .app .header-wrapper .save-project-button:focus {
-        outline: none; }
   .app .color-selection-container {
     display: flex;
     flex-direction: column; }
+    .app .color-selection-container .generate-palette-button {
+      position: relative;
+      bottom: -40px;
+      align-self: center;
+      height: 85px;
+      width: 200px;
+      background-image: url("../images/Generate-Palette-Default.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer; }
+      .app .color-selection-container .generate-palette-button:hover {
+        background-image: url("../images/Generate-Palette-Hover.svg"); }
+      .app .color-selection-container .generate-palette-button:active {
+        background-image: url("../images/Generate-Palette-Active.svg"); }
+    .app .color-selection-container .color-cap-left {
+      display: none; }
+    .app .color-selection-container .color-cap-right {
+      display: none; }
     .app .color-selection-container .color-selection-wrapper {
       display: flex;
       justify-content: space-around; }
@@ -99,112 +74,262 @@ body {
           .app .color-selection-container .color-selection-wrapper .color-choice .color-hex-value:hover {
             opacity: 1;
             transition: 0.1s opacity ease-in-out; }
-  .app .generate-palette-button {
+  .app .create-project-section {
+    flex: 1;
+    position: relative;
+    left: 20px;
+    top: -20px;
     align-self: center;
-    margin: 10px;
-    padding: 10px;
-    background-color: #b0c4de;
-    cursor: pointer; }
-    .app .generate-palette-button:hover {
-      background-color: #d3ddeb; }
-    .app .generate-palette-button:active {
-      background-color: #769ac9; }
-  .app .save-palette-section {
-    align-self: stretch;
     display: flex;
-    justify-content: space-between; }
-    .app .save-palette-section .dropdown-wrapper {
-      flex: 1;
+    align-items: center;
+    justify-content: center; }
+    .app .create-project-section .new-project-input-wrapper {
       display: flex;
-      flex-direction: column;
-      position: relative; }
-      .app .save-palette-section .dropdown-wrapper .project-dropdown {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-        background-color: #b0c4de;
-        cursor: pointer; }
-        .app .save-palette-section .dropdown-wrapper .project-dropdown:hover {
-          background-color: #d3ddeb; }
-        .app .save-palette-section .dropdown-wrapper .project-dropdown:active {
-          background-color: #769ac9; }
-      .app .save-palette-section .dropdown-wrapper .project-selection {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        width: 100%;
-        top: 48px; }
-        .app .save-palette-section .dropdown-wrapper .project-selection .dropdown-item {
-          flex: 1;
-          margin: 0 0 5px;
-          padding: 10px;
-          border: 1px solid #f9f9f9;
-          background-color: #375377;
-          color: #f9f9f9;
-          text-align: center;
-          box-sizing: border-box;
-          cursor: pointer; }
-      .app .save-palette-section .dropdown-wrapper .hidden {
-        display: none; }
-    .app .save-palette-section .save-palette-input {
-      flex: 2;
-      padding: 10px;
-      border: 1px solid lightgrey;
-      font-size: 1.4rem; }
-      .app .save-palette-section .save-palette-input:focus {
-        outline: none; }
+      position: relative;
+      max-height: 109px;
+      max-width: 566px;
+      background-image: url("../images/Save-Project-Input.svg");
+      background-repeat: no-repeat;
+      background-size: contain; }
+      .app .create-project-section .new-project-input-wrapper .new-project-input {
+        position: relative;
+        bottom: 5px;
+        padding: 20px 40px 20px 20px;
+        border: none;
+        background-color: transparent;
+        color: #3f5e60;
+        font-family: 'Space Mono', Courier New, Courier, monospace;
+        font-size: 1.4rem; }
+        .app .create-project-section .new-project-input-wrapper .new-project-input:focus {
+          outline: none; }
+        .app .create-project-section .new-project-input-wrapper .new-project-input::placeholder {
+          color: #3f5e60; }
+  .app .save-project-button {
+    position: relative;
+    left: -20px;
+    width: 75px;
+    height: 75px;
+    background-image: url("../images/Save-Project-Button-Default.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer; }
+    .app .save-project-button:hover {
+      background-image: url("../images/Save-Project-Button-Hover.svg"); }
+    .app .save-project-button:active {
+      background-image: url("../images/Save-Project-Button-Active.svg"); }
+    .app .save-project-button:focus {
+      outline: none; }
+  .app .save-palette-section {
+    flex: 1;
+    position: relative;
+    right: 20px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
     .app .save-palette-section .save-palette-submit {
+      position: relative;
+      right: -20px;
+      width: 75px;
+      height: 75px;
+      background-image: url("../images/Save-Project-Button-Default.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      z-index: 1;
+      cursor: pointer; }
+      .app .save-palette-section .save-palette-submit:hover {
+        background-image: url("../images/Save-Project-Button-Hover.svg"); }
+      .app .save-palette-section .save-palette-submit:active {
+        background-image: url("../images/Save-Project-Button-Active.svg"); }
+      .app .save-palette-section .save-palette-submit:focus {
+        outline: none; }
+    .app .save-palette-section .save-palette-input-wrapper {
+      display: flex;
+      position: relative;
+      max-height: 109px;
+      max-width: 566px;
+      background-image: url("../images/Save-Palette-Input.svg");
+      background-repeat: no-repeat;
+      background-size: contain; }
+      .app .save-palette-section .save-palette-input-wrapper .save-palette-input {
+        position: relative;
+        bottom: 5px;
+        left: 30px;
+        max-height: 109px;
+        max-width: 566px;
+        padding: 20px 40px 20px 20px;
+        border: none;
+        background-color: transparent;
+        color: #3f5e60;
+        font-family: 'Space Mono', Courier New, Courier, monospace;
+        font-size: 1.4rem; }
+        .app .save-palette-section .save-palette-input-wrapper .save-palette-input:focus {
+          outline: none; }
+        .app .save-palette-section .save-palette-input-wrapper .save-palette-input::placeholder {
+          color: #3f5e60; }
+  .app .dropdown-wrapper {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    position: relative; }
+    .app .dropdown-wrapper .project-dropdown {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;
-      background-color: #b0c4de;
+      margin-top: 20px;
+      height: 48px;
+      width: 350px;
+      background-image: url("../images/Select-Project-Dropdown.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
       cursor: pointer; }
-      .app .save-palette-section .save-palette-submit:hover {
-        background-color: #d3ddeb; }
-      .app .save-palette-section .save-palette-submit:active {
-        background-color: #769ac9; }
+    .app .dropdown-wrapper .project-selection {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      width: 100%;
+      top: 68px; }
+      .app .dropdown-wrapper .project-selection .dropdown-item {
+        flex: 1;
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 48px;
+        width: 350px;
+        padding: 10px;
+        background-image: url("../images/Dropdown-Item.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        color: #4a525a;
+        font-family: 'Space Mono', Courier New, Courier, monospace;
+        text-align: center;
+        box-sizing: border-box;
+        cursor: pointer; }
+    .app .dropdown-wrapper .hidden {
+      display: none; }
   .app .project-container {
     display: flex;
-    padding: 10px; }
+    margin: 20px 0;
+    min-height: 229px; }
     .app .project-container .project {
       display: flex;
       flex-direction: column;
-      margin: 10px; }
-      .app .project-container .project .project-name .icon-trash {
-        font-size: 18px;
-        cursor: pointer; }
-        .app .project-container .project .project-name .icon-trash:hover {
-          color: red; }
-        .app .project-container .project .project-name .icon-trash:active {
-          color: lightgrey; }
+      margin: auto; }
+      .app .project-container .project .project-name-wrapper {
+        display: flex;
+        justify-content: flex-start; }
+        .app .project-container .project .project-name-wrapper .project-name {
+          display: flex;
+          padding: 10px;
+          font-size: 3.6rem; }
+        .app .project-container .project .project-name-wrapper .delete-project-button {
+          height: 60px;
+          width: 60px;
+          margin-left: 10px;
+          background-image: url("../images/Delete-Button-Default.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          cursor: pointer; }
+          .app .project-container .project .project-name-wrapper .delete-project-button:hover {
+            background-image: url("../images/Delete-Button-Hover.svg"); }
+          .app .project-container .project .project-name-wrapper .delete-project-button:active {
+            background-image: url("../images/Delete-Button-Active.svg"); }
       .app .project-container .project .palette-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between; }
+        width: 1600px;
+        margin: auto; }
         .app .project-container .project .palette-container .project-palette {
           display: flex;
+          flex-direction: column;
           align-items: center;
-          padding: 10px; }
-          .app .project-container .project .palette-container .project-palette .palette-name {
-            padding: 10px; }
+          width: 280px;
+          padding: 10px;
+          margin: 10px; }
+          .app .project-container .project .palette-container .project-palette .palette-header {
+            align-self: stretch;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between; }
+            .app .project-container .project .palette-container .project-palette .palette-header .palette-name {
+              padding: 10px; }
           .app .project-container .project .palette-container .project-palette .palette-color-group {
             display: flex;
+            width: 280px;
             padding: 10px; }
             .app .project-container .project .palette-container .project-palette .palette-color-group .saved-color {
               width: 50px;
               height: 50px; }
-          .app .project-container .project .palette-container .project-palette .icon-trash {
-            font-size: 32px;
-            cursor: pointer; }
-            .app .project-container .project .palette-container .project-palette .icon-trash:hover {
-              color: red; }
-            .app .project-container .project .palette-container .project-palette .icon-trash:active {
-              color: lightgrey; }
-          .app .project-container .project .palette-container .project-palette .trash-placeholder {
-            opacity: 0;
-            cursor: default; }
+              .app .project-container .project .palette-container .project-palette .palette-color-group .saved-color .glass {
+                fill: none;
+                stroke: #282d33;
+                stroke-width: 16;
+                stroke-miterlimit: 10; }
+              .app .project-container .project .palette-container .project-palette .palette-color-group .saved-color .liquid {
+                fill: #92c9ff; }
+              .app .project-container .project .palette-container .project-palette .palette-color-group .saved-color .bubbles {
+                fill: #f9f9f9; }
+            .app .project-container .project .palette-container .project-palette .palette-color-group .delete-palette-button {
+              height: 50px;
+              width: 50px;
+              background-image: url("../images/Delete-Button-Default.svg");
+              background-repeat: no-repeat;
+              background-size: contain;
+              cursor: pointer; }
+              .app .project-container .project .palette-container .project-palette .palette-color-group .delete-palette-button:hover {
+                background-image: url("../images/Delete-Button-Hover.svg"); }
+              .app .project-container .project .palette-container .project-palette .palette-color-group .delete-palette-button:active {
+                background-image: url("../images/Delete-Button-Active.svg"); }
+            .app .project-container .project .palette-container .project-palette .palette-color-group .trash-placeholder {
+              opacity: 0; }
+
+@media screen and (max-width: 1614px) {
+  .app .project-container .project .palette-container {
+    width: 1280px; } }
+
+@media screen and (max-width: 1294px) {
+  .app .project-container .project .palette-container {
+    width: 960px; } }
+
+@media screen and (max-width: 974px) {
+  .app .project-container .project .palette-container {
+    width: 640px; } }
+
+@media screen and (max-width: 654px) {
+  .app .color-selection-container .generate-palette-button {
+    bottom: initial;
+    margin-bottom: 20px; }
+  .app .color-selection-container .color-selection-cap-container {
+    display: flex; }
+    .app .color-selection-container .color-selection-cap-container .color-cap-top {
+      display: none; }
+    .app .color-selection-container .color-selection-cap-container .color-cap-left {
+      display: block;
+      height: 500px; }
+    .app .color-selection-container .color-selection-cap-container .color-selection-wrapper {
+      flex: 1;
+      flex-direction: column; }
+      .app .color-selection-container .color-selection-cap-container .color-selection-wrapper .color-choice {
+        height: initial; }
+    .app .color-selection-container .color-selection-cap-container .color-cap-bottom {
+      display: none; }
+    .app .color-selection-container .color-selection-cap-container .color-cap-right {
+      display: block;
+      height: 500px; }
+  .app .create-project-section {
+    top: initial;
+    flex-direction: column;
+    margin-top: 25px; }
+  .app .save-palette-section {
+    top: initial;
+    flex-direction: column;
+    margin-top: 25px; }
+    .app .save-palette-section .save-palette-input-wrapper {
+      order: -1; }
+  .app .project-container .project .palette-container {
+    width: 320px; } }

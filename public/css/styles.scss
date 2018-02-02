@@ -9,79 +9,50 @@ body {
   background-repeat: repeat;
   font-family: 'Dosis', Arial, Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 62.5%;
   font-size: 1.4rem;
   .header-wrapper {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    padding: 10px;
     .header {
-      align-self: center;
-      height: 123px;
-      width: 350px;
-      margin-top: 10px;
-      padding: 10px;
+      flex: 2;
+      align-self: stretch;
+      min-height: 150px;
       background-image: url('../images/Palette-Picker-Logo.png');
+      background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
       color: #008fb3;
       font-size: 2.4rem;
       font-weight: 700;
     }
-    .create-project-section {
-      align-self: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-      .new-project-input-wrapper {
-        position: relative;
-        height: 109px;
-        width: 566px;
-        background-image: url('../images/Save-Project-Input.svg');
-        background-repeat: no-repeat;
-        background-size: contain;
-        .new-project-input {
-          position: absolute;
-          top: 6px;
-          padding: 10px;
-          border: none;
-          background-color: transparent;
-          color: #3F5E60;
-          font-family: 'Space Mono', Courier New, Courier, monospace;
-          font-size: 1.4rem;
-          &:focus {
-            outline: none;
-          }
-          &::placeholder {
-            color: #3F5E60;
-          }
-        }
-      }
-    }
-        .save-project-button {
-          position: relative;
-          left: -20px;
-          width: 75px;
-          height: 75px;
-          background-image: url('../images/Save-Project-Button-Default.png');
-          background-repeat: no-repeat;
-          background-size: contain;
-          cursor: pointer;
-          &:hover {
-            background-image: url('../images/Save-Project-Button-Hover.png');
-          }
-          &:active {
-            background-image: url('../images/Save-Project-Button-Active.png');
-          }
-          &:focus {
-            outline: none;
-          }
-        }
   }
   .color-selection-container {
     display: flex;
     flex-direction: column;
+    .generate-palette-button {
+      position: relative;
+      bottom: -40px;
+      align-self: center;
+      height: 85px;
+      width: 200px;
+      background-image: url('../images/Generate-Palette-Default.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer;
+      &:hover {
+        background-image: url('../images/Generate-Palette-Hover.svg');
+      }
+      &:active {
+        background-image: url('../images/Generate-Palette-Active.svg');
+      }
+    }
+    .color-cap-left {
+      display: none;
+    }
+    .color-cap-right {
+      display: none;
+    }
     .color-selection-wrapper {
       display: flex;
       justify-content: space-around;
@@ -118,145 +89,329 @@ body {
       }
     }
   }
-  .generate-palette-button {
+  .create-project-section {
+    flex: 1;
+    position: relative;
+    left: 20px;
+    top: -20px;
     align-self: center;
-    margin: 10px;
-    padding: 10px;
-    background-color: #b0c4de;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .new-project-input-wrapper {
+      display: flex;
+      position: relative;
+      max-height: 109px;
+      max-width: 566px;
+      background-image: url('../images/Save-Project-Input.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      .new-project-input {
+        position: relative;
+        bottom: 5px;
+        padding: 20px 40px 20px 20px;
+        border: none;
+        background-color: transparent;
+        color: #3f5e60;
+        font-family: 'Space Mono', Courier New, Courier, monospace;
+        font-size: 1.4rem;
+        &:focus {
+          outline: none;
+        }
+        &::placeholder {
+          color: #3f5e60;
+        }
+      }
+    }
+  }
+  .save-project-button {
+    position: relative;
+    left: -20px;
+    width: 75px;
+    height: 75px;
+    background-image: url('../images/Save-Project-Button-Default.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
     cursor: pointer;
     &:hover {
-      background-color: #d3ddeb;
+      background-image: url('../images/Save-Project-Button-Hover.svg');
     }
     &:active {
-      background-color: #769ac9;
+      background-image: url('../images/Save-Project-Button-Active.svg');
+    }
+    &:focus {
+      outline: none;
     }
   }
   .save-palette-section {
-    align-self: stretch;
+    flex: 1;
+    position: relative;
+    right: 20px;
+    align-self: center;
     display: flex;
-    justify-content: space-between;
-    .dropdown-wrapper {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .save-palette-submit {
       position: relative;
-      .project-dropdown {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-        background-color: #b0c4de;
-        cursor: pointer;
-        &:hover {
-          background-color: #d3ddeb;
-        }
-        &:active {
-          background-color: #769ac9;
-        }
+      right: -20px;
+      width: 75px;
+      height: 75px;
+      background-image: url('../images/Save-Project-Button-Default.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      z-index: 1;
+      cursor: pointer;
+      &:hover {
+        background-image: url('../images/Save-Project-Button-Hover.svg');
       }
-      .project-selection {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        width: 100%;
-        top: 48px;
-        .dropdown-item {
-          flex: 1;
-          margin: 0 0 5px;
-          padding: 10px;
-          border: 1px solid #f9f9f9;
-          background-color: #375377;
-          color: #f9f9f9;
-          text-align: center;
-          box-sizing: border-box;
-          cursor: pointer;
-        }
+      &:active {
+        background-image: url('../images/Save-Project-Button-Active.svg');
       }
-      .hidden {
-        display: none;
-      }
-    }
-    .save-palette-input {
-      flex: 2;
-      padding: 10px;
-      border: 1px solid lightgrey;
-      font-size: 1.4rem;
       &:focus {
         outline: none;
       }
     }
-    .save-palette-submit {
+    .save-palette-input-wrapper {
+      display: flex;
+      position: relative;
+      max-height: 109px;
+      max-width: 566px;
+      background-image: url('../images/Save-Palette-Input.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      .save-palette-input {
+        position: relative;
+        bottom: 5px;
+        left: 30px;
+        max-height: 109px;
+        max-width: 566px;
+        padding: 20px 40px 20px 20px;
+        border: none;
+        background-color: transparent;
+        color: #3f5e60;
+        font-family: 'Space Mono', Courier New, Courier, monospace;
+        font-size: 1.4rem;
+        &:focus {
+          outline: none;
+        }
+        &::placeholder {
+          color: #3f5e60;
+        }
+      }
+    }
+  }
+  .dropdown-wrapper {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .project-dropdown {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;
-      background-color: #b0c4de;
+      margin-top: 20px;
+      height: 48px;
+      width: 350px;
+      background-image: url('../images/Select-Project-Dropdown.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
       cursor: pointer;
-      &:hover {
-        background-color: #d3ddeb;
+    }
+    .project-selection {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      width: 100%;
+      top: 68px;
+      .dropdown-item {
+        flex: 1;
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 48px;
+        width: 350px;
+        padding: 10px;
+        background-image: url('../images/Dropdown-Item.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        color: #4a525a;
+        font-family: 'Space Mono', Courier New, Courier, monospace;
+        text-align: center;
+        box-sizing: border-box;
+        cursor: pointer;
       }
-      &:active {
-        background-color: #769ac9;
-      }
+    }
+    .hidden {
+      display: none;
     }
   }
   .project-container {
     display: flex;
-    padding: 10px;
+    margin: 20px 0;
+    min-height: 229px;
     .project {
       display: flex;
       flex-direction: column;
-      margin: 10px;
-      .project-name {
-        .icon-trash {
-          font-size: 18px;
+      margin: auto;
+      .project-name-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        .project-name {
+          display: flex;
+          padding: 10px;
+          font-size: 3.6rem;
+        }
+        .delete-project-button {
+          height: 60px;
+          width: 60px;
+          margin-left: 10px;
+          background-image: url('../images/Delete-Button-Default.svg');
+          background-repeat: no-repeat;
+          background-size: contain;
           cursor: pointer;
           &:hover {
-            color: red;
+            background-image: url('../images/Delete-Button-Hover.svg');
           }
           &:active {
-            color: lightgrey;
+            background-image: url('../images/Delete-Button-Active.svg');
           }
         }
       }
       .palette-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        width: 1600px;
+        margin: auto;
         .project-palette {
           display: flex;
+          flex-direction: column;
           align-items: center;
+          width: 280px;
           padding: 10px;
-          .palette-name {
-            padding: 10px;
+          margin: 10px;
+          .palette-header {
+            align-self: stretch;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            .palette-name {
+              padding: 10px;
+            }
           }
           .palette-color-group {
             display: flex;
+            width: 280px;
             padding: 10px;
             .saved-color {
               width: 50px;
               height: 50px;
+              .glass {
+                fill: none;
+                stroke: #282d33;
+                stroke-width: 16;
+                stroke-miterlimit: 10;
+              }
+              .liquid {
+                fill: #92c9ff;
+              }
+              .bubbles {
+                fill: #f9f9f9;
+              }
             }
-          }
-          .icon-trash {
-            font-size: 32px;
-            cursor: pointer;
-            &:hover {
-              color: red;
+            .delete-palette-button {
+              height: 50px;
+              width: 50px;
+              background-image: url('../images/Delete-Button-Default.svg');
+              background-repeat: no-repeat;
+              background-size: contain;
+              cursor: pointer;
+              &:hover {
+                background-image: url('../images/Delete-Button-Hover.svg');
+              }
+              &:active {
+                background-image: url('../images/Delete-Button-Active.svg');
+              }
             }
-            &:active {
-              color: lightgrey;
+            .trash-placeholder {
+              opacity: 0;
             }
-          }
-          .trash-placeholder {
-            opacity: 0;
-            cursor: default;
           }
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 1614px) {
+  .app .project-container .project .palette-container {
+    width: 1280px;
+  }
+}
+
+@media screen and (max-width: 1294px) {
+  .app .project-container .project .palette-container {
+    width: 960px;
+  }
+}
+
+@media screen and (max-width: 974px) {
+  .app .project-container .project .palette-container {
+    width: 640px;
+  }
+}
+
+@media screen and (max-width: 654px) {
+  .app {
+    .color-selection-container {
+      .generate-palette-button {
+        bottom: initial;
+        margin-bottom: 20px;
+      }
+      .color-selection-cap-container {
+        display: flex;
+        .color-cap-top {
+          display: none;
+        }
+        .color-cap-left {
+          display: block;
+          height: 500px;
+        }
+        .color-selection-wrapper {
+          flex: 1;
+          flex-direction: column;
+          .color-choice {
+            height: initial;
+          }
+        }
+        .color-cap-bottom {
+          display: none;
+        }
+        .color-cap-right {
+          display: block;
+          height: 500px;
+        }
+      }
+    }
+    .create-project-section {
+      top: initial;
+      flex-direction: column;
+      margin-top: 25px;
+    }
+    .save-palette-section {
+      top: initial;
+      flex-direction: column;
+      margin-top: 25px;
+      .save-palette-input-wrapper {
+        order: -1;
+      }
+    }
+  }
+  .app .project-container .project .palette-container {
+    width: 320px;
   }
 }

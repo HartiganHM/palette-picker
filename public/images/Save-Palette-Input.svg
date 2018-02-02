@@ -1,0 +1,59 @@
+<svg id="Pipe" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1188" height="229" viewBox="0 0 1188 229">
+  <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c140 79.160451, 2017/05/06-01:08:21        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""/>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?></metadata>
+<defs>
+    <style>
+      .cls-1 {
+        fill: #acb0b4;
+        stroke: #4a525a;
+        stroke-width: 4px;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #9ae5e6;
+      }
+
+      .cls-2 {
+        filter: url(#filter);
+      }
+    </style>
+    <filter id="filter" x="107" y="2" width="1080" height="226" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#4a525a"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect id="Rounded_Rectangle_2" data-name="Rounded Rectangle 2" class="cls-1" x="91.875" y="81" width="23.125" height="68" rx="9" ry="9"/>
+  <rect id="Rounded_Rectangle_2_copy" data-name="Rounded Rectangle 2 copy" class="cls-1" x="68.688" y="81" width="23.063" height="68" rx="9" ry="9"/>
+  <rect id="Rounded_Rectangle_2_copy_2" data-name="Rounded Rectangle 2 copy 2" class="cls-1" x="46.438" y="81" width="23.125" height="68" rx="9" ry="9"/>
+  <rect id="Rounded_Rectangle_2_copy_3" data-name="Rounded Rectangle 2 copy 3" class="cls-1" x="23.25" y="81" width="23.063" height="68" rx="9" ry="9"/>
+  <rect id="Rounded_Rectangle_2_copy_4" data-name="Rounded Rectangle 2 copy 4" class="cls-1" y="81" width="23.125" height="68" rx="9" ry="9"/>
+  <rect class="cls-2" x="107" y="2" width="1080" height="226"/>
+  <rect id="Rectangle_1_copy" data-name="Rectangle 1 copy" class="cls-3" x="121" y="14" width="1052" height="202"/>
+</svg>

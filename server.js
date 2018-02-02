@@ -6,7 +6,7 @@ const app = express(); // Sets app variable to a new instance of express
 const environment = process.env.NODE_ENV || 'development'; // Sets environment variable to use environment determine by process accessing server or to fallback to 'development'
 const configuration = require('./knexfile')[environment]; // Sets configuration variable to use .knexfile at property of environment
 const database = require('knex')(configuration); // Sets database variable to use knex method and pass in configuration variable
-const port = process.env.PORT || 3000; // Sets port variable to use port determined by process accessing server or fall back to port 3000
+const port = process.env.PORT || 3003; // Sets port variable to use port determined by process accessing server or fall back to port 3000
 
 const urlLogger = (request, response, next) => { // Middleware used to log the request url
   console.log('Request URL:', request.url);
@@ -39,8 +39,10 @@ app.locals.title = 'Palette Picker'; // Sets app locals title to name of prohect
 
 app.set('port', port); // Sets app to use the port variable mentioned above
 
-if (process.env.NODE_ENV !== 'test') { // Conditional check to avoid using logs in test environment
-  app.use(httpsRedirect, timeLogger, urlLogger, accessControlAllowOrigin)
+if (environment !== 'development' && environment !== 'test') {
+  app.use(httpsRedirect)
+} else if (environment !== 'test') {
+  app.use(timeLogger, urlLogger, accessControlAllowOrigin)
 }
 
 app

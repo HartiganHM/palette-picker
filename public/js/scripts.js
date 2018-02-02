@@ -220,7 +220,7 @@ const toggleColorLock = (event, array, locked) => {
 
 const inputCheck = event => {
   event.preventDefault();
-  const input = $(event.target).siblings()[0];
+  const input = $('.new-project-input')[0];
   const projectCheck = savedProjects.projects.filter(project => project.name === input.value)
 
   if (input.value === '') {
@@ -244,7 +244,10 @@ const renderProject = title => {
   $('.project-container').prepend(
     `
       <div class="project">
-        <span class="project-name">${title}<i id="remove-project" class="icon-trash"></i></span>
+        <span class="project-name-wrapper">
+          <span class="project-name">${title}</span>
+          <span id="remove-project" class="delete-project-button"></span>
+        </span>
 
         <span class="palette-container">
           <span class="project-palette palette-placeholder">
@@ -256,9 +259,9 @@ const renderProject = title => {
               <div class="saved-color"></div>
               <div class="saved-color"></div>
               <div class="saved-color"></div>
+              <span class="delete-palette-button trash-placeholder" disabled></span>
             </span>
 
-            <i class="icon-trash trash-placeholder" disabled></i>
           </span>
         </span>
       </div>
@@ -309,7 +312,7 @@ const savePalette = event => {
   if (projectList.length === 0) {
     alert('Please create a project');
   } else if (paletteInput.value === '') {
-    paletteInput.placeholder = 'Please enter a palette name';
+    paletteInput.placeholder = 'Please enter a name';
   } else if ($('.project-name').length === 0) {
     alert('Please select a project to save this palette to');
   } else {
@@ -340,38 +343,116 @@ const renderPalettes = palettes => {
       $('.palette-container').prepend(
         `
           <span class="project-palette">
-            <span class="palette-name">${palette.name}</span>
-            <span class="palette-color-group ${palette.id}">
-              <div class="saved-color ${palette.id}-color1"></div>
-              <div class="saved-color ${palette.id}-color2"></div>
-              <div class="saved-color ${palette.id}-color3"></div>
-              <div class="saved-color ${palette.id}-color4"></div>
-              <div class="saved-color ${palette.id}-color5"></div>
+            <span class ="palette-header">
+              <span class="palette-name">${palette.name}</span>
             </span>
-            <i class="icon-trash"></i>
+
+            <span class="palette-color-group ${palette.id}">
+              <svg class="saved-color" viewBox="0 0 404 519">
+                <g id="glass">
+                  <path class="glass" d="M58.5,507.5h293c0,0,28-5,38-18s0-48,0-48l-127-237l-1-160c0,0,11-7,11-16s-1-17-10-17s-121,0-121,0s-8,0-8,14
+                    s8,20,8,20v161l-129,242c0,0-10,26,4,42S58.5,507.5,58.5,507.5z"/>
+                </g>
+                <g id="liquid">
+                  <path class="${palette.id}-color1" d="M140,267L51,432c0,0-8,25,0,34s19,18,39,18s237,0,237,0s20-3,30-14s8-29,4-36s-93-175-93-175s-3-16-17-15
+                    s-16,15-34,18c0,0-13,11-36,12S145,257,140,267z"/>
+                </g>
+                <g id="bubbles">
+                  <circle class="bubbles" cx="155" cy="348" r="17"/>
+                  <circle class="bubbles" cx="185" cy="383" r="30"/>
+                  <circle class="bubbles" cx="230" cy="316" r="10"/>
+                </g>
+              </svg>
+
+              <svg class="saved-color" viewBox="0 0 404 519">
+                <g id="glass">
+                  <path class="glass" d="M58.5,507.5h293c0,0,28-5,38-18s0-48,0-48l-127-237l-1-160c0,0,11-7,11-16s-1-17-10-17s-121,0-121,0s-8,0-8,14
+                    s8,20,8,20v161l-129,242c0,0-10,26,4,42S58.5,507.5,58.5,507.5z"/>
+                </g>
+                <g id="liquid">
+                  <path class="${palette.id}-color2" d="M140,267L51,432c0,0-8,25,0,34s19,18,39,18s237,0,237,0s20-3,30-14s8-29,4-36s-93-175-93-175s-3-16-17-15
+                    s-16,15-34,18c0,0-13,11-36,12S145,257,140,267z"/>
+                </g>
+                <g id="bubbles">
+                  <circle class="bubbles" cx="155" cy="348" r="17"/>
+                  <circle class="bubbles" cx="185" cy="383" r="30"/>
+                  <circle class="bubbles" cx="230" cy="316" r="10"/>
+                </g>
+              </svg>
+
+              <svg class="saved-color" viewBox="0 0 404 519">
+                <g id="glass">
+                  <path class="glass" d="M58.5,507.5h293c0,0,28-5,38-18s0-48,0-48l-127-237l-1-160c0,0,11-7,11-16s-1-17-10-17s-121,0-121,0s-8,0-8,14
+                    s8,20,8,20v161l-129,242c0,0-10,26,4,42S58.5,507.5,58.5,507.5z"/>
+                </g>
+                <g id="liquid">
+                  <path class="${palette.id}-color3" d="M140,267L51,432c0,0-8,25,0,34s19,18,39,18s237,0,237,0s20-3,30-14s8-29,4-36s-93-175-93-175s-3-16-17-15
+                    s-16,15-34,18c0,0-13,11-36,12S145,257,140,267z"/>
+                </g>
+                <g id="bubbles">
+                  <circle class="bubbles" cx="155" cy="348" r="17"/>
+                  <circle class="bubbles" cx="185" cy="383" r="30"/>
+                  <circle class="bubbles" cx="230" cy="316" r="10"/>
+                </g>
+              </svg>
+
+              <svg class="saved-color" viewBox="0 0 404 519">
+                <g id="glass">
+                  <path class="glass" d="M58.5,507.5h293c0,0,28-5,38-18s0-48,0-48l-127-237l-1-160c0,0,11-7,11-16s-1-17-10-17s-121,0-121,0s-8,0-8,14
+                    s8,20,8,20v161l-129,242c0,0-10,26,4,42S58.5,507.5,58.5,507.5z"/>
+                </g>
+                <g id="liquid">
+                  <path class="${palette.id}-color4" d="M140,267L51,432c0,0-8,25,0,34s19,18,39,18s237,0,237,0s20-3,30-14s8-29,4-36s-93-175-93-175s-3-16-17-15
+                    s-16,15-34,18c0,0-13,11-36,12S145,257,140,267z"/>
+                </g>
+                <g id="bubbles">
+                  <circle class="bubbles" cx="155" cy="348" r="17"/>
+                  <circle class="bubbles" cx="185" cy="383" r="30"/>
+                  <circle class="bubbles" cx="230" cy="316" r="10"/>
+                </g>
+              </svg>
+
+              <svg class="saved-color" viewBox="0 0 404 519">
+                <g id="glass">
+                  <path class="glass" d="M58.5,507.5h293c0,0,28-5,38-18s0-48,0-48l-127-237l-1-160c0,0,11-7,11-16s-1-17-10-17s-121,0-121,0s-8,0-8,14
+                    s8,20,8,20v161l-129,242c0,0-10,26,4,42S58.5,507.5,58.5,507.5z"/>
+                </g>
+                <g id="liquid">
+                  <path class="${palette.id}-color5" d="M140,267L51,432c0,0-8,25,0,34s19,18,39,18s237,0,237,0s20-3,30-14s8-29,4-36s-93-175-93-175s-3-16-17-15
+                    s-16,15-34,18c0,0-13,11-36,12S145,257,140,267z"/>
+                </g>
+                <g id="bubbles">
+                  <circle class="bubbles" cx="155" cy="348" r="17"/>
+                  <circle class="bubbles" cx="185" cy="383" r="30"/>
+                  <circle class="bubbles" cx="230" cy="316" r="10"/>
+                </g>
+              </svg>
+
+              <span class="delete-palette-button"></span>
+            </span>
           </span>
         `
       );
-      $(`.${palette.id}-color1`).css('background-color', palette.color1);
-      $(`.${palette.id}-color2`).css('background-color', palette.color2);
-      $(`.${palette.id}-color3`).css('background-color', palette.color3);
-      $(`.${palette.id}-color4`).css('background-color', palette.color4);
-      $(`.${palette.id}-color5`).css('background-color', palette.color5);
+      $(`.${palette.id}-color1`).css('fill', palette.color1);
+      $(`.${palette.id}-color2`).css('fill', palette.color2);
+      $(`.${palette.id}-color3`).css('fill', palette.color3);
+      $(`.${palette.id}-color4`).css('fill', palette.color4);
+      $(`.${palette.id}-color5`).css('fill', palette.color5);
   });
 };
 
 const removePalette = event => {
-  const deleteButton = $(event.target).closest('.icon-trash');
+  const deleteButton = $(event.target).closest('.delete-palette-button');
 
   if (!$(deleteButton).siblings()[0]) {
     return
   }
 
-  const paletteName = $(deleteButton).siblings()[0].innerText;
+  const paletteName = $(deleteButton).parent().siblings('.palette-header')[0].children[0].innerText;
   const selectedPalette = savedPalettes.palettes.find(palette => palette.name === paletteName);
 
   deletePalette(selectedPalette.id);
-  $(deleteButton.parent()).remove();
+  $(deleteButton).parent().parent().remove();
   paletteLengthCheck();
 };
 
@@ -382,7 +463,7 @@ const removeProject = event => {
     return
   }
 
-  const projectName = $(deleteButton)[0].parentElement.innerText;
+  const projectName = $(deleteButton).parent().children()[0].innerText;
   const selectedProject = savedProjects.projects.find(project => project.name === projectName);
 
   deleteProject(selectedProject.id);
@@ -404,9 +485,9 @@ const paletteLengthCheck = () => {
             <div class="saved-color"></div>
             <div class="saved-color"></div>
             <div class="saved-color"></div>
+            <span class="delete-palette-button trash-placeholder" disabled></span>
           </span>
 
-          <i class="icon-trash trash-placeholder" disabled></i>
         </span>
       `
     );
@@ -451,4 +532,4 @@ $('.dropdown-wrapper').click(event => selectProject(event));
 $('.save-palette-submit').click(event => savePalette(event));
 $('.project-container').click(event => removePalette(event));
 $('.project-container').click(event => removeProject(event));
-$('.project-container').click(event => setPaletteColors(event));
+$('.project-container').on('click', '.saved-color', event => setPaletteColors(event));

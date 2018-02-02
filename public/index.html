@@ -15,65 +15,68 @@
 <body class="app">
   <span class="header-wrapper">
     <span class="header"></span>
-
-    <form class="create-project-section">
-      <span class="new-project-input-wrapper">
-        <input class="new-project-input" type="text" placeholder="Create a project" value="" />
-      </span>
-      <button class="save-project-button"></button>
-    </form>
   </span>
 
   <div class="color-selection-container">
-    <img src="./images/Color-Caps-Top.svg" alt="Palette-Picker-Container-Tops"/>
+    <span class='generate-palette-button'></span>
 
-    <div class="color-selection-wrapper">
-      <div class="color-choice color1">
-        <i class="lock icon-lock-open"></i>
-        <span class="color-hex-value">#D3F6DB</span>
+    <div class="color-selection-cap-container">
+      <img class="color-cap-top" src="./images/Color-Caps-Top.svg" alt="Palette-Picker-Container-Tops" />
+      <img class="color-cap-left" src="./images/Color-Caps-Left.svg" alt="Palette-Picker-Container-Left" />
+  
+      <div class="color-selection-wrapper">
+        <div class="color-choice color1">
+          <i class="lock icon-lock-open"></i>
+          <span class="color-hex-value">#D3F6DB</span>
+        </div>
+        <div class="color-choice color2">
+          <i class="lock icon-lock-open"></i>
+          <span class="color-hex-value">#92D5E6</span>
+        </div>
+        <div class="color-choice color3">
+          <i class="lock icon-lock-open"></i>
+          <span class="color-hex-value">#772D8B</span>
+        </div>
+        <div class="color-choice color4">
+          <i class="lock icon-lock-open"></i>
+          <span class="color-hex-value">#5A0B4D</span>
+        </div>
+        <div class="color-choice color5">
+          <i class="lock icon-lock-open"></i>
+          <span class="color-hex-value">#A1EF8B</span>
+        </div>
       </div>
-      <div class="color-choice color2">
-        <i class="lock icon-lock-open"></i>
-        <span class="color-hex-value">#92D5E6</span>
-      </div>
-      <div class="color-choice color3">
-        <i class="lock icon-lock-open"></i>
-        <span class="color-hex-value">#772D8B</span>
-      </div>
-      <div class="color-choice color4">
-        <i class="lock icon-lock-open"></i>
-        <span class="color-hex-value">#5A0B4D</span>
-      </div>
-      <div class="color-choice color5">
-        <i class="lock icon-lock-open"></i>
-        <span class="color-hex-value">#A1EF8B</span>
-      </div>
+  
+      <img class="color-cap-bottom" src="./images/Color-Caps-Bottom.svg" alt="Palette-Picker-Container-Bottoms" />
+      <img class="color-cap-right" src="./images/Color-Caps-Right.svg" alt="Palette-Picker-Container-Bottoms" />
     </div>
-
-    <img src="./images/Color-Caps-Bottom.svg" alt="Palette-Picker-Container-Bottoms"/>
   </div>
 
-  <span class='generate-palette-button'>Generate New Palette</span>
-
-  <form class="save-palette-section">
-    <div class="dropdown-wrapper">
-      <span class="project-dropdown">Select a Project
-        <i class="icon-right-dir"></i>
-      </span>
-
-      <div class="hidden project-selection">
-        <span class="dropdown-item dropdown-placeholder">No Projects</span>
-      </div>
-    </div>
-
-    <input class="save-palette-input" type="text" placeholder="Palette Name" value="" />
-
-    <button class="save-palette-submit">Save Palette</button>
+  <form class="create-project-section">
+    <span class="new-project-input-wrapper">
+      <input class="new-project-input" type="text" placeholder="Create a project" value="" />
+    </span>
+    <button class="save-project-button"></button>
   </form>
 
-  <div class="project-container">
+  <form class="save-palette-section">
+    <button class="save-palette-submit"></button>
 
+    <span class="save-palette-input-wrapper">
+      <input class="save-palette-input" type="text" placeholder="Palette Name" value="" />
+    </span>
+  </form>
+
+  <div class="dropdown-wrapper">
+    <span class="project-dropdown">
+    </span>
+
+    <div class="hidden project-selection">
+      <span class="dropdown-item dropdown-placeholder">No Projects</span>
+    </div>
   </div>
+
+  <div class="project-container"></div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="./js/scripts.js"></script>
