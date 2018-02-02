@@ -136,62 +136,62 @@ body {
     }
   }
   .save-palette-section {
-    align-self: stretch;
+    flex: 1;
+    position: relative;
+    left: 20px;
+    top: -20px;
+    align-self: center;
     display: flex;
-    justify-content: space-between;
-    .dropdown-wrapper {
-      flex: 1;
+    align-items: center;
+    justify-content: center;
+    .save-palette-input-wrapper {
       display: flex;
-      flex-direction: column;
       position: relative;
-      .project-dropdown {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-        background-color: #b0c4de;
-        cursor: pointer;
-        &:hover {
-          background-color: #d3ddeb;
+      max-height: 159.5px;
+      max-width: 566px;
+      background-image: url('../images/Save-Palette-Input.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      .save-palette-input {
+        padding: 20px;
+        border: none;
+        background-color: transparent;
+        color: #3f5e60;
+        font-family: 'Space Mono', Courier New, Courier, monospace;
+        font-size: 1.4rem;
+        &:focus {
+          outline: none;
         }
-        &:active {
-          background-color: #769ac9;
+        &::placeholder {
+          color: #3f5e60;
         }
-      }
-      .project-selection {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        width: 100%;
-        top: 48px;
-        .dropdown-item {
-          flex: 1;
-          margin: 0 0 5px;
-          padding: 10px;
-          border: 1px solid #f9f9f9;
-          background-color: #375377;
-          color: #f9f9f9;
-          text-align: center;
-          box-sizing: border-box;
-          cursor: pointer;
-        }
-      }
-      .hidden {
-        display: none;
       }
     }
-    .save-palette-input {
-      flex: 2;
-      padding: 10px;
-      border: 1px solid lightgrey;
-      font-size: 1.4rem;
+    .save-palette-submit {
+      position: relative;
+      right: -20px;
+      width: 75px;
+      height: 75px;
+      background-image: url('../images/Save-Project-Button-Default.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer;
+      &:hover {
+        background-image: url('../images/Save-Project-Button-Hover.svg');
+      }
+      &:active {
+        background-image: url('../images/Save-Project-Button-Active.svg');
+      }
       &:focus {
         outline: none;
       }
     }
-    .save-palette-submit {
+  }
+  .dropdown-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .project-dropdown {
       flex: 1;
       display: flex;
       align-items: center;
@@ -206,6 +206,28 @@ body {
         background-color: #769ac9;
       }
     }
+    .project-selection {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      width: 100%;
+      top: 48px;
+      .dropdown-item {
+        flex: 1;
+        margin: 0 0 5px;
+        padding: 10px;
+        border: 1px solid #f9f9f9;
+        background-color: #375377;
+        color: #f9f9f9;
+        text-align: center;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+    }
+    .hidden {
+      display: none;
+    }
   }
   .project-container {
     display: flex;
@@ -216,7 +238,7 @@ body {
       flex-direction: column;
       margin: auto;
       .project-name-wrapper {
-        display:flex;
+        display: flex;
         justify-content: flex-start;
         .project-name {
           display: flex;
